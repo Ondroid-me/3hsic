@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3HRILL MUSIC — News</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --void:#020810;
+  --deep:#040c1a;
+  --dark:#060f1e;
+  --panel:#0a1828;
+  --ridge:#0d2040;
+  --elec:#00aaff;
+  --cyan:#00e5ff;
+  --hot:#ff6b35;
+  --gold:#f0c040;
+  --white:#e8f4ff;
+  --muted:#3a6080;
+  --ghost:#152535;
+  --fd:'Bebas Neue',sans-serif;
+  --fb:'Barlow Condensed',sans-serif;
+  --fm:'JetBrains Mono',monospace;
+  --fp:'Playfair Display',serif;
+  --col-gap:1.6rem;
+}
+
+html,body{height:100%;background:var(--void);color:var(--white);font-family:var(--fb);overflow-x:hidden}
+
+/* scanlines */
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
+  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,170,255,.009) 3px,rgba(0,170,255,.009) 4px)}
+
+/* ── NOISE OVERLAY ── */
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9998;opacity:.018;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ════════════════ NAV ════════════════ */
+nav{
+  position:sticky;top:0;z-index:200;
+  height:58px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 3rem;
+  background:linear-gradient(180deg,rgba(2,8,16,.98),rgba(2,8,16,.82));
+  border-bottom:1px solid rgba(0,140,220,.1);
+  backdrop-filter:blur(16px);
+}
+.nav-logo{
+  font-family:var(--fd);font-size:1.7rem;letter-spacing:.22em;
+  background:linear-gradient(110deg,#00e5ff,#0088ff 55%,#0044cc);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 16px rgba(0,180,255,.5));
+  text-decoration:none;
+}
+.nav-section{
+  font-family:var(--fm);font-size:.58rem;letter-spacing:.28em;
+  color:var(--elec);opacity:.55;text-transform:uppercase;
+  padding:.25rem .75rem;border:1px solid rgba(0,150,220,.18);border-radius:2px;
+}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{
+  font-family:var(--fb);font-size:.72rem;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color .2s;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan)}
+.nav-ticker-wrap{
+  overflow:hidden;width:220px;
+  font-family:var(--fm);font-size:.55rem;
+  color:var(--ghost);letter-spacing:.08em;
+  border-left:1px solid rgba(0,100,180,.15);
+  padding-left:.9rem;
+}
+.nav-ticker{white-space:nowrap;animation:tickerScroll 22s linear infinite}
+@keyframes tickerScroll{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
+
+/* ════════════════ HERO TICKER BAR ════════════════ */
+.ticker-bar{
+  background:rgba(0,130,200,.07);
+  border-bottom:1px solid rgba(0,130,200,.1);
+  padding:.38rem 3rem;
+  display:flex;align-items:center;gap:1.5rem;
+  overflow:hidden;
+}
+.ticker-label{
+  font-family:var(--fm);font-size:.55rem;letter-spacing:.2em;
+  color:var(--elec);background:rgba(0,180,255,.1);
+  border:1px solid rgba(0,180,255,.2);border-radius:2px;
+  padding:.18rem .6rem;white-space:nowrap;flex-shrink:0;
+}
+.ticker-content{
+  font-family:var(--fm);font-size:.58rem;letter-spacing:.06em;
+  color:var(--muted);white-space:nowrap;
+  overflow:hidden;
+  animation:tickerScroll 40s linear infinite;
+  flex:1;
+}
+.ticker-dot{color:var(--elec);margin:0 1.2rem}
+
+/* ════════════════ LAYOUT ════════════════ */
+.page{max-width:1440px;margin:0 auto;padding:0 3rem 4rem}
+
+/* ── MASTHEAD ── */
+.masthead{
+  padding:2.2rem 0 1.4rem;
+  border-bottom:1px solid rgba(0,130,200,.1);
+  display:flex;align-items:flex-end;justify-content:space-between;
+}
+.masthead-left{}
+.masthead-eyebrow{
+  font-family:var(--fm);font-size:.58rem;letter-spacing:.3em;
+  color:var(--elec);opacity:.55;text-transform:uppercase;margin-bottom:.4rem;
+}
+.masthead-title{
+  font-family:var(--fd);font-size:clamp(3rem,6vw,5.5rem);
+  letter-spacing:.06em;line-height:.9;
+  background:linear-gradient(110deg,var(--white) 0%,rgba(180,220,255,.7) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.masthead-date{
+  font-family:var(--fm);font-size:.6rem;letter-spacing:.12em;
+  color:var(--muted);text-align:right;line-height:2;
+}
+
+/* ── CATEGORY FILTER ── */
+.cat-strip{
+  display:flex;gap:.4rem;padding:.9rem 0;
+  overflow-x:auto;scrollbar-width:none;border-bottom:1px solid rgba(0,130,200,.07);
+}
+.cat-strip::-webkit-scrollbar{display:none}
+.catbtn{
+  flex-shrink:0;
+  padding:.35rem 1.1rem;
+  border:1px solid rgba(0,120,190,.18);
+  background:rgba(6,14,28,.6);
+  border-radius:2px;
+  font-family:var(--fb);font-size:.68rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);cursor:pointer;transition:all .2s;
+}
+.catbtn:hover{border-color:var(--elec);color:var(--elec)}
+.catbtn.active{border-color:var(--cyan);color:var(--cyan);background:rgba(0,229,255,.08)}
+
+/* ── GRID ── */
+.news-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  grid-template-rows:auto;
+  gap:var(--col-gap);
+  padding-top:1.6rem;
+}
+
+/* HERO card — full width top */
+.ncard.hero{
+  grid-column:1 / -1;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  min-height:340px;
+}
+/* FEATURE card — spans 2 cols */
+.ncard.feature{grid-column:span 2;min-height:240px}
+/* STANDARD */
+.ncard.std{min-height:200px}
+/* SIDE STACK — thin column */
+.side-stack{
+  grid-column:3;
+  grid-row:2 / 4;
+  display:flex;flex-direction:column;gap:var(--col-gap);
+}
+
+/* ── BASE CARD ── */
+.ncard{
+  background:linear-gradient(145deg,rgba(8,18,36,.95),rgba(4,10,22,.98));
+  border:1px solid rgba(0,120,190,.12);
+  border-radius:3px;
+  overflow:hidden;
+  cursor:pointer;
+  position:relative;
+  transition:border-color .26s,transform .26s,box-shadow .26s;
+}
+.ncard:hover{
+  border-color:rgba(0,180,255,.28);
+  transform:translateY(-3px);
+  box-shadow:0 14px 48px rgba(0,60,160,.2);
+}
+.ncard::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--elec),transparent);
+  opacity:0;transition:opacity .26s;
+}
+.ncard:hover::after{opacity:.6}
+
+/* skeleton shimmer */
+.ncard.loading .ncard-body{
+  background:linear-gradient(90deg,rgba(8,18,36,0) 0%,rgba(0,80,160,.07) 50%,rgba(8,18,36,0) 100%);
+  background-size:200% 100%;
+  animation:shimmer 1.6s ease infinite;
+}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* card image */
+.ncard-img{
+  width:100%;height:100%;
+  background-size:cover;background-position:center;
+  position:relative;overflow:hidden;
+  min-height:160px;
+}
+.ncard-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 30%,rgba(2,6,14,.95) 100%);
+}
+.ncard.hero .ncard-img{
+  min-height:unset;
+  border-right:1px solid rgba(0,120,190,.1);
+}
+.ncard.hero .ncard-img::after{
+  background:linear-gradient(90deg,transparent 20%,rgba(2,6,14,.9) 100%);
+}
+
+/* image category ribbon */
+.ncard-ribbon{
+  position:absolute;top:.8rem;left:.8rem;z-index:2;
+  font-family:var(--fm);font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--void);background:var(--elec);
+  padding:.18rem .55rem;border-radius:2px;
+}
+.ncard-ribbon.hot{background:var(--hot)}
+.ncard-ribbon.gold{background:var(--gold);color:#020810}
+
+/* card body */
+.ncard-body{
+  padding:1.1rem 1.3rem 1.2rem;
+  display:flex;flex-direction:column;gap:.5rem;
+  height:100%;
+}
+.ncard.hero .ncard-body{justify-content:center;padding:1.8rem 2rem}
+.ncard.feature .ncard-body{padding:1.2rem 1.5rem}
+
+/* source + time */
+.ncard-meta{
+  display:flex;gap:.6rem;align-items:center;
+  font-family:var(--fm);font-size:.53rem;letter-spacing:.1em;
+  color:var(--muted);text-transform:uppercase;
+}
+.ncard-source{color:var(--elec);opacity:.75}
+.ncard-dot{width:2px;height:2px;border-radius:50%;background:rgba(0,150,200,.35)}
+
+/* headline */
+.ncard-hed{
+  font-family:var(--fb);font-weight:700;
+  font-size:1rem;line-height:1.25;color:var(--white);
+  letter-spacing:.01em;
+}
+.ncard.hero .ncard-hed{font-size:clamp(1.5rem,2.8vw,2.2rem);line-height:1.15}
+.ncard.feature .ncard-hed{font-size:1.2rem}
+
+/* italic kicker */
+.ncard-kicker{
+  font-family:var(--fp);font-size:.85rem;font-style:italic;
+  color:rgba(140,200,240,.55);line-height:1.4;
+}
+.ncard.hero .ncard-kicker{font-size:1rem}
+
+/* read more */
+.ncard-read{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-family:var(--fm);font-size:.55rem;letter-spacing:.16em;
+  color:rgba(0,180,255,.45);text-transform:uppercase;
+  margin-top:auto;transition:color .2s;
+}
+.ncard:hover .ncard-read{color:var(--cyan)}
+.ncard-read::after{content:'→';transition:transform .2s}
+.ncard:hover .ncard-read::after{transform:translateX(4px)}
+
+/* MINI card for side stack */
+.ncard.mini{min-height:0;flex:1}
+.ncard.mini .ncard-body{padding:.9rem 1rem;gap:.35rem}
+.ncard.mini .ncard-hed{font-size:.88rem}
+
+/* ── LOAD STATE ── */
+#news-grid-wrap{position:relative}
+.load-overlay{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:rgba(2,8,16,.88);backdrop-filter:blur(4px);
+  z-index:10;gap:1.2rem;
+  transition:opacity .5s;
+}
+.load-overlay.hidden{opacity:0;pointer-events:none}
+.load-ring{
+  width:44px;height:44px;border-radius:50%;
+  border:1.5px solid rgba(0,130,200,.2);
+  border-top-color:var(--elec);
+  animation:spin .7s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.load-msg{font-family:var(--fm);font-size:.62rem;letter-spacing:.22em;color:var(--muted);text-transform:uppercase}
+.load-sub{font-family:var(--fm);font-size:.52rem;letter-spacing:.1em;color:var(--ghost);text-transform:uppercase}
+
+/* ── REFRESH BTN ── */
+.refresh-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 0 0;
+  border-top:1px solid rgba(0,130,200,.07);
+  margin-top:.4rem;
+}
+.refresh-btn{
+  display:flex;align-items:center;gap:.55rem;
+  font-family:var(--fm);font-size:.6rem;letter-spacing:.18em;
+  color:var(--muted);text-transform:uppercase;
+  background:rgba(6,14,28,.7);
+  border:1px solid rgba(0,120,190,.2);border-radius:2px;
+  padding:.45rem 1.1rem;cursor:pointer;transition:all .22s;
+}
+.refresh-btn:hover{border-color:var(--elec);color:var(--elec);box-shadow:0 0 18px rgba(0,180,255,.1)}
+.refresh-btn svg{transition:transform .5s}
+.refresh-btn:hover svg{transform:rotate(180deg)}
+.last-updated{font-family:var(--fm);font-size:.55rem;letter-spacing:.1em;color:var(--ghost)}
+
+/* ── ARTICLE MODAL ── */
+#art-modal{
+  position:fixed;inset:0;z-index:500;
+  display:flex;align-items:flex-end;justify-content:center;
+  background:rgba(2,6,16,.0);
+  pointer-events:none;transition:background .35s;
+}
+#art-modal.open{background:rgba(2,6,16,.92);pointer-events:all}
+#art-panel{
+  background:linear-gradient(180deg,rgba(4,12,26,.98),rgba(2,8,18,.99));
+  border:1px solid rgba(0,140,220,.15);border-bottom:none;
+  border-radius:4px 4px 0 0;
+  width:100%;max-width:820px;
+  padding:2.5rem 3rem 3.5rem;
+  max-height:88vh;overflow-y:auto;
+  scrollbar-width:thin;scrollbar-color:rgba(0,100,180,.15) transparent;
+  transform:translateY(100%);
+  transition:transform .45s cubic-bezier(.22,1,.36,1);
+}
+#art-modal.open #art-panel{transform:translateY(0)}
+#art-panel::-webkit-scrollbar{width:2px}
+#art-panel::-webkit-scrollbar-thumb{background:rgba(0,100,180,.2)}
+.art-close{
+  position:absolute;top:1.2rem;right:1.5rem;
+  width:34px;height:34px;background:rgba(0,100,180,.1);
+  border:1px solid rgba(0,140,220,.18);border-radius:2px;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;
+}
+.art-close:hover{background:rgba(0,180,255,.15);border-color:var(--cyan)}
+.art-close span{position:absolute;width:14px;height:1px;background:var(--white)}
+.art-close span:first-child{transform:rotate(45deg)}
+.art-close span:last-child{transform:rotate(-45deg)}
+#art-eyebrow{font-family:var(--fm);font-size:.58rem;letter-spacing:.25em;color:var(--elec);opacity:.6;text-transform:uppercase;margin-bottom:.55rem}
+#art-headline{font-family:var(--fb);font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:700;line-height:1.1;color:var(--white);margin-bottom:.8rem}
+#art-byline{font-family:var(--fm);font-size:.58rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-bottom:1.4rem;display:flex;gap:.8rem}
+#art-body{font-family:var(--fb);font-size:1.02rem;font-weight:400;line-height:1.72;color:rgba(180,215,245,.78)}
+#art-body p{margin-bottom:1rem}
+#art-body strong{color:var(--white);font-weight:700}
+#art-link-row{margin-top:1.8rem;padding-top:1.2rem;border-top:1px solid rgba(0,130,200,.1);display:flex;gap:.8rem}
+.art-ext-btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.55rem 1.4rem;font-family:var(--fb);font-size:.75rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border-radius:2px;
+  transition:all .22s;
+}
+.art-ext-btn.primary{
+  background:rgba(0,160,255,.15);border:1px solid rgba(0,160,255,.3);color:var(--cyan);
+}
+.art-ext-btn.primary:hover{background:rgba(0,180,255,.25);box-shadow:0 0 22px rgba(0,200,255,.18)}
+
+/* ── SOURCES NAV BUTTON ── */
+.nav-sources-btn{
+  display:flex;align-items:center;gap:.5rem;
+  font-family:var(--fm);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);background:rgba(6,14,28,.7);
+  border:1px solid rgba(0,120,190,.2);border-radius:2px;
+  padding:.38rem .9rem;cursor:pointer;transition:all .2s;
+  flex-shrink:0;
+}
+.nav-sources-btn:hover,.nav-sources-btn.open{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 16px rgba(0,220,255,.1)}
+.src-count-badge{
+  background:var(--elec);color:var(--void);
+  font-size:.5rem;padding:.08rem .35rem;border-radius:2px;
+  font-weight:700;letter-spacing:0;
+}
+
+/* ── SOURCES DRAWER ── */
+#sources-drawer{
+  position:fixed;top:0;right:0;
+  width:400px;height:100vh;
+  background:linear-gradient(160deg,rgba(4,12,26,.99),rgba(2,8,18,1));
+  border-left:1px solid rgba(0,140,220,.15);
+  z-index:300;
+  transform:translateX(100%);
+  transition:transform .38s cubic-bezier(.22,1,.36,1);
+  display:flex;flex-direction:column;
+  padding:1.5rem 1.8rem;
+  gap:1rem;
+  overflow-y:auto;
+  scrollbar-width:thin;scrollbar-color:rgba(0,100,180,.15) transparent;
+}
+#sources-drawer.open{transform:translateX(0)}
+#sources-drawer::-webkit-scrollbar{width:2px}
+#sources-drawer::-webkit-scrollbar-thumb{background:rgba(0,100,180,.18)}
+
+#sources-backdrop{
+  position:fixed;inset:0;background:rgba(2,6,16,.5);
+  z-index:299;opacity:0;pointer-events:none;
+  transition:opacity .3s;backdrop-filter:blur(2px);
+}
+#sources-backdrop.show{opacity:1;pointer-events:all}
+
+#sources-header{display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem;padding-top:.5rem}
+.src-drawer-eye{font-family:var(--fm);font-size:.56rem;letter-spacing:.28em;color:var(--elec);opacity:.55;text-transform:uppercase;margin-bottom:.3rem}
+.src-drawer-title{font-family:var(--fd);font-size:2rem;letter-spacing:.1em;color:var(--white)}
+.src-close{
+  width:32px;height:32px;flex-shrink:0;
+  background:rgba(0,100,180,.08);border:1px solid rgba(0,140,220,.18);
+  border-radius:2px;cursor:pointer;position:relative;transition:all .2s;
+}
+.src-close:hover{background:rgba(0,180,255,.14);border-color:var(--cyan)}
+.src-close span{position:absolute;top:50%;left:50%;width:12px;height:1px;background:var(--white)}
+.src-close span:first-child{transform:translate(-50%,-50%) rotate(45deg)}
+.src-close span:last-child{transform:translate(-50%,-50%) rotate(-45deg)}
+
+/* add row */
+.src-add-row{display:flex;flex-direction:column;gap:.45rem}
+.src-input{
+  background:rgba(6,14,28,.85);border:1px solid rgba(0,120,190,.18);
+  border-radius:2px;padding:.5rem .75rem;
+  font-family:var(--fm);font-size:.62rem;letter-spacing:.05em;
+  color:var(--white);outline:none;transition:border-color .2s;
+  width:100%;
+}
+.src-input::placeholder{color:var(--ghost);opacity:.7}
+.src-input:focus{border-color:var(--cyan)}
+.src-add-btn{
+  padding:.5rem 1rem;
+  background:rgba(0,160,255,.12);border:1px solid rgba(0,160,255,.25);
+  border-radius:2px;
+  font-family:var(--fb);font-size:.72rem;font-weight:700;letter-spacing:.12em;
+  color:var(--elec);cursor:pointer;transition:all .2s;
+}
+.src-add-btn:hover{background:rgba(0,200,255,.2);border-color:var(--cyan)}
+.src-add-hint{font-family:var(--fm);font-size:.52rem;letter-spacing:.07em;color:var(--ghost);line-height:1.5}
+
+.src-divider{height:1px;background:rgba(0,130,200,.1);margin:.2rem 0}
+.src-list-head{
+  display:flex;align-items:center;gap:.7rem;
+  font-family:var(--fm);font-size:.56rem;letter-spacing:.12em;color:var(--ghost);text-transform:uppercase;
+}
+.src-toggle-all{
+  font-family:var(--fm);font-size:.52rem;letter-spacing:.1em;
+  color:var(--muted);background:rgba(6,14,28,.7);
+  border:1px solid rgba(0,100,170,.15);border-radius:2px;
+  padding:.2rem .55rem;cursor:pointer;transition:all .2s;margin-left:auto;
+}
+.src-toggle-all:first-of-type{margin-left:auto}
+.src-toggle-all:hover{border-color:var(--elec);color:var(--elec)}
+
+/* source list items */
+#srcList{display:flex;flex-direction:column;gap:.35rem;padding-bottom:.5rem}
+.src-item{
+  display:flex;align-items:center;gap:.75rem;
+  padding:.65rem .85rem;
+  background:rgba(6,14,28,.7);border:1px solid rgba(0,110,180,.12);
+  border-radius:2px;transition:border-color .2s;
+  position:relative;
+}
+.src-item:hover{border-color:rgba(0,150,210,.22)}
+.src-item.active{border-color:rgba(0,180,255,.2);background:rgba(0,120,200,.06)}
+
+/* toggle switch */
+.src-toggle{
+  width:32px;height:17px;border-radius:9px;
+  background:rgba(0,100,170,.2);border:1px solid rgba(0,100,170,.25);
+  cursor:pointer;position:relative;transition:all .22s;flex-shrink:0;
+}
+.src-toggle::after{
+  content:'';position:absolute;top:2px;left:2px;
+  width:11px;height:11px;border-radius:50%;
+  background:var(--muted);transition:all .22s;
+}
+.src-item.active .src-toggle{background:rgba(0,200,255,.15);border-color:var(--cyan)}
+.src-item.active .src-toggle::after{left:17px;background:var(--cyan)}
+
+.src-item-info{flex:1;min-width:0}
+.src-item-name{
+  font-family:var(--fb);font-size:.82rem;font-weight:700;letter-spacing:.05em;
+  color:var(--white);line-height:1;margin-bottom:.18rem;
+}
+.src-item.active .src-item-name{color:var(--white)}
+.src-item:not(.active) .src-item-name{color:var(--muted)}
+.src-item-url{
+  font-family:var(--fm);font-size:.52rem;letter-spacing:.04em;
+  color:var(--ghost);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.src-remove{
+  width:20px;height:20px;flex-shrink:0;
+  background:none;border:1px solid rgba(0,100,160,.12);border-radius:2px;
+  color:var(--ghost);font-size:.7rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;
+}
+.src-remove:hover{border-color:rgba(255,80,80,.3);color:#ff5555;background:rgba(255,50,50,.06)}
+
+/* apply btn */
+.src-footer{padding-top:.3rem;border-top:1px solid rgba(0,130,200,.08)}
+.src-apply-btn{
+  width:100%;padding:.7rem;
+  display:flex;align-items:center;justify-content:center;gap:.55rem;
+  font-family:var(--fb);font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--cyan);background:rgba(0,160,255,.1);
+  border:1px solid rgba(0,160,255,.25);border-radius:2px;
+  cursor:pointer;transition:all .22s;
+}
+.src-apply-btn:hover{background:rgba(0,200,255,.18);box-shadow:0 0 22px rgba(0,200,255,.12)}
+</style>
+footer{
+  border-top:1px solid rgba(0,130,200,.08);
+  padding:1.6rem 3rem;
+  display:flex;align-items:center;justify-content:space-between;
+  max-width:1440px;margin:0 auto;
+}
+.footer-logo{font-family:var(--fd);font-size:1.3rem;letter-spacing:.2em;color:var(--ghost)}
+.footer-copy{font-family:var(--fm);font-size:.55rem;letter-spacing:.1em;color:var(--ghost)}
+
+/* ── FOOTER ── */
+footer{
+  border-top:1px solid rgba(0,130,200,.08);
+  padding:1.6rem 3rem;
+  display:flex;align-items:center;justify-content:space-between;
+  max-width:1440px;margin:0 auto;
+}
+.footer-logo{font-family:var(--fd);font-size:1.3rem;letter-spacing:.2em;color:var(--ghost)}
+.footer-copy{font-family:var(--fm);font-size:.55rem;letter-spacing:.1em;color:var(--ghost)}
+.pulse{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--elec);
+  animation:pulse 1.8s ease infinite;vertical-align:middle;margin-right:.4rem}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+
+/* ── ERROR STATE ── */
+.error-state{
+  grid-column:1/-1;padding:3rem 2rem;text-align:center;
+  border:1px dashed rgba(0,100,180,.15);border-radius:3px;
+}
+.error-state h3{font-family:var(--fd);font-size:1.8rem;color:var(--muted);letter-spacing:.1em;margin-bottom:.5rem}
+.error-state p{font-family:var(--fm);font-size:.62rem;color:var(--ghost);letter-spacing:.08em}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">3HRILL</a>
+  <ul class="nav-links">
+    <li><a href="#">Gigs</a></li>
+    <li><a href="#" class="active">News</a></li>
+    <li><a href="#">Artists</a></li>
+    <li><a href="#">Radio</a></li>
+    <li><a href="#">Charts</a></li>
+  </ul>
+  <div class="nav-section">// Music News</div>
+  <button class="nav-sources-btn" id="sourcesBtn" onclick="toggleSources()">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+    Sources <span id="sourceCount" class="src-count-badge">0</span>
+  </button>
+  <div class="nav-ticker-wrap">
+    <div class="nav-ticker" id="navTicker">3HRILL MUSIC NEWS — LIVE FEED</div>
+  </div>
+</nav>
+
+<!-- TICKER BAR -->
+<div class="ticker-bar">
+  <div class="ticker-label"><span class="pulse"></span>LIVE</div>
+  <div class="ticker-content" id="tickerBar">Loading latest music news&hellip;</div>
+</div>
+
+<!-- PAGE -->
+<div class="page">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="masthead-left">
+      <div class="masthead-eyebrow">// 3HRILL MUSIC — News Splash</div>
+      <div class="masthead-title">THE PULSE</div>
+    </div>
+    <div class="masthead-date" id="mastheadDate">—</div>
+  </div>
+
+  <!-- CATEGORY STRIP -->
+  <div class="cat-strip" id="catStrip">
+    <button class="catbtn active" data-cat="all">All</button>
+    <button class="catbtn" data-cat="releases">New Releases</button>
+    <button class="catbtn" data-cat="tours">Tours & Live</button>
+    <button class="catbtn" data-cat="industry">Industry</button>
+    <button class="catbtn" data-cat="hiphop">Hip-Hop</button>
+    <button class="catbtn" data-cat="electronic">Electronic</button>
+    <button class="catbtn" data-cat="afrobeats">Afrobeats</button>
+    <button class="catbtn" data-cat="rock">Rock & Alt</button>
+    <button class="catbtn" data-cat="pop">Pop</button>
+    <button class="catbtn" data-cat="jazz">Jazz & Soul</button>
+  </div>
+
+  <!-- NEWS GRID -->
+  <div id="news-grid-wrap">
+    <div class="load-overlay" id="loadOverlay">
+      <div class="load-ring"></div>
+      <div class="load-msg">Scanning music sources</div>
+      <div class="load-sub" id="loadSub">Connecting to news feeds…</div>
+    </div>
+    <div class="news-grid" id="newsGrid"></div>
+  </div>
+
+  <!-- REFRESH ROW -->
+  <div class="refresh-row">
+    <div class="last-updated" id="lastUpdated">—</div>
+    <button class="refresh-btn" id="refreshBtn">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+      Refresh Feed
+    </button>
+  </div>
+
+</div><!-- /page -->
+
+<!-- SOURCES DRAWER -->
+<div id="sources-drawer">
+  <div id="sources-header">
+    <div>
+      <div class="src-drawer-eye">// Scrape Sources</div>
+      <div class="src-drawer-title">NEWS SOURCES</div>
+    </div>
+    <button class="src-close" onclick="toggleSources()"><span></span><span></span></button>
+  </div>
+
+  <div class="src-add-row">
+    <input id="srcNameInput"  class="src-input" placeholder="Source name  e.g. Clash Music" />
+    <input id="srcUrlInput"   class="src-input" placeholder="URL  e.g. https://clashmusic.com" />
+    <button class="src-add-btn" onclick="addSource()">+ Add</button>
+  </div>
+  <div class="src-add-hint">Enter a site name and its URL — it will be scraped on the next fetch.</div>
+
+  <div class="src-divider"></div>
+  <div class="src-list-head">
+    <span id="srcActiveCount">— active</span>
+    <button class="src-toggle-all" onclick="toggleAllSources(true)">All On</button>
+    <button class="src-toggle-all" onclick="toggleAllSources(false)">All Off</button>
+  </div>
+  <div id="srcList"></div>
+
+  <div class="src-footer">
+    <button class="src-apply-btn" onclick="applySources()">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+      Apply &amp; Refetch
+    </button>
+  </div>
+</div>
+<div id="sources-backdrop" onclick="toggleSources()"></div>
+
+<!-- ARTICLE MODAL -->
+<div id="art-modal">
+  <div id="art-panel" style="position:relative">
+    <button class="art-close" onclick="closeArt()"><span></span><span></span></button>
+    <div id="art-eyebrow"></div>
+    <div id="art-headline"></div>
+    <div id="art-byline"></div>
+    <div id="art-body"></div>
+    <div id="art-link-row">
+      <a id="art-src-btn" class="art-ext-btn primary" target="_blank" rel="noopener">Read Full Article ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">3HRILL MUSIC</div>
+  <div class="footer-copy">News aggregated via AI · © 2025 3HRILL</div>
+</footer>
+
+<script>
+/* ════════════════════════════════════════════
+   ╔══════════════════════════════════════════╗
+   ║  NEWS SOURCES — ADD / REMOVE SITES HERE  ║
+   ║  Each entry: { name, url, enabled }      ║
+   ╚══════════════════════════════════════════╝
+════════════════════════════════════════════ */
+const NEWS_SOURCES = [
+  { name:'Billboard',       url:'https://www.billboard.com',               enabled:true  },
+  { name:'NME',             url:'https://www.nme.com',                     enabled:true  },
+  { name:'Pitchfork',       url:'https://pitchfork.com',                   enabled:true  },
+  { name:'Rolling Stone',   url:'https://www.rollingstone.com/music',      enabled:true  },
+  { name:'The Guardian Music',url:'https://www.theguardian.com/music',     enabled:true  },
+  { name:'Consequence',     url:'https://consequence.net',                  enabled:true  },
+  { name:'Variety Music',   url:'https://variety.com/v/music',             enabled:true  },
+  { name:'DJ Mag',          url:'https://djmag.com',                       enabled:true  },
+  { name:'Mixmag',          url:'https://mixmag.net',                      enabled:true  },
+  { name:'Afrobeats Intelligence', url:'https://www.afrobeatsintelligence.com', enabled:true },
+  { name:'Pulse Nigeria',   url:'https://www.pulse.ng/entertainment/music', enabled:true },
+  { name:'HipHopDX',        url:'https://hiphopdx.com',                    enabled:true  },
+  { name:'Genius News',     url:'https://genius.com/news',                 enabled:false },
+  { name:'Stereogum',       url:'https://www.stereogum.com',               enabled:false },
+  { name:'The FADER',       url:'https://www.thefader.com',                enabled:false },
+
+  /* ── ADD YOUR OWN BELOW ─────────────────────────────────────────
+  { name:'Your Site Name',  url:'https://yoursite.com/music-news',         enabled:true  },
+  ─────────────────────────────────────────────────────────────── */
+];
+
+/* ════════════════════════════════════════════
+   CONFIG
+════════════════════════════════════════════ */
+const API_URL = 'https://api.anthropic.com/v1/messages';
+const MODEL   = 'claude-sonnet-4-20250514';
+
+const CATEGORIES = {
+  all:       'latest global music news — releases, tours, industry, artists',
+  releases:  'new album and single releases in music 2025',
+  tours:     'music tours concert announcements live events 2025',
+  industry:  'music industry business streaming charts deals 2025',
+  hiphop:    'hip-hop rap music news 2025',
+  electronic:'electronic dance techno house music news 2025',
+  afrobeats: 'afrobeats afropop Nigerian Ghanaian music news 2025',
+  rock:      'rock alternative indie music news 2025',
+  pop:       'pop music celebrity artist news 2025',
+  jazz:      'jazz soul R&B music news 2025',
+};
+
+const IMAGE_POOL = [
+  'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=900&q=80&fit=crop',
+  'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=900&q=80&fit=crop',
+  'https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=900&q=80&fit=crop',
+  'https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=900&q=80&fit=crop',
+  'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=900&q=80&fit=crop',
+  'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=900&q=80&fit=crop',
+  'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=900&q=80&fit=crop',
+  'https://images.unsplash.com/photo-1540039155733-5bb30b4f07dd?w=900&q=80&fit=crop',
+  'https://images.unsplash.com/photo-1506157786151-b8491531f063?w=900&q=80&fit=crop',
+  'https://images.unsplash.com/photo-1598387846148-47e82ee120cc?w=900&q=80&fit=crop',
+  'https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=900&q=80&fit=crop',
+  'https://images.unsplash.com/photo-1574068468668-a05a11f871da?w=900&q=80&fit=crop',
+];
+
+let currentCat = 'all';
+let allArticles = [];
+let isLoading   = false;
+
+/* ════════════════════════════════════════════
+   DATE / CLOCK
+════════════════════════════════════════════ */
+function fmtDate(d){
+  return d.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).toUpperCase();
+}
+(function initDate(){
+  document.getElementById('mastheadDate').innerHTML =
+    fmtDate(new Date()) + '<br><span style="color:var(--ghost)" id="liveClock"></span>';
+  setInterval(()=>{
+    const t = new Date();
+    const el = document.getElementById('liveClock');
+    if(el) el.textContent = t.toUTCString().slice(17,22) + ' UTC';
+  },1000);
+})();
+
+/* ════════════════════════════════════════════
+   FETCH NEWS via Claude API + web_search
+   Scrapes only from enabled NEWS_SOURCES
+════════════════════════════════════════════ */
+async function fetchNews(cat) {
+  if (isLoading) return;
+  isLoading = true;
+  const overlay = document.getElementById('loadOverlay');
+  const sub     = document.getElementById('loadSub');
+  overlay.classList.remove('hidden');
+  document.getElementById('newsGrid').innerHTML = '';
+
+  /* get active sources */
+  const active = NEWS_SOURCES.filter(s => s.enabled);
+  if (!active.length) {
+    document.getElementById('newsGrid').innerHTML = `
+      <div class="error-state">
+        <h3>NO SOURCES ACTIVE</h3>
+        <p>Enable at least one source in the Sources panel or in NEWS_SOURCES config.</p>
+      </div>`;
+    overlay.classList.add('hidden');
+    isLoading = false;
+    return;
+  }
+
+  const sourceList    = active.map(s => `${s.name} (${s.url})`).join('\n');
+  const sourceNames   = active.map(s => s.name).join(', ');
+  const query         = CATEGORIES[cat] || CATEGORIES.all;
+
+  sub.textContent = `Scraping ${active.length} source${active.length>1?'s':''}…`;
+
+  /* build a site: search directive for each source */
+  const siteDirectives = active.map(s => {
+    try { return 'site:' + new URL(s.url).hostname; } catch(e) { return s.url; }
+  }).join(' OR ');
+
+  const SYSTEM = `You are a music journalist AI for 3HRILL Music. Your job is to scrape and report the LATEST news SPECIFICALLY from these music news sources:
+
+${sourceList}
+
+Instructions:
+1. Use web_search to search each of these sites for the latest music news about: ${query}
+2. Prioritise stories you find directly ON those specific sites — attribute each article to the correct source
+3. Return ONLY a valid raw JSON array of exactly 9 article objects — no markdown, no explanation, no fences
+
+Each object MUST use these exact keys:
+- "headline": string — compelling journalistic headline, max 14 words
+- "kicker": string — 1–2 sentence editorial summary, max 28 words
+- "source": string — MUST be one of: ${sourceNames}
+- "category": string — one of: New Release, Tour, Industry, Hip-Hop, Electronic, Afrobeats, Rock, Pop, Jazz, Exclusive
+- "hot": boolean — true if the story is trending or viral
+- "exclusive": boolean — true only if marked exclusive on the source site
+- "timeAgo": string — e.g. "1h ago", "Today", "Yesterday", "3 days ago"
+- "url": string — the real direct URL to the article on the source site, or "#" if not found
+- "body": string — 3–4 paragraph write-up (~180 words), factual, present tense, journalistic voice
+
+Index 0 = HERO (biggest story). Indices 1–2 = FEATURE. Indices 3–8 = standard/mini.`;
+
+  try {
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: MODEL,
+        max_tokens: 4000,
+        tools: [{ type: 'web_search_20250305', name: 'web_search' }],
+        system: SYSTEM,
+        messages: [{
+          role: 'user',
+          content: `Search these sites for the 9 most important current music news stories about: ${query}\n\nSearch query hint: (${siteDirectives}) ${query}\n\nToday: ${new Date().toDateString()}. Prioritise stories from the past 7 days.`
+        }],
+      })
+    });
+
+    if (!res.ok) throw new Error('API ' + res.status);
+    const data = await res.json();
+
+    let raw = '';
+    for (const block of (data.content || [])) {
+      if (block.type === 'text') raw += block.text;
+    }
+
+    raw = raw.replace(/```json|```/gi, '').trim();
+    const startIdx = raw.indexOf('[');
+    const endIdx   = raw.lastIndexOf(']');
+    if (startIdx === -1 || endIdx === -1) throw new Error('No JSON array found');
+    const articles = JSON.parse(raw.slice(startIdx, endIdx + 1));
+
+    if (!Array.isArray(articles) || articles.length === 0) throw new Error('Empty articles');
+
+    allArticles = articles;
+    renderGrid(articles);
+    updateTicker(articles);
+    document.getElementById('lastUpdated').textContent =
+      'Last updated ' + new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}) +
+      ' · ' + active.length + ' source' + (active.length>1?'s':'') + ' scraped';
+
+  } catch(err) {
+    console.error('News fetch error:', err);
+    document.getElementById('newsGrid').innerHTML = `
+      <div class="error-state">
+        <h3>SIGNAL LOST</h3>
+        <p>Could not retrieve news feed. Check API key or connection — then refresh.</p>
+      </div>`;
+  } finally {
+    isLoading = false;
+    overlay.classList.add('hidden');
+  }
+}
+
+/* ════════════════════════════════════════════
+   RENDER GRID
+════════════════════════════════════════════ */
+function imgFor(idx) {
+  return IMAGE_POOL[idx % IMAGE_POOL.length];
+}
+
+function ribbonFor(a, idx) {
+  if (a.exclusive) return `<div class="ncard-ribbon gold">Exclusive</div>`;
+  if (a.hot)       return `<div class="ncard-ribbon hot">⚡ Trending</div>`;
+  if (idx === 0)   return `<div class="ncard-ribbon">Hero</div>`;
+  return `<div class="ncard-ribbon">${a.category||'News'}</div>`;
+}
+
+function makeCard(a, type, idx) {
+  const card = document.createElement('div');
+  card.className = `ncard ${type}`;
+
+  if (type === 'hero') {
+    card.innerHTML = `
+      <div class="ncard-img" style="background-image:url(${imgFor(idx)})">
+        ${ribbonFor(a, idx)}
+      </div>
+      <div class="ncard-body">
+        <div class="ncard-meta">
+          <span class="ncard-source">${a.source||'3HRILL'}</span>
+          <div class="ncard-dot"></div>
+          <span>${a.timeAgo||'Recently'}</span>
+          <div class="ncard-dot"></div>
+          <span>${a.category||'News'}</span>
+        </div>
+        <div class="ncard-hed">${a.headline||'Untitled'}</div>
+        <div class="ncard-kicker">${a.kicker||''}</div>
+        <div class="ncard-read">Read story</div>
+      </div>`;
+  } else if (type === 'feature') {
+    card.innerHTML = `
+      <div class="ncard-img" style="background-image:url(${imgFor(idx)});height:140px">
+        ${ribbonFor(a, idx)}
+      </div>
+      <div class="ncard-body">
+        <div class="ncard-meta">
+          <span class="ncard-source">${a.source||'3HRILL'}</span>
+          <div class="ncard-dot"></div>
+          <span>${a.timeAgo||'Recently'}</span>
+        </div>
+        <div class="ncard-hed">${a.headline||'Untitled'}</div>
+        <div class="ncard-kicker">${a.kicker||''}</div>
+        <div class="ncard-read">Read story</div>
+      </div>`;
+  } else {
+    card.innerHTML = `
+      <div class="ncard-body">
+        <div class="ncard-meta">
+          <span class="ncard-source">${a.source||'3HRILL'}</span>
+          <div class="ncard-dot"></div>
+          <span>${a.timeAgo||'Recently'}</span>
+          ${a.hot?'<div class="ncard-dot"></div><span style="color:var(--hot)">Trending</span>':''}
+        </div>
+        <div class="ncard-hed">${a.headline||'Untitled'}</div>
+        <div class="ncard-kicker" style="font-size:.78rem">${(a.kicker||'').slice(0,90)}…</div>
+        <div class="ncard-read">Read story</div>
+      </div>`;
+  }
+
+  card.addEventListener('click', () => openArt(a, idx));
+  return card;
+}
+
+function renderGrid(articles) {
+  const grid = document.getElementById('newsGrid');
+  grid.innerHTML = '';
+
+  /* Hero (0) */
+  if (articles[0]) grid.appendChild(makeCard(articles[0], 'hero', 0));
+
+  /* Feature pair (1–2) */
+  if (articles[1]) grid.appendChild(makeCard(articles[1], 'feature', 1));
+  if (articles[2]) grid.appendChild(makeCard(articles[2], 'feature', 2));
+
+  /* Side stack wrapper (3–5 in a column) */
+  const side = document.createElement('div');
+  side.className = 'side-stack';
+  [3,4,5].forEach(i => {
+    if (articles[i]) side.appendChild(makeCard(articles[i], 'mini', i));
+  });
+  grid.appendChild(side);
+
+  /* Bottom standard row (6–8) */
+  [6,7,8].forEach(i => {
+    if (articles[i]) grid.appendChild(makeCard(articles[i], 'std', i));
+  });
+
+  /* stagger entrance */
+  grid.querySelectorAll('.ncard').forEach((c,i) => {
+    c.style.opacity = '0';
+    c.style.transform = 'translateY(16px)';
+    setTimeout(() => {
+      c.style.transition = 'opacity .45s ease, transform .45s ease, border-color .26s, box-shadow .26s';
+      c.style.opacity = '1';
+      c.style.transform = 'translateY(0)';
+    }, 60 + i * 55);
+  });
+}
+
+/* ════════════════════════════════════════════
+   TICKER
+════════════════════════════════════════════ */
+function updateTicker(articles) {
+  const heds = articles.map(a => a.headline || '').filter(Boolean);
+  const str  = heds.map(h => `${h} <span class="ticker-dot">◆</span>`).join('  ');
+  document.getElementById('tickerBar').innerHTML = str;
+  document.getElementById('navTicker').textContent =
+    heds.slice(0,4).join(' ◆ ') + '  ◆  3HRILL MUSIC';
+}
+
+/* ════════════════════════════════════════════
+   ARTICLE MODAL
+════════════════════════════════════════════ */
+function openArt(a, idx) {
+  document.getElementById('art-eyebrow').textContent =
+    (a.source||'3HRILL') + '  ·  ' + (a.timeAgo||'Recently') + '  ·  ' + (a.category||'News');
+  document.getElementById('art-headline').textContent = a.headline || '';
+  document.getElementById('art-byline').innerHTML =
+    `<span>${a.source||'3HRILL Music'}</span><span>·</span><span>${a.timeAgo||'Recently'}</span>`;
+  document.getElementById('art-body').innerHTML =
+    (a.body||'No content available.')
+      .split('\n').filter(Boolean)
+      .map(p => `<p>${p}</p>`).join('');
+  const srcBtn = document.getElementById('art-src-btn');
+  srcBtn.href = (a.url && a.url !== '#') ? a.url : '#';
+  srcBtn.style.display = (a.url && a.url !== '#') ? 'inline-flex' : 'none';
+
+  document.getElementById('art-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document._artEsc = e => { if(e.key==='Escape') closeArt(); };
+  document.addEventListener('keydown', document._artEsc);
+  document.getElementById('art-modal').onclick = e => {
+    if(e.target===document.getElementById('art-modal')) closeArt();
+  };
+}
+
+function closeArt() {
+  document.getElementById('art-modal').classList.remove('open');
+  document.body.style.overflow = '';
+  document.removeEventListener('keydown', document._artEsc);
+}
+
+/* ════════════════════════════════════════════
+   CATEGORY FILTER
+════════════════════════════════════════════ */
+document.getElementById('catStrip').addEventListener('click', e => {
+  const btn = e.target.closest('.catbtn');
+  if (!btn) return;
+  document.querySelectorAll('.catbtn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentCat = btn.dataset.cat;
+  fetchNews(currentCat);
+});
+
+document.getElementById('refreshBtn').addEventListener('click', () => {
+  fetchNews(currentCat);
+});
+
+/* ════════════════════════════════════════════
+   SOURCES DRAWER
+════════════════════════════════════════════ */
+let sourcesOpen = false;
+
+function toggleSources() {
+  sourcesOpen = !sourcesOpen;
+  document.getElementById('sources-drawer').classList.toggle('open', sourcesOpen);
+  document.getElementById('sources-backdrop').classList.toggle('show', sourcesOpen);
+  document.getElementById('sourcesBtn').classList.toggle('open', sourcesOpen);
+}
+
+function renderSrcList() {
+  const list = document.getElementById('srcList');
+  list.innerHTML = '';
+  NEWS_SOURCES.forEach((s, i) => {
+    const item = document.createElement('div');
+    item.className = 'src-item' + (s.enabled ? ' active' : '');
+    item.innerHTML = `
+      <div class="src-toggle" title="${s.enabled?'Disable':'Enable'}" data-idx="${i}"></div>
+      <div class="src-item-info">
+        <div class="src-item-name">${s.name}</div>
+        <div class="src-item-url">${s.url}</div>
+      </div>
+      <button class="src-remove" title="Remove source" data-idx="${i}">✕</button>`;
+
+    item.querySelector('.src-toggle').addEventListener('click', () => {
+      NEWS_SOURCES[i].enabled = !NEWS_SOURCES[i].enabled;
+      renderSrcList();
+      updateSourceBadge();
+    });
+    item.querySelector('.src-remove').addEventListener('click', () => {
+      NEWS_SOURCES.splice(i, 1);
+      renderSrcList();
+      updateSourceBadge();
+    });
+    list.appendChild(item);
+  });
+
+  const active = NEWS_SOURCES.filter(s => s.enabled).length;
+  document.getElementById('srcActiveCount').textContent = active + ' active';
+  updateSourceBadge();
+}
+
+function updateSourceBadge() {
+  const n = NEWS_SOURCES.filter(s => s.enabled).length;
+  document.getElementById('sourceCount').textContent = n;
+}
+
+function addSource() {
+  const name = document.getElementById('srcNameInput').value.trim();
+  const url  = document.getElementById('srcUrlInput').value.trim();
+  if (!name || !url) {
+    document.getElementById('srcNameInput').style.borderColor = 'rgba(255,80,80,.5)';
+    setTimeout(() => document.getElementById('srcNameInput').style.borderColor = '', 1200);
+    return;
+  }
+  const normalised = url.startsWith('http') ? url : 'https://' + url;
+  NEWS_SOURCES.push({ name, url: normalised, enabled: true });
+  document.getElementById('srcNameInput').value = '';
+  document.getElementById('srcUrlInput').value  = '';
+  renderSrcList();
+}
+
+function toggleAllSources(state) {
+  NEWS_SOURCES.forEach(s => s.enabled = state);
+  renderSrcList();
+}
+
+function applySources() {
+  toggleSources();
+  fetchNews(currentCat);
+}
+
+/* ── BOOT SOURCES ── */
+renderSrcList();
+updateSourceBadge();
+
+/* ════════════════════════════════════════════
+   BOOT
+════════════════════════════════════════════ */
+fetchNews('all');
+</script>
+</body>
+</html>

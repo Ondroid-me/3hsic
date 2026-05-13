@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3HRILL MUSIC — Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --void:#020810;--deep:#040c1a;--dark:#060f1e;--panel:#0a1828;--ridge:#0d2040;
+  --elec:#00aaff;--cyan:#00e5ff;--hot:#ff6b35;--gold:#f0c040;--green:#00e5a0;
+  --amber:#ffaa00;--white:#e8f4ff;--muted:#3a6080;--ghost:#152535;
+  --fd:'Bebas Neue',sans-serif;--fb:'Barlow Condensed',sans-serif;--fm:'JetBrains Mono',monospace;
+}
+html,body{height:100%;overflow:hidden;background:var(--void);color:var(--white);font-family:var(--fb)}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
+  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,170,255,.008) 3px,rgba(0,170,255,.008) 4px)}
+
+/* ══ NAV ══ */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;height:58px;
+  display:flex;align-items:center;justify-content:space-between;padding:0 2.8rem;
+  background:linear-gradient(180deg,rgba(2,8,16,.98),rgba(2,8,16,.78));
+  border-bottom:1px solid rgba(0,140,220,.1);backdrop-filter:blur(16px)}
+.nav-logo{font-family:var(--fd);font-size:1.7rem;letter-spacing:.22em;
+  background:linear-gradient(110deg,#00e5ff,#0088ff 55%,#0044cc);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 14px rgba(0,180,255,.45));text-decoration:none}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{font-family:var(--fb);font-size:.72rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan)}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.nav-badge{font-family:var(--fm);font-size:.56rem;letter-spacing:.2em;color:var(--gold);
+  background:rgba(240,192,64,.07);border:1px solid rgba(240,192,64,.18);
+  border-radius:2px;padding:.28rem .75rem}
+.cart-btn{display:flex;align-items:center;gap:.5rem;
+  font-family:var(--fm);font-size:.6rem;letter-spacing:.14em;
+  color:var(--muted);background:rgba(6,14,28,.7);
+  border:1px solid rgba(0,120,190,.2);border-radius:2px;
+  padding:.38rem .9rem;cursor:pointer;transition:all .2s}
+.cart-btn:hover{border-color:var(--cyan);color:var(--cyan)}
+.cart-count{background:var(--elec);color:var(--void);border-radius:2px;
+  font-size:.5rem;padding:.08rem .35rem;font-weight:700;min-width:16px;text-align:center}
+.nav-clock{font-family:var(--fm);font-size:.52rem;letter-spacing:.08em;
+  color:var(--ghost);text-align:right;line-height:1.8}
+
+/* ══ SLIDES ══ */
+#slides{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none;padding-top:58px}
+#slides::-webkit-scrollbar{display:none}
+.slide{height:calc(100vh - 58px);scroll-snap-align:start;position:relative;overflow:hidden}
+.mesh{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 70% at 8% 40%,rgba(6,28,65,.5) 0%,transparent 70%),
+    radial-gradient(ellipse 40% 45% at 92% 12%,rgba(4,18,50,.4) 0%,transparent 65%),
+    radial-gradient(ellipse 55% 55% at 50% 100%,rgba(2,10,28,.6) 0%,transparent 65%)}
+
+/* ══════════════════════════════
+   SLIDE 1 — HERO
+══════════════════════════════ */
+#slide-hero{
+  background:linear-gradient(158deg,#020810 0%,#030d1c 45%,#040e1c 100%);
+  display:grid;grid-template-columns:1.1fr 1fr;align-items:center;padding:0 4rem;gap:3rem}
+
+.hero-left{position:relative;z-index:2}
+.hero-eye{font-family:var(--fm);font-size:.6rem;letter-spacing:.3em;color:var(--gold);
+  opacity:.6;text-transform:uppercase;margin-bottom:.7rem}
+.hero-title{font-family:var(--fd);font-size:clamp(3.5rem,6.5vw,6rem);
+  letter-spacing:.06em;line-height:.88;margin-bottom:1.1rem}
+.hero-title em{font-style:normal;-webkit-text-stroke:1px rgba(0,200,255,.3);color:transparent}
+.hero-sub{font-size:1rem;font-weight:400;line-height:1.65;
+  color:rgba(150,205,240,.65);max-width:420px;margin-bottom:1.8rem}
+.hero-sub strong{color:var(--white)}
+
+.hero-stats{display:flex;gap:2rem;margin-bottom:2rem}
+.hstat{border-left:1px solid rgba(0,130,200,.2);padding-left:1rem}
+.hstat-val{font-family:var(--fd);font-size:2rem;letter-spacing:.06em;color:var(--cyan)}
+.hstat-lbl{font-family:var(--fm);font-size:.52rem;letter-spacing:.12em;color:var(--ghost);text-transform:uppercase;margin-top:.1rem}
+
+.hero-btns{display:flex;gap:.8rem}
+.hbtn{padding:.65rem 1.8rem;border-radius:2px;cursor:pointer;
+  font-family:var(--fb);font-size:.82rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;transition:all .25s;border:1px solid}
+.hbtn.acoustic{background:rgba(240,192,64,.12);border-color:rgba(240,192,64,.3);color:var(--gold)}
+.hbtn.acoustic:hover{background:rgba(240,192,64,.22);box-shadow:0 0 22px rgba(240,192,64,.15)}
+.hbtn.electric{background:rgba(0,200,255,.1);border-color:rgba(0,200,255,.28);color:var(--cyan)}
+.hbtn.electric:hover{background:rgba(0,200,255,.2);box-shadow:0 0 22px rgba(0,200,255,.15)}
+
+/* HERO RIGHT — decorative instrument cards */
+.hero-right{position:relative;z-index:2;display:flex;flex-direction:column;gap:.8rem}
+.hero-inst-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.hinst{background:linear-gradient(140deg,rgba(8,18,36,.93),rgba(4,10,22,.97));
+  border:1px solid rgba(0,110,180,.13);border-radius:3px;
+  padding:.9rem 1.1rem;display:flex;align-items:center;gap:.8rem;
+  transition:all .25s;cursor:default;position:relative;overflow:hidden}
+.hinst::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;
+  opacity:0;transition:opacity .25s}
+.hinst:hover{border-color:rgba(0,160,255,.22);transform:translateX(3px)}
+.hinst:hover::before{opacity:.7}
+.hinst.gold::before{background:var(--gold)}
+.hinst.cyan::before{background:var(--cyan)}
+.hinst.green::before{background:var(--green)}
+.hinst.hot::before{background:var(--hot)}
+.hinst-icon{font-size:1.6rem;flex-shrink:0;width:38px;text-align:center}
+.hinst-info{}
+.hinst-name{font-family:var(--fb);font-size:.88rem;font-weight:700;letter-spacing:.04em;color:var(--white)}
+.hinst-count{font-family:var(--fm);font-size:.52rem;letter-spacing:.09em;color:var(--muted);margin-top:.1rem}
+
+.scroll-ind{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.4rem;z-index:5;cursor:pointer;
+  font-family:var(--fm);font-size:.54rem;letter-spacing:.22em;color:var(--ghost);text-transform:uppercase;
+  animation:indBounce 2.6s ease infinite}
+.scroll-ind .caret{width:16px;height:16px;border-right:1px solid rgba(240,192,64,.3);border-bottom:1px solid rgba(240,192,64,.3);transform:rotate(45deg)}
+@keyframes indBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+
+/* ══════════════════════════════
+   SLIDES 2 & 3 — STORE LAYOUT
+══════════════════════════════ */
+.store-slide{
+  background:linear-gradient(158deg,#020810 0%,#030c1a 50%,#040d1b 100%);
+  display:grid;grid-template-rows:auto 1fr;
+  overflow:hidden;padding:1.4rem 2.8rem 1rem}
+
+/* slide header */
+.store-head{display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:1rem;flex-shrink:0}
+.store-head-l .sh-eye{font-family:var(--fm);font-size:.58rem;letter-spacing:.28em;
+  opacity:.55;text-transform:uppercase;margin-bottom:.3rem}
+.store-head-l h2{font-family:var(--fd);font-size:clamp(2.2rem,3.8vw,3.5rem);letter-spacing:.07em;line-height:.9}
+.store-head-r{display:flex;align-items:center;gap:.8rem}
+
+/* search */
+.store-search{position:relative;width:220px}
+.store-search input{width:100%;background:rgba(6,14,28,.85);border:1px solid rgba(0,120,190,.18);
+  border-radius:2px;padding:.45rem 2rem .45rem .8rem;
+  font-family:var(--fm);font-size:.6rem;letter-spacing:.05em;color:var(--white);outline:none;transition:border-color .2s}
+.store-search input::placeholder{color:var(--ghost);opacity:.7}
+.store-search input:focus{border-color:var(--cyan)}
+.store-search .si{position:absolute;right:.7rem;top:50%;transform:translateY(-50%);
+  font-size:.7rem;color:var(--muted);pointer-events:none}
+
+/* view toggle */
+.view-toggle{display:flex;gap:.3rem}
+.vtbtn{width:28px;height:28px;border-radius:2px;background:rgba(6,14,28,.7);
+  border:1px solid rgba(0,110,180,.18);color:var(--muted);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:.65rem;transition:all .2s}
+.vtbtn:hover,.vtbtn.active{border-color:var(--elec);color:var(--elec)}
+
+/* back nav */
+.back-nav{font-family:var(--fm);font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ghost);cursor:pointer;display:flex;align-items:center;gap:.4rem;transition:color .2s}
+.back-nav:hover{color:var(--cyan)}
+
+/* ── STORE BODY ── */
+.store-body{display:grid;grid-template-columns:210px 1fr;gap:1.2rem;min-height:0}
+
+/* ── SIDEBAR ── */
+.store-sidebar{display:flex;flex-direction:column;gap:.3rem;overflow-y:auto;
+  scrollbar-width:thin;scrollbar-color:rgba(0,100,180,.12) transparent;padding-right:.3rem}
+.store-sidebar::-webkit-scrollbar{width:2px}
+.store-sidebar::-webkit-scrollbar-thumb{background:rgba(0,100,180,.14)}
+
+.sb-group-label{font-family:var(--fm);font-size:.52rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ghost);padding:.5rem .6rem .25rem;flex-shrink:0}
+.sb-cat{display:flex;align-items:center;justify-content:space-between;
+  padding:.42rem .7rem;border-radius:2px;border:1px solid transparent;
+  cursor:pointer;transition:all .2s;gap:.5rem}
+.sb-cat:hover{background:rgba(0,100,180,.06);border-color:rgba(0,130,200,.12)}
+.sb-cat.active{background:rgba(0,150,255,.09);border-color:rgba(0,180,255,.2)}
+.sb-cat-left{display:flex;align-items:center;gap:.55rem}
+.sb-cat-icon{font-size:.95rem;width:20px;text-align:center;flex-shrink:0}
+.sb-cat-name{font-family:var(--fb);font-size:.78rem;font-weight:600;letter-spacing:.03em;
+  color:var(--muted);transition:color .2s}
+.sb-cat.active .sb-cat-name{color:var(--white)}
+.sb-cat:hover .sb-cat-name{color:var(--white)}
+.sb-cat-count{font-family:var(--fm);font-size:.48rem;letter-spacing:.07em;
+  color:var(--ghost);background:rgba(0,100,180,.1);border-radius:2px;
+  padding:.1rem .35rem;flex-shrink:0}
+.sb-cat.active .sb-cat-count{color:var(--elec);background:rgba(0,180,255,.1)}
+
+/* ── PRODUCT AREA ── */
+.prod-area{display:flex;flex-direction:column;gap:.75rem;min-height:0}
+
+.prod-toolbar{display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.prod-filter-chips{display:flex;gap:.4rem;flex-wrap:wrap}
+.fchip{font-family:var(--fm);font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid rgba(0,110,180,.18);color:var(--muted);border-radius:2px;
+  padding:.2rem .55rem;cursor:pointer;transition:all .18s;background:rgba(6,14,28,.6)}
+.fchip:hover{border-color:var(--elec);color:var(--elec)}
+.fchip.on{border-color:var(--cyan);color:var(--cyan);background:rgba(0,229,255,.07)}
+
+.prod-sort{font-family:var(--fm);font-size:.56rem;letter-spacing:.1em;
+  color:var(--ghost);background:rgba(6,14,28,.7);border:1px solid rgba(0,110,180,.18);
+  border-radius:2px;padding:.3rem .7rem;cursor:pointer;outline:none;transition:border-color .2s;
+  -webkit-appearance:none;appearance:none}
+.prod-sort:focus{border-color:var(--cyan)}
+option{background:#040c1a;color:var(--white)}
+
+/* ── PRODUCT GRID ── */
+.prod-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:.75rem;
+  overflow-y:auto;align-content:start;
+  scrollbar-width:thin;scrollbar-color:rgba(0,100,180,.12) transparent;
+  flex:1;
+}
+.prod-grid::-webkit-scrollbar{width:2px}
+.prod-grid::-webkit-scrollbar-thumb{background:rgba(0,100,180,.14)}
+.prod-grid.list-view{grid-template-columns:1fr;gap:.5rem}
+
+/* ── PRODUCT CARD ── */
+.pcard{
+  background:linear-gradient(145deg,rgba(8,18,36,.95),rgba(4,10,22,.98));
+  border:1px solid rgba(0,110,180,.13);border-radius:3px;
+  overflow:hidden;cursor:pointer;transition:all .25s;position:relative}
+.pcard:hover{border-color:rgba(0,180,255,.28);transform:translateY(-3px);
+  box-shadow:0 12px 36px rgba(0,60,160,.18)}
+.pcard::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--elec),transparent);opacity:0;transition:opacity .25s}
+.pcard:hover::after{opacity:.55}
+
+/* image area */
+.pcard-img{height:130px;position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,rgba(6,14,30,.9),rgba(3,8,18,.95))}
+.pcard-emoji{font-size:3.2rem;filter:drop-shadow(0 0 18px rgba(0,150,255,.25))}
+.pcard-badge{position:absolute;top:.55rem;left:.55rem;
+  font-family:var(--fm);font-size:.48rem;letter-spacing:.14em;text-transform:uppercase;
+  border-radius:2px;padding:.16rem .48rem}
+.pcard-badge.new{background:var(--green);color:var(--void)}
+.pcard-badge.sale{background:var(--hot);color:var(--white)}
+.pcard-badge.rare{background:var(--gold);color:var(--void)}
+.pcard-badge.bulk{background:var(--elec);color:var(--void)}
+.pcard-fav{position:absolute;top:.55rem;right:.55rem;
+  width:22px;height:22px;border-radius:50%;background:rgba(2,8,18,.7);
+  border:1px solid rgba(0,120,190,.2);display:flex;align-items:center;justify-content:center;
+  font-size:.65rem;transition:all .2s}
+.pcard:hover .pcard-fav{border-color:rgba(255,80,100,.3);color:#ff5575}
+
+/* card body */
+.pcard-body{padding:.75rem .85rem .85rem}
+.pcard-cat{font-family:var(--fm);font-size:.5rem;letter-spacing:.12em;
+  color:var(--ghost);text-transform:uppercase;margin-bottom:.28rem}
+.pcard-name{font-family:var(--fb);font-size:.95rem;font-weight:700;letter-spacing:.03em;
+  color:var(--white);line-height:1.2;margin-bottom:.25rem}
+.pcard-brand{font-family:var(--fm);font-size:.54rem;letter-spacing:.07em;
+  color:var(--muted);margin-bottom:.55rem}
+.pcard-price-row{display:flex;align-items:baseline;gap:.55rem;margin-bottom:.55rem}
+.pcard-price{font-family:var(--fd);font-size:1.45rem;letter-spacing:.04em;color:var(--cyan)}
+.pcard-price.sale-price{color:var(--hot)}
+.pcard-price-orig{font-family:var(--fm);font-size:.6rem;color:var(--ghost);text-decoration:line-through}
+.pcard-condition{font-family:var(--fm);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid;border-radius:2px;padding:.12rem .4rem}
+.pcard-condition.brand-new{border-color:rgba(0,229,160,.25);color:var(--green)}
+.pcard-condition.used{border-color:rgba(240,192,64,.22);color:var(--gold)}
+.pcard-condition.refurb{border-color:rgba(0,180,255,.22);color:var(--elec)}
+
+.pcard-add{width:100%;padding:.48rem;border-radius:2px;cursor:pointer;
+  font-family:var(--fb);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  background:rgba(0,150,255,.1);border:1px solid rgba(0,150,255,.22);
+  color:var(--elec);transition:all .22s}
+.pcard-add:hover{background:rgba(0,200,255,.2);box-shadow:0 0 18px rgba(0,200,255,.12)}
+.pcard-add.added{background:rgba(0,229,160,.1);border-color:rgba(0,229,160,.3);color:var(--green)}
+
+/* LIST VIEW override */
+.prod-grid.list-view .pcard{display:grid;grid-template-columns:100px 1fr auto}
+.prod-grid.list-view .pcard-img{height:auto;min-height:80px}
+.prod-grid.list-view .pcard-body{display:flex;align-items:center;gap:1rem;padding:.6rem 1rem}
+.prod-grid.list-view .pcard-name{margin-bottom:0;flex:1}
+.prod-grid.list-view .pcard-add{width:100px;flex-shrink:0}
+
+/* empty state */
+.prod-empty{grid-column:1/-1;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;padding:3rem;gap:.8rem;
+  border:1px dashed rgba(0,100,180,.12);border-radius:3px}
+.prod-empty-icon{font-size:2.5rem;opacity:.3}
+.prod-empty h3{font-family:var(--fd);font-size:1.8rem;letter-spacing:.1em;color:var(--muted)}
+.prod-empty p{font-family:var(--fm);font-size:.58rem;color:var(--ghost);letter-spacing:.08em}
+
+/* ══ CART DRAWER ══ */
+#cart-drawer{position:fixed;top:0;right:0;width:360px;height:100vh;
+  background:linear-gradient(160deg,rgba(4,12,26,.99),rgba(2,8,18,1));
+  border-left:1px solid rgba(0,140,220,.15);z-index:400;
+  transform:translateX(100%);transition:transform .38s cubic-bezier(.22,1,.36,1);
+  display:flex;flex-direction:column}
+#cart-drawer.open{transform:translateX(0)}
+#cart-backdrop{position:fixed;inset:0;background:rgba(2,6,16,.5);z-index:399;
+  opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(2px)}
+#cart-backdrop.show{opacity:1;pointer-events:all}
+
+.cart-head{padding:1.5rem 1.8rem 1.2rem;border-bottom:1px solid rgba(0,120,200,.1);
+  display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.cart-head-title{font-family:var(--fd);font-size:1.8rem;letter-spacing:.1em}
+.cart-close{width:30px;height:30px;background:rgba(0,100,180,.08);
+  border:1px solid rgba(0,140,220,.18);border-radius:2px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:all .2s;position:relative}
+.cart-close:hover{background:rgba(0,180,255,.15);border-color:var(--cyan)}
+.cart-close span{position:absolute;width:11px;height:1px;background:var(--white)}
+.cart-close span:first-child{transform:rotate(45deg)}
+.cart-close span:last-child{transform:rotate(-45deg)}
+
+.cart-items{flex:1;overflow-y:auto;padding:1rem 1.8rem;
+  scrollbar-width:thin;scrollbar-color:rgba(0,100,180,.12) transparent}
+.cart-items::-webkit-scrollbar{width:2px}
+.cart-items::-webkit-scrollbar-thumb{background:rgba(0,100,180,.15)}
+.cart-empty-msg{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  height:100%;gap:.6rem;font-family:var(--fm);font-size:.6rem;letter-spacing:.14em;
+  color:var(--ghost);text-transform:uppercase}
+.cart-empty-msg span:first-child{font-size:2rem;opacity:.3}
+
+.citem{display:flex;gap:.8rem;padding:.8rem 0;border-bottom:1px solid rgba(0,110,180,.08);align-items:center}
+.citem-icon{font-size:1.5rem;width:38px;text-align:center;flex-shrink:0}
+.citem-info{flex:1}
+.citem-name{font-family:var(--fb);font-size:.85rem;font-weight:700;color:var(--white);letter-spacing:.03em}
+.citem-brand{font-family:var(--fm);font-size:.5rem;letter-spacing:.07em;color:var(--muted);margin-top:.1rem}
+.citem-price{font-family:var(--fd);font-size:1.1rem;letter-spacing:.04em;color:var(--cyan);flex-shrink:0}
+.citem-remove{width:20px;height:20px;background:none;border:1px solid rgba(0,100,160,.12);
+  border-radius:2px;color:var(--ghost);font-size:.65rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.citem-remove:hover{border-color:rgba(255,80,80,.3);color:#ff5555}
+
+.cart-footer{padding:1.2rem 1.8rem 1.8rem;border-top:1px solid rgba(0,120,200,.1);flex-shrink:0}
+.cart-total-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.8rem}
+.cart-total-lbl{font-family:var(--fm);font-size:.6rem;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
+.cart-total-val{font-family:var(--fd);font-size:2rem;letter-spacing:.06em;color:var(--white)}
+.cart-checkout{width:100%;padding:.72rem;border-radius:2px;cursor:pointer;
+  font-family:var(--fb);font-size:.85rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  background:rgba(0,160,255,.14);border:1px solid rgba(0,160,255,.3);color:var(--cyan);
+  transition:all .25s;margin-bottom:.5rem}
+.cart-checkout:hover{background:rgba(0,200,255,.22);box-shadow:0 0 22px rgba(0,200,255,.15)}
+.cart-clear{width:100%;padding:.5rem;border-radius:2px;cursor:pointer;
+  font-family:var(--fm);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;
+  background:transparent;border:1px solid rgba(0,100,160,.15);color:var(--ghost);transition:all .2s}
+.cart-clear:hover{border-color:rgba(255,80,80,.25);color:#ff5555}
+
+/* ══ PRODUCT MODAL ══ */
+#prod-modal{position:fixed;inset:0;z-index:500;display:flex;align-items:center;justify-content:center;
+  background:rgba(2,6,16,0);pointer-events:none;transition:background .35s}
+#prod-modal.open{background:rgba(2,6,16,.92);pointer-events:all}
+#prod-panel{background:linear-gradient(160deg,rgba(5,14,28,.99),rgba(2,8,18,1));
+  border:1px solid rgba(0,150,220,.18);border-radius:4px;
+  width:90%;max-width:680px;max-height:88vh;overflow-y:auto;
+  scrollbar-width:thin;scrollbar-color:rgba(0,100,180,.12) transparent;
+  transform:scale(.92) translateY(14px);opacity:0;position:relative;
+  transition:transform .4s cubic-bezier(.22,1,.36,1),opacity .35s}
+#prod-modal.open #prod-panel{transform:scale(1) translateY(0);opacity:1}
+#prod-panel::-webkit-scrollbar{width:2px}
+#prod-panel::-webkit-scrollbar-thumb{background:rgba(0,100,180,.15)}
+.pm-close{position:absolute;top:1.1rem;right:1.2rem;width:32px;height:32px;
+  background:rgba(0,100,180,.1);border:1px solid rgba(0,140,220,.18);
+  border-radius:2px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.pm-close:hover{background:rgba(0,180,255,.15);border-color:var(--cyan)}
+.pm-close span{position:absolute;width:12px;height:1px;background:var(--white)}
+.pm-close span:first-child{transform:rotate(45deg)}
+.pm-close span:last-child{transform:rotate(-45deg)}
+.pm-top{padding:2.2rem 2.2rem 1.5rem;display:grid;grid-template-columns:180px 1fr;gap:1.8rem;border-bottom:1px solid rgba(0,120,200,.1)}
+.pm-img-wrap{background:linear-gradient(135deg,rgba(6,14,30,.9),rgba(3,8,18,.95));
+  border:1px solid rgba(0,110,180,.13);border-radius:3px;
+  display:flex;align-items:center;justify-content:center;height:180px;font-size:5rem}
+.pm-info{}
+.pm-eye{font-family:var(--fm);font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--elec);opacity:.55;margin-bottom:.4rem}
+.pm-name{font-family:var(--fd);font-size:2rem;letter-spacing:.07em;line-height:1;margin-bottom:.2rem}
+.pm-brand{font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;color:var(--muted);margin-bottom:.9rem}
+.pm-price-row{display:flex;align-items:baseline;gap:.7rem;margin-bottom:.7rem}
+.pm-price{font-family:var(--fd);font-size:2.2rem;letter-spacing:.05em;color:var(--cyan)}
+.pm-orig{font-family:var(--fm);font-size:.65rem;color:var(--ghost);text-decoration:line-through}
+.pm-cond-row{display:flex;gap:.5rem;margin-bottom:1.1rem}
+.pm-tag{font-family:var(--fm);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid rgba(0,130,200,.2);color:var(--muted);border-radius:2px;padding:.16rem .52rem}
+.pm-add-btn{padding:.62rem 1.6rem;border-radius:2px;cursor:pointer;
+  font-family:var(--fb);font-size:.82rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  background:rgba(0,170,255,.14);border:1px solid rgba(0,200,255,.3);color:var(--cyan);transition:all .25s}
+.pm-add-btn:hover{background:rgba(0,200,255,.24);box-shadow:0 0 22px rgba(0,200,255,.18)}
+.pm-body{padding:1.5rem 2.2rem 2rem}
+.pm-desc-lbl{font-family:var(--fm);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ghost);margin-bottom:.6rem}
+.pm-desc{font-family:var(--fb);font-size:.95rem;font-weight:400;line-height:1.6;color:rgba(150,205,240,.7)}
+.pm-specs{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:1.2rem}
+.pm-spec{background:rgba(6,14,28,.8);border:1px solid rgba(0,100,180,.12);border-radius:2px;padding:.55rem .75rem}
+.pm-spec-k{font-family:var(--fm);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ghost);margin-bottom:.2rem}
+.pm-spec-v{font-family:var(--fb);font-size:.82rem;font-weight:700;color:var(--white)}
+
+/* ══ TOAST ══ */
+#toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(80px);
+  z-index:600;background:rgba(0,229,160,.12);border:1px solid rgba(0,229,160,.3);
+  border-radius:3px;padding:.6rem 1.4rem;
+  font-family:var(--fm);font-size:.6rem;letter-spacing:.14em;color:var(--green);
+  text-transform:uppercase;transition:transform .35s cubic-bezier(.22,1,.36,1),opacity .3s;opacity:0}
+#toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+/* pulse dot */
+.pulse{display:inline-block;width:6px;height:6px;border-radius:50%;
+  animation:pls 1.8s ease infinite;vertical-align:middle;margin-right:.4rem}
+@keyframes pls{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.65)}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">3HRILL</a>
+  <ul class="nav-links">
+    <li><a href="#">Gigs</a></li>
+    <li><a href="#">News</a></li>
+    <li><a href="#">Library</a></li>
+    <li><a href="#" class="active">Store</a></li>
+    <li><a href="#">Radio</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="nav-badge">// Instrument Store</div>
+    <button class="cart-btn" onclick="toggleCart()">
+      🛒 Cart <span class="cart-count" id="cartCount">0</span>
+    </button>
+    <div class="nav-clock" id="navClock">3HRILL<br>—</div>
+  </div>
+</nav>
+
+<!-- SLIDES -->
+<div id="slides">
+
+<!-- ── SLIDE 1: HERO ── -->
+<section class="slide" id="slide-hero">
+  <div class="mesh"></div>
+  <div class="hero-left">
+    <div class="hero-eye">// 3HRILL Music Store</div>
+    <h1 class="hero-title">TOOLS OF<br>THE<br><em>SOUND</em></h1>
+    <p class="hero-sub">
+      Every instrument ever crafted — from the classical concert hall to the electric stage.
+      <strong>3HRILL Store</strong> stocks acoustic and electric instruments and equipment
+      for musicians at every scale, from first acquisition to full professional rig.
+    </p>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-val" id="statTotal">—</div><div class="hstat-lbl">Products Listed</div></div>
+      <div class="hstat"><div class="hstat-val" id="statAcoustic">—</div><div class="hstat-lbl">Acoustic Items</div></div>
+      <div class="hstat"><div class="hstat-val" id="statElectric">—</div><div class="hstat-lbl">Electric Items</div></div>
+    </div>
+    <div class="hero-btns">
+      <button class="hbtn acoustic" onclick="goSlide(1)">Acoustic →</button>
+      <button class="hbtn electric" onclick="goSlide(2)">Electric →</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-inst-row">
+      <div class="hinst gold"><div class="hinst-icon">🎸</div><div class="hinst-info"><div class="hinst-name">Acoustic Guitars</div><div class="hinst-count">48 products</div></div></div>
+      <div class="hinst cyan"><div class="hinst-icon">⚡</div><div class="hinst-info"><div class="hinst-name">Electric Guitars</div><div class="hinst-count">62 products</div></div></div>
+    </div>
+    <div class="hero-inst-row">
+      <div class="hinst green"><div class="hinst-icon">🥁</div><div class="hinst-info"><div class="hinst-name">Drums & Percussion</div><div class="hinst-count">55 products</div></div></div>
+      <div class="hinst hot"><div class="hinst-icon">🎹</div><div class="hinst-info"><div class="hinst-name">Keys & Synths</div><div class="hinst-count">41 products</div></div></div>
+    </div>
+    <div class="hero-inst-row">
+      <div class="hinst cyan"><div class="hinst-icon">🎷</div><div class="hinst-info"><div class="hinst-name">Brass & Woodwind</div><div class="hinst-count">36 products</div></div></div>
+      <div class="hinst gold"><div class="hinst-icon">🎛️</div><div class="hinst-info"><div class="hinst-name">Studio Equipment</div><div class="hinst-count">73 products</div></div></div>
+    </div>
+    <div class="hero-inst-row">
+      <div class="hinst green"><div class="hinst-icon">🪕</div><div class="hinst-info"><div class="hinst-name">World Instruments</div><div class="hinst-count">29 products</div></div></div>
+      <div class="hinst hot"><div class="hinst-icon">🎻</div><div class="hinst-info"><div class="hinst-name">Strings</div><div class="hinst-count">33 products</div></div></div>
+    </div>
+  </div>
+  <div class="scroll-ind" onclick="goSlide(1)"><span>Browse Store</span><div class="caret"></div></div>
+</section>
+
+<!-- ── SLIDE 2: ACOUSTIC ── -->
+<section class="slide store-slide" id="slide-acoustic">
+  <div class="mesh"></div>
+  <div class="store-head">
+    <div class="store-head-l">
+      <div class="sh-eye" style="color:var(--gold)">// 01 — Acoustic</div>
+      <h2 style="color:var(--white)">ACOUSTIC <span style="color:var(--gold)">INSTRUMENTS</span></h2>
+    </div>
+    <div class="store-head-r">
+      <button class="back-nav" onclick="goSlide(0)">↑ Back</button>
+      <div class="store-search">
+        <input type="text" placeholder="Search instruments…" id="aSearch" oninput="filterProducts('acoustic')">
+        <span class="si">⌕</span>
+      </div>
+      <div class="view-toggle">
+        <button class="vtbtn active" id="aGridBtn" title="Grid" onclick="setView('acoustic','grid')">⊞</button>
+        <button class="vtbtn" id="aListBtn" title="List" onclick="setView('acoustic','list')">☰</button>
+      </div>
+    </div>
+  </div>
+  <div class="store-body">
+    <div class="store-sidebar" id="aSidebar"></div>
+    <div class="prod-area">
+      <div class="prod-toolbar">
+        <div class="prod-filter-chips" id="aFilterChips"></div>
+        <select class="prod-sort" id="aSort" onchange="filterProducts('acoustic')">
+          <option value="default">Sort: Default</option>
+          <option value="price-asc">Price: Low → High</option>
+          <option value="price-desc">Price: High → Low</option>
+          <option value="name">Name A–Z</option>
+          <option value="new">Newest</option>
+        </select>
+      </div>
+      <div class="prod-grid" id="aGrid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SLIDE 3: ELECTRIC ── -->
+<section class="slide store-slide" id="slide-electric">
+  <div class="mesh"></div>
+  <div class="store-head">
+    <div class="store-head-l">
+      <div class="sh-eye" style="color:var(--cyan)">// 02 — Electric</div>
+      <h2>ELECTRIC & <span style="color:var(--cyan)">ELECTRONIC</span></h2>
+    </div>
+    <div class="store-head-r">
+      <button class="back-nav" onclick="goSlide(1)">↑ Acoustic</button>
+      <div class="store-search">
+        <input type="text" placeholder="Search instruments…" id="eSearch" oninput="filterProducts('electric')">
+        <span class="si">⌕</span>
+      </div>
+      <div class="view-toggle">
+        <button class="vtbtn active" id="eGridBtn" title="Grid" onclick="setView('electric','grid')">⊞</button>
+        <button class="vtbtn" id="eListBtn" title="List" onclick="setView('electric','list')">☰</button>
+      </div>
+    </div>
+  </div>
+  <div class="store-body">
+    <div class="store-sidebar" id="eSidebar"></div>
+    <div class="prod-area">
+      <div class="prod-toolbar">
+        <div class="prod-filter-chips" id="eFilterChips"></div>
+        <select class="prod-sort" id="eSort" onchange="filterProducts('electric')">
+          <option value="default">Sort: Default</option>
+          <option value="price-asc">Price: Low → High</option>
+          <option value="price-desc">Price: High → Low</option>
+          <option value="name">Name A–Z</option>
+          <option value="new">Newest</option>
+        </select>
+      </div>
+      <div class="prod-grid" id="eGrid"></div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /slides -->
+
+<!-- CART DRAWER -->
+<div id="cart-drawer">
+  <div class="cart-head">
+    <div class="cart-head-title">YOUR CART</div>
+    <button class="cart-close" onclick="toggleCart()"><span></span><span></span></button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty-msg"><span>🛒</span><span>Cart is empty</span></div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total-row">
+      <div class="cart-total-lbl">Total</div>
+      <div class="cart-total-val" id="cartTotal">$0.00</div>
+    </div>
+    <button class="cart-checkout">Proceed to Checkout</button>
+    <button class="cart-clear" onclick="clearCart()">Clear Cart</button>
+  </div>
+</div>
+<div id="cart-backdrop" onclick="toggleCart()"></div>
+
+<!-- PRODUCT MODAL -->
+<div id="prod-modal">
+  <div id="prod-panel">
+    <button class="pm-close" onclick="closeProdModal()"><span></span><span></span></button>
+    <div class="pm-top">
+      <div class="pm-img-wrap" id="pmImg"></div>
+      <div class="pm-info">
+        <div class="pm-eye" id="pmEye"></div>
+        <div class="pm-name" id="pmName"></div>
+        <div class="pm-brand" id="pmBrand"></div>
+        <div class="pm-price-row">
+          <div class="pm-price" id="pmPrice"></div>
+          <div class="pm-orig" id="pmOrig"></div>
+        </div>
+        <div class="pm-cond-row" id="pmTags"></div>
+        <button class="pm-add-btn" id="pmAddBtn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="pm-body">
+      <div class="pm-desc-lbl">About This Instrument</div>
+      <div class="pm-desc" id="pmDesc"></div>
+      <div class="pm-specs" id="pmSpecs"></div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<script>
+/* ══════════════════════════════════════════
+   ACOUSTIC CATALOGUE
+══════════════════════════════════════════ */
+const ACOUSTIC_CATS = [
+  {id:'ac-guitars',    icon:'🎸', name:'Classical Guitars',     count:12},
+  {id:'steel-guitars', icon:'🪕', name:'Steel-String Acoustic',  count:18},
+  {id:'ukulele',       icon:'🎵', name:'Ukulele',               count:8},
+  {id:'banjo',         icon:'🪗', name:'Banjo',                 count:6},
+  {id:'mandolin',      icon:'🎻', name:'Mandolin',              count:5},
+  {id:'violin',        icon:'🎻', name:'Violin / Fiddle',       count:14},
+  {id:'viola',         icon:'🎻', name:'Viola',                 count:7},
+  {id:'cello',         icon:'🎻', name:'Cello',                 count:9},
+  {id:'double-bass',   icon:'🎸', name:'Double Bass',           count:5},
+  {id:'grand-piano',   icon:'🎹', name:'Grand Piano',           count:6},
+  {id:'upright-piano', icon:'🎹', name:'Upright Piano',         count:8},
+  {id:'harp',          icon:'🪗', name:'Harp',                  count:4},
+  {id:'flute',         icon:'🎶', name:'Flute & Piccolo',       count:11},
+  {id:'oboe',          icon:'🎷', name:'Oboe',                  count:4},
+  {id:'clarinet',      icon:'🎷', name:'Clarinet',              count:9},
+  {id:'bassoon',       icon:'🎷', name:'Bassoon',               count:3},
+  {id:'sax',           icon:'🎷', name:'Saxophone',             count:14},
+  {id:'trumpet',       icon:'🎺', name:'Trumpet',               count:11},
+  {id:'trombone',      icon:'🎺', name:'Trombone',              count:7},
+  {id:'french-horn',   icon:'🎺', name:'French Horn',           count:4},
+  {id:'tuba',          icon:'🎺', name:'Tuba & Euphonium',      count:3},
+  {id:'a-drums',       icon:'🥁', name:'Acoustic Drum Kits',    count:16},
+  {id:'djembe',        icon:'🥁', name:'Djembe',                count:8},
+  {id:'bongo',         icon:'🥁', name:'Bongos',                count:7},
+  {id:'congas',        icon:'🥁', name:'Congas',                count:6},
+  {id:'cajon',         icon:'📦', name:'Cajón',                 count:9},
+  {id:'xylophone',     icon:'🎼', name:'Xylophone / Marimba',   count:7},
+  {id:'vibraphone',    icon:'🎼', name:'Vibraphone',            count:4},
+  {id:'kalimba',       icon:'🎵', name:'Kalimba / Thumb Piano', count:12},
+  {id:'sitar',         icon:'🪕', name:'Sitar',                 count:4},
+  {id:'oud',           icon:'🪕', name:'Oud',                   count:5},
+  {id:'kora',          icon:'🪕', name:'Kora',                  count:3},
+  {id:'mbira',         icon:'🎵', name:'Mbira / Likembe',       count:6},
+  {id:'harmonica',     icon:'🎵', name:'Harmonica',             count:14},
+  {id:'accordion',     icon:'🪗', name:'Accordion / Concertina',count:7},
+  {id:'recorder',      icon:'🎵', name:'Recorder',              count:6},
+  {id:'didgeridoo',    icon:'🎵', name:'Didgeridoo',            count:3},
+  {id:'balalaika',     icon:'🪕', name:'Balalaika',             count:4},
+  {id:'dulcimer',      icon:'🪕', name:'Dulcimer / Zither',     count:5},
+  {id:'erhu',          icon:'🎻', name:'Erhu / Chinese Fiddle', count:4},
+  {id:'bagpipes',      icon:'🎵', name:'Bagpipes',              count:3},
+  {id:'a-percussion',  icon:'🥁', name:'Hand Percussion',       count:18},
+  {id:'a-accessories', icon:'🔧', name:'Acoustic Accessories',  count:32},
+];
+
+const ELECTRIC_CATS = [
+  {id:'e-guitars',     icon:'⚡', name:'Electric Guitars',       count:32},
+  {id:'bass-guitars',  icon:'🎸', name:'Bass Guitars',           count:22},
+  {id:'e-violin',      icon:'🎻', name:'Electric Violin/Cello',  count:8},
+  {id:'midi',          icon:'🎹', name:'MIDI Controllers',       count:18},
+  {id:'synths',        icon:'🎛️', name:'Synthesizers',           count:24},
+  {id:'modular',       icon:'🔌', name:'Modular Synthesizers',   count:14},
+  {id:'drum-machines', icon:'🥁', name:'Drum Machines',          count:12},
+  {id:'e-drums',       icon:'🥁', name:'Electronic Drum Kits',   count:10},
+  {id:'e-piano',       icon:'🎹', name:'Electric Piano / Rhodes',count:9},
+  {id:'digital-piano', icon:'🎹', name:'Digital Pianos',         count:14},
+  {id:'keyboards',     icon:'🎹', name:'Workstation Keyboards',  count:18},
+  {id:'samplers',      icon:'🎛️', name:'Samplers',               count:10},
+  {id:'dj-decks',      icon:'💿', name:'DJ Turntables / Decks',  count:14},
+  {id:'dj-controllers',icon:'🎚️', name:'DJ Controllers',         count:18},
+  {id:'audio-interface',icon:'🔌',name:'Audio Interfaces',       count:22},
+  {id:'microphones',   icon:'🎤', name:'Microphones',            count:28},
+  {id:'monitors',      icon:'🔊', name:'Studio Monitors',        count:16},
+  {id:'headphones',    icon:'🎧', name:'Headphones & IEMs',      count:24},
+  {id:'amp-guitar',    icon:'📢', name:'Guitar Amplifiers',      count:20},
+  {id:'amp-bass',      icon:'📢', name:'Bass Amplifiers',        count:12},
+  {id:'pa-systems',    icon:'📢', name:'PA Systems',             count:8},
+  {id:'pedals',        icon:'🎚️', name:'Effects Pedals',         count:36},
+  {id:'loopers',       icon:'🔁', name:'Loop Stations',          count:10},
+  {id:'mixers',        icon:'🎚️', name:'Mixing Consoles',        count:14},
+  {id:'recording',     icon:'💾', name:'Recording Equipment',    count:20},
+  {id:'sequencers',    icon:'🎛️', name:'MIDI Sequencers',        count:8},
+  {id:'theremin',      icon:'👐', name:'Theremin',               count:4},
+  {id:'e-sitar',       icon:'🪕', name:'Electric Sitar / Slide', count:5},
+  {id:'lighting',      icon:'💡', name:'Stage Lighting',         count:12},
+  {id:'cables',        icon:'🔌', name:'Cables & Connectors',    count:30},
+  {id:'stands',        icon:'🔧', name:'Stands & Mounts',        count:22},
+  {id:'e-accessories', icon:'🔧', name:'Electric Accessories',   count:40},
+];
+
+/* ══════════════════════════════════════════
+   PRODUCT GENERATOR
+══════════════════════════════════════════ */
+const BRANDS_A = ['Martin','Taylor','Yamaha','Steinway','Fender Acoustic','Córdoba','Ibanez','Seagull','Takamine','Gibson Acoustic','Epiphone','Orangewood','Recording King','Washburn','Collings'];
+const BRANDS_E = ['Fender','Gibson','Marshall','Roland','Korg','Moog','Behringer','Shure','Neumann','Sennheiser','Pioneer DJ','Native Instruments','Universal Audio','Focusrite','Boss','Electro-Voice','JBL','Genelec','Audio-Technica','Line 6'];
+const CONDITIONS = ['brand-new','brand-new','brand-new','used','refurb'];
+const BADGES = [null,null,'new','new',null,'sale',null,null,'rare','bulk',null];
+
+const ACOUSTIC_PRODUCTS = [];
+const ELECTRIC_PRODUCTS = [];
+
+function seedProducts(arr, cats, brands, group, total) {
+  let id = 1;
+  cats.forEach(cat => {
+    const n = Math.max(2, Math.min(cat.count, 6));
+    for (let i = 0; i < n; i++) {
+      const basePrice = group === 'acoustic'
+        ? [89,149,199,299,449,599,899,1299,1799,2499,3499,4999][Math.floor(Math.random()*12)]
+        : [99,179,249,349,499,699,999,1399,1999,2999,4499,6999][Math.floor(Math.random()*12)];
+      const hasSale = Math.random() < .22;
+      const brand = brands[Math.floor(Math.random()*brands.length)];
+      const cond  = CONDITIONS[Math.floor(Math.random()*CONDITIONS.length)];
+      arr.push({
+        id: group[0]+'-'+id++,
+        cat: cat.id,
+        catName: cat.name,
+        icon: cat.icon,
+        name: INSTRUMENT_NAMES[cat.id]
+          ? INSTRUMENT_NAMES[cat.id][i % INSTRUMENT_NAMES[cat.id].length]
+          : cat.name + ' ' + (i+1),
+        brand,
+        price: hasSale ? Math.round(basePrice * .75) : basePrice,
+        originalPrice: hasSale ? basePrice : null,
+        condition: cond,
+        badge: BADGES[Math.floor(Math.random()*BADGES.length)],
+        desc: DESCS[cat.id] || `Premium ${cat.name} suitable for players of all levels. Crafted for tone, playability, and durability in live and studio environments.`,
+        specs: SPECS[cat.id] || {Body:'Solid Tonewoods',Finish:'Natural Gloss',Included:'Hardshell Case',Warranty:'2 Years'},
+        group,
+        isNew: Math.random() < .3,
+      });
+    }
+  });
+}
+
+const INSTRUMENT_NAMES = {
+  'ac-guitars':   ['Classical Nylon Spruce Top','Concert Grade Cedar Body','Student Classical 4/4','Flamenco Cypress Body','Parlour Classical'],
+  'steel-guitars':['Dreadnought Solid Spruce','OM Rosewood Body','Travel Acoustic Mini','Jumbo 12-String','Auditorium Grand'],
+  'ukulele':      ['Concert Koa Ukulele','Soprano Mahogany','Tenor Spruce Top','Baritone Ukulele','Pineapple Soprano'],
+  'violin':       ['4/4 Concert Violin','Student 3/4 Violin','Professional Spruce Top','Baroque Violin','Carbon Fibre Violin'],
+  'cello':        ['4/4 Carved Cello','Student Cello Outfit','Carbon Fibre Cello','Concert Series Cello'],
+  'grand-piano':  ['7ft Concert Grand','Baby Grand 5ft','Semi-Concert 6ft','Parlour Grand 4.5ft'],
+  'upright-piano':['Professional Upright 52"','Studio Upright 48"','Console Piano 44"','Spinet 40"'],
+  'sax':          ['Alto Saxophone Lacquer','Tenor Saxophone','Soprano Sax Curved','Baritone Saxophone','Alto Silver Plated'],
+  'trumpet':      ['Bb Student Trumpet','Professional Bb Trumpet','Flugelhorn','Piccolo Trumpet','Pocket Trumpet'],
+  'a-drums':      ['5-Piece Maple Shell Kit','Professional Birch Kit','Studio Series 6pc','Compact 4pc Kit','Vintage Mahogany Kit'],
+  'djembe':       ['West African Hand Djembe','Professional Rope Tuned','Synthetic Head Djembe','Master Carved Djembe'],
+  'kalimba':      ['17-Key Thumb Piano','10-Key Mahogany','21-Key Concert','Alto Kalimba','Chromatic Kalimba'],
+  'sitar':        ['Professional Concert Sitar','Student Sitar','Fibre Glass Sitar','Travel Sitar'],
+  'oud':          ['Arabic Oud Walnut','Turkish Oud','Professional Concert Oud','Student Oud'],
+  'kora':         ['21-String West African Kora','Professional Kora','Compact Travel Kora'],
+  'harmonica':    ['Hohner Special 20','10-Hole Blues Harp','Chromatic 12-Hole','Tremolo Harmonica','Bass Harmonica'],
+  'accordion':    ['Piano Accordion 120 Bass','Button Accordion','Concertina 20-Button','Mini Accordion'],
+  'e-guitars':    ['Stratocaster Style SSS','Les Paul Standard','Telecaster Style','Semi-Hollow ES Style','SG Double Cut','Jazzmaster','Flying V Tribute','Offset Wave'],
+  'bass-guitars': ['4-String Precision Style','Jazz Bass 5-String','Active Bass 6-String','Short Scale Bass','Fretless 4-String'],
+  'synths':       ['Analog Polysynth 37-Key','Mono Lead Synthesizer','Wavetable Desktop Synth','Hybrid Poly 49-Key','VA Synth 61-Key','FM Desktop Module'],
+  'modular':      ['Eurorack VCO Module','Sequencer 16-Step','Filter Module Analog','VCA Dual Module','Effects Send Module','Case 84HP Powered'],
+  'midi':         ['49-Key MIDI Controller','88-Key Weighted','25-Key Mini','Pad Controller 16-Pad','Step Sequencer Controller'],
+  'drum-machines':['808 Clone Machine','TR-909 Style Drum Machine','Digital Percussion Pad','16-Step Groove Box','Hybrid Drum Sampler'],
+  'e-drums':      ['5-Piece Electronic Kit','Compact Mesh Head Kit','8-Piece Pro Mesh','Portable Practice Kit'],
+  'microphones':  ['Large Diaphragm Condenser','Dynamic Cardioid Mic','Ribbon Microphone','USB Studio Mic','ORTF Stereo Pair','Shotgun Mic','Small Diaphragm Condenser'],
+  'headphones':   ['Closed-Back Studio Cans','Open-Back Reference','In-Ear Monitors Triple Driver','IEM Single Dynamic','Wireless Over-Ear'],
+  'pedals':       ['Analog Overdrive OD','Fuzz Factory Clone','Digital Delay 1s','Reverb Hall Plate','Chorus/Vibe','Wah-Wah Expression','Compressor Sustainer','Tuner Pedal'],
+  'monitors':     ['5" Active Studio Monitor','8" Nearfield Pair','3" Desktop Monitor','Sub 10" Active','7" Coaxial Monitor'],
+  'dj-decks':     ['Direct Drive Turntable','Belt Drive Audio Deck','Professional DJ PLX','Club Standard CDJ Style'],
+  'dj-controllers':['4-Channel DJ Controller','2-Deck Compact Mixer','Standalone Rekordbox DJ','All-in-One Performance System'],
+};
+
+const DESCS = {
+  'ac-guitars':'Handcrafted with solid tonewoods — this classical guitar delivers warm, resonant projection for concert performance and studio recording alike.',
+  'steel-guitars':'Built for the road and the stage — a steel-string acoustic with explosive projection, balanced tone, and long-lasting playability.',
+  'violin':'Crafted from carefully aged spruce and maple, this violin offers focused tone, responsive bowing, and a rich, warm voice across all positions.',
+  'synths':'An analog synthesizer that covers everything from deep bass to soaring leads — hands-on control with real circuits, real warmth.',
+  'e-guitars':'A versatile electric guitar with resonant tone woods, quality hardware, and a pickup configuration tuned for everything from clean jazz to high-gain metal.',
+  'microphones':'A studio-grade microphone delivering transparent, detailed capture across a wide frequency range — from tracking vocals to acoustic instruments.',
+  'drum-machines':'A programmable rhythm machine with a classic sonic palette — from punchy kicks and crisp snares to sampled percussion and synthesised hits.',
+  'pedals':'A hand-built analog effects pedal delivering exactly the tone character you need — from subtle shaping to full-on transformation.',
+  'monitors':'Reference-grade studio monitors with flat frequency response, low distortion, and wide sweet spot — mix with confidence on every track.',
+};
+
+const SPECS = {
+  'ac-guitars':  {'Top':'Solid Spruce','Back/Sides':'Indian Rosewood','Nut':'Bone','Scale':'650mm'},
+  'steel-guitars':{'Top':'Solid Sitka Spruce','Body Style':'Dreadnought','Bracing':'Scalloped X','Finish':'Satin Natural'},
+  'violin':       {'Size':'4/4 Full','Top':'Solid Spruce','Back':'Flamed Maple','Strings':'D\'Addario Prelude'},
+  'synths':       {'Voices':'8 Poly','Oscillators':'2 VCO per voice','Filter':'24dB Ladder','Connectivity':'MIDI/USB/CV'},
+  'e-guitars':    {'Body':'Alder','Neck':'Maple','Fingerboard':'Pau Ferro','Pickups':'3x Single Coil'},
+  'microphones':  {'Pattern':'Cardioid','Frequency':'20Hz–20kHz','Pad':'-10dB','Filter':'80Hz Low-Cut'},
+  'drum-machines':{'Steps':'16 per track','Tracks':'8 simultaneous','Memory':'128 Patterns','Outputs':'Stereo + 4 Individual'},
+  'monitors':     {'LF Driver':'5" Woofer','HF Driver':'1" Tweeter','Power':'50W Class D','SPL':'106dB Max'},
+};
+
+/* seed */
+seedProducts(ACOUSTIC_PRODUCTS, ACOUSTIC_CATS, BRANDS_A, 'acoustic');
+seedProducts(ELECTRIC_PRODUCTS, ELECTRIC_CATS, BRANDS_E, 'electric');
+
+/* update hero stats */
+document.getElementById('statTotal').textContent   = (ACOUSTIC_PRODUCTS.length + ELECTRIC_PRODUCTS.length);
+document.getElementById('statAcoustic').textContent = ACOUSTIC_PRODUCTS.length;
+document.getElementById('statElectric').textContent = ELECTRIC_PRODUCTS.length;
+
+/* ══════════════════════════════════════════
+   STATE
+══════════════════════════════════════════ */
+const state = {
+  acoustic:{ cat:'all', filter:'all', sort:'default', view:'grid' },
+  electric:{ cat:'all', filter:'all', sort:'default', view:'grid' },
+};
+let cart = [];
+
+/* ══════════════════════════════════════════
+   BUILD SIDEBARS
+══════════════════════════════════════════ */
+function buildSidebar(group) {
+  const cats  = group === 'acoustic' ? ACOUSTIC_CATS  : ELECTRIC_CATS;
+  const el    = document.getElementById(group[0] + 'Sidebar');
+  const color = group === 'acoustic' ? 'var(--gold)' : 'var(--cyan)';
+
+  const allBtn = document.createElement('div');
+  allBtn.className = 'sb-cat active';
+  allBtn.id = group[0]+'-cat-all';
+  allBtn.innerHTML = `<div class="sb-cat-left"><span class="sb-cat-icon">★</span><span class="sb-cat-name" style="color:${color}">All ${group[0].toUpperCase() + group.slice(1)}</span></div><span class="sb-cat-count">${(group==='acoustic'?ACOUSTIC_PRODUCTS:ELECTRIC_PRODUCTS).length}</span>`;
+  allBtn.addEventListener('click', () => setCat(group, 'all'));
+  el.appendChild(allBtn);
+
+  cats.forEach(c => {
+    const btn = document.createElement('div');
+    btn.className = 'sb-cat';
+    btn.id = group[0]+'-cat-'+c.id;
+    btn.innerHTML = `<div class="sb-cat-left"><span class="sb-cat-icon">${c.icon}</span><span class="sb-cat-name">${c.name}</span></div><span class="sb-cat-count">${c.count}</span>`;
+    btn.addEventListener('click', () => setCat(group, c.id));
+    el.appendChild(btn);
+  });
+}
+
+function setCat(group, catId) {
+  state[group].cat = catId;
+  /* update sidebar active */
+  document.querySelectorAll(`#${group[0]}Sidebar .sb-cat`).forEach(b => {
+    b.classList.toggle('active', b.id === group[0]+'-cat-'+catId);
+  });
+  filterProducts(group);
+}
+
+/* ══════════════════════════════════════════
+   BUILD FILTER CHIPS
+══════════════════════════════════════════ */
+function buildChips(group) {
+  const chips = [
+    {id:'all',     label:'All'},
+    {id:'new',     label:'New'},
+    {id:'sale',    label:'On Sale'},
+    {id:'rare',    label:'Rare'},
+    {id:'bulk',    label:'Bulk'},
+    {id:'brand-new', label:'Brand New'},
+    {id:'used',    label:'Used'},
+    {id:'refurb',  label:'Refurbished'},
+  ];
+  const el = document.getElementById(group[0]+'FilterChips');
+  chips.forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'fchip' + (c.id==='all'?' on':'');
+    btn.textContent = c.label;
+    btn.dataset.filter = c.id;
+    btn.addEventListener('click', () => {
+      el.querySelectorAll('.fchip').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      state[group].filter = c.id;
+      filterProducts(group);
+    });
+    el.appendChild(btn);
+  });
+}
+
+/* ══════════════════════════════════════════
+   FILTER + RENDER PRODUCTS
+══════════════════════════════════════════ */
+function filterProducts(group) {
+  const allProds = group === 'acoustic' ? ACOUSTIC_PRODUCTS : ELECTRIC_PRODUCTS;
+  const s = state[group];
+  const search = document.getElementById(group[0]+'Search').value.toLowerCase().trim();
+  const sort = document.getElementById(group[0]+'Sort').value;
+
+  let prods = allProds.filter(p => {
+    /* category */
+    if (s.cat !== 'all' && p.cat !== s.cat) return false;
+    /* filter chip */
+    if (s.filter !== 'all') {
+      if (s.filter === 'new'      && !p.isNew)                    return false;
+      if (s.filter === 'sale'     && p.badge !== 'sale')          return false;
+      if (s.filter === 'rare'     && p.badge !== 'rare')          return false;
+      if (s.filter === 'bulk'     && p.badge !== 'bulk')          return false;
+      if (s.filter === 'brand-new'&& p.condition !== 'brand-new') return false;
+      if (s.filter === 'used'     && p.condition !== 'used')      return false;
+      if (s.filter === 'refurb'   && p.condition !== 'refurb')    return false;
+    }
+    /* search */
+    if (search && !p.name.toLowerCase().includes(search) &&
+        !p.brand.toLowerCase().includes(search) &&
+        !p.catName.toLowerCase().includes(search)) return false;
+    return true;
+  });
+
+  /* sort */
+  if (sort === 'price-asc')  prods.sort((a,b) => a.price - b.price);
+  if (sort === 'price-desc') prods.sort((a,b) => b.price - a.price);
+  if (sort === 'name')       prods.sort((a,b) => a.name.localeCompare(b.name));
+  if (sort === 'new')        prods.sort((a,b) => b.isNew - a.isNew);
+
+  renderGrid(group, prods);
+}
+
+function renderGrid(group, prods) {
+  const grid = document.getElementById(group[0]+'Grid');
+  const isList = state[group].view === 'list';
+  grid.className = 'prod-grid' + (isList ? ' list-view' : '');
+  grid.innerHTML = '';
+
+  if (!prods.length) {
+    grid.innerHTML = `<div class="prod-empty"><div class="prod-empty-icon">🎵</div><h3>No Instruments Found</h3><p>Try a different category or search term</p></div>`;
+    return;
+  }
+
+  prods.forEach((p, i) => {
+    const inCart = cart.some(c => c.id === p.id);
+    const card = document.createElement('div');
+    card.className = 'pcard';
+    card.innerHTML = `
+      <div class="pcard-img">
+        <div class="pcard-emoji">${p.icon}</div>
+        ${p.badge ? `<div class="pcard-badge ${p.badge}">${p.badge==='new'?'New':{sale:'Sale',rare:'Rare Find',bulk:'Bulk Deal'}[p.badge]||p.badge}</div>` : ''}
+        <div class="pcard-fav">♡</div>
+      </div>
+      <div class="pcard-body">
+        <div class="pcard-cat">${p.catName}</div>
+        <div class="pcard-name">${p.name}</div>
+        <div class="pcard-brand">${p.brand}</div>
+        <div class="pcard-price-row">
+          <div class="pcard-price ${p.originalPrice?'sale-price':''}">$${p.price.toLocaleString()}</div>
+          ${p.originalPrice ? `<div class="pcard-price-orig">$${p.originalPrice.toLocaleString()}</div>` : ''}
+        </div>
+        <div class="pcard-condition ${p.condition}">${{
+          'brand-new':'Brand New','used':'Used','refurb':'Refurbished'
+        }[p.condition]}</div>
+        <button class="pcard-add ${inCart?'added':''}" data-id="${p.id}">${inCart?'✓ In Cart':'Add to Cart'}</button>
+      </div>`;
+
+    /* click card → modal */
+    card.addEventListener('click', e => {
+      if (!e.target.classList.contains('pcard-add') && !e.target.classList.contains('pcard-fav'))
+        openProdModal(p);
+    });
+    /* add to cart btn */
+    card.querySelector('.pcard-add').addEventListener('click', e => {
+      e.stopPropagation();
+      addToCart(p);
+      const btn = card.querySelector('.pcard-add');
+      btn.textContent = '✓ In Cart'; btn.classList.add('added');
+    });
+
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(10px)';
+    grid.appendChild(card);
+    setTimeout(() => {
+      card.style.transition = 'opacity .35s ease, transform .35s ease, border-color .25s, transform .25s, box-shadow .25s';
+      card.style.opacity = '1'; card.style.transform = 'translateY(0)';
+    }, 30 + i * 22);
+  });
+}
+
+/* ══════════════════════════════════════════
+   VIEW TOGGLE
+══════════════════════════════════════════ */
+function setView(group, view) {
+  state[group].view = view;
+  document.getElementById(group[0]+'GridBtn').classList.toggle('active', view==='grid');
+  document.getElementById(group[0]+'ListBtn').classList.toggle('active', view==='list');
+  filterProducts(group);
+}
+
+/* ══════════════════════════════════════════
+   PRODUCT MODAL
+══════════════════════════════════════════ */
+function openProdModal(p) {
+  document.getElementById('pmImg').textContent = p.icon;
+  document.getElementById('pmEye').textContent = p.catName + ' · ' + p.group.toUpperCase();
+  document.getElementById('pmName').textContent = p.name;
+  document.getElementById('pmBrand').textContent = p.brand;
+  document.getElementById('pmPrice').textContent = '$' + p.price.toLocaleString();
+  document.getElementById('pmOrig').textContent = p.originalPrice ? '$'+p.originalPrice.toLocaleString() : '';
+  document.getElementById('pmDesc').textContent = p.desc;
+
+  const tags = document.getElementById('pmTags');
+  tags.innerHTML = `<span class="pm-tag pcard-condition ${p.condition}">${{'brand-new':'Brand New','used':'Used','refurb':'Refurbished'}[p.condition]}</span>
+    ${p.badge?`<span class="pm-tag">${p.badge}</span>`:''}`;
+
+  const specs = document.getElementById('pmSpecs');
+  specs.innerHTML = Object.entries(p.specs||{}).map(([k,v]) =>
+    `<div class="pm-spec"><div class="pm-spec-k">${k}</div><div class="pm-spec-v">${v}</div></div>`).join('');
+
+  const btn = document.getElementById('pmAddBtn');
+  const inCart = cart.some(c => c.id === p.id);
+  btn.textContent = inCart ? '✓ Already in Cart' : 'Add to Cart';
+  btn.onclick = () => { addToCart(p); btn.textContent = '✓ Added!'; };
+
+  document.getElementById('prod-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeProdModal() {
+  document.getElementById('prod-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('prod-modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('prod-modal')) closeProdModal();
+});
+
+/* ══════════════════════════════════════════
+   CART
+══════════════════════════════════════════ */
+function addToCart(p) {
+  if (cart.some(c => c.id === p.id)) return;
+  cart.push(p);
+  renderCart();
+  showToast(p.icon + '  ' + p.name + ' added to cart');
+}
+function removeFromCart(id) {
+  cart = cart.filter(c => c.id !== id);
+  renderCart();
+  filterProducts('acoustic');
+  filterProducts('electric');
+}
+function clearCart() {
+  cart = [];
+  renderCart();
+  filterProducts('acoustic');
+  filterProducts('electric');
+}
+function renderCart() {
+  const count = cart.length;
+  document.getElementById('cartCount').textContent = count;
+  const total = cart.reduce((s,p) => s+p.price, 0);
+  document.getElementById('cartTotal').textContent = '$' + total.toLocaleString();
+  const el = document.getElementById('cartItems');
+  if (!count) {
+    el.innerHTML = `<div class="cart-empty-msg"><span>🛒</span><span>Cart is empty</span></div>`;
+    return;
+  }
+  el.innerHTML = cart.map(p => `
+    <div class="citem">
+      <div class="citem-icon">${p.icon}</div>
+      <div class="citem-info">
+        <div class="citem-name">${p.name}</div>
+        <div class="citem-brand">${p.brand}</div>
+      </div>
+      <div class="citem-price">$${p.price.toLocaleString()}</div>
+      <button class="citem-remove" onclick="removeFromCart('${p.id}')">✕</button>
+    </div>`).join('');
+}
+function toggleCart() {
+  const d = document.getElementById('cart-drawer');
+  const b = document.getElementById('cart-backdrop');
+  const open = d.classList.toggle('open');
+  b.classList.toggle('show', open);
+}
+
+/* ══════════════════════════════════════════
+   TOAST
+══════════════════════════════════════════ */
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+/* ══════════════════════════════════════════
+   NAV
+══════════════════════════════════════════ */
+function goSlide(idx) {
+  const els = document.querySelectorAll('.slide');
+  if (els[idx]) els[idx].scrollIntoView({behavior:'smooth'});
+}
+document.addEventListener('keydown', e => {
+  if (e.key==='Escape') { closeProdModal(); if(document.getElementById('cart-drawer').classList.contains('open')) toggleCart(); }
+});
+
+/* ══════════════════════════════════════════
+   CLOCK
+══════════════════════════════════════════ */
+setInterval(() => {
+  const d = new Date();
+  document.getElementById('navClock').innerHTML = '3HRILL<br>'+d.toUTCString().slice(17,22)+' UTC';
+}, 1000);
+
+/* ══════════════════════════════════════════
+   INIT
+══════════════════════════════════════════ */
+buildSidebar('acoustic');
+buildSidebar('electric');
+buildChips('acoustic');
+buildChips('electric');
+filterProducts('acoustic');
+filterProducts('electric');
+</script>
+</body>
+</html>

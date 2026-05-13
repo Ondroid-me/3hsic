@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3HRILL MUSIC SCHOOL</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,700&family=JetBrains+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --void:#020810;--deep:#040c1a;--panel:#0a1828;
+  --elec:#00aaff;--cyan:#00e5ff;--hot:#ff6b35;--gold:#f0c040;
+  --green:#00e5a0;--violet:#8855ff;--white:#e8f4ff;
+  --muted:#3a6080;--ghost:#152535;
+  --fd:'Bebas Neue',sans-serif;
+  --fb:'Barlow Condensed',sans-serif;
+  --fm:'JetBrains Mono',monospace;
+  --fp:'Playfair Display',serif;
+}
+html,body{height:100%;overflow:hidden;background:var(--void);color:var(--white);font-family:var(--fb)}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
+  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,170,255,.007) 3px,rgba(0,170,255,.007) 4px)}
+
+/* ═══ NAV ═══ */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:58px;
+  display:flex;align-items:center;justify-content:space-between;padding:0 3rem;
+  background:linear-gradient(180deg,rgba(2,8,16,.98),rgba(2,8,16,.72));
+  border-bottom:1px solid rgba(0,140,220,.1);backdrop-filter:blur(16px)}
+.nav-logo{font-family:var(--fd);font-size:1.7rem;letter-spacing:.22em;text-decoration:none;
+  background:linear-gradient(110deg,#00e5ff,#0088ff 55%,#0044cc);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 14px rgba(0,180,255,.45))}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{font-family:var(--fb);font-size:.72rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan)}
+.nav-right{display:flex;align-items:center;gap:1.2rem}
+.nav-badge{font-family:var(--fm);font-size:.56rem;letter-spacing:.2em;color:var(--violet);
+  background:rgba(136,85,255,.07);border:1px solid rgba(136,85,255,.2);border-radius:2px;padding:.28rem .75rem}
+.nav-clock{font-family:var(--fm);font-size:.52rem;letter-spacing:.08em;color:var(--ghost);line-height:1.8}
+
+/* ═══ SLIDES ═══ */
+#slides{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none;padding-top:58px}
+#slides::-webkit-scrollbar{display:none}
+.slide{height:calc(100vh - 58px);scroll-snap-align:start;position:relative;overflow:hidden}
+.mesh{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 70% at 5% 35%,rgba(6,28,70,.5) 0%,transparent 65%),
+    radial-gradient(ellipse 45% 45% at 95% 10%,rgba(4,18,55,.38) 0%,transparent 60%),
+    radial-gradient(ellipse 55% 55% at 50% 100%,rgba(2,8,30,.55) 0%,transparent 65%)}
+
+/* scroll arrow */
+.slide-next{position:absolute;bottom:1.4rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.4rem;cursor:pointer;z-index:10;
+  font-family:var(--fm);font-size:.5rem;letter-spacing:.22em;color:var(--ghost);text-transform:uppercase;
+  animation:arrowBounce 2.6s ease infinite}
+.slide-next .arr{width:13px;height:13px;border-right:1px solid rgba(0,150,255,.22);
+  border-bottom:1px solid rgba(0,150,255,.22);transform:rotate(45deg)}
+@keyframes arrowBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+.back-pill{position:absolute;top:1rem;left:3rem;z-index:10;font-family:var(--fm);font-size:.55rem;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--ghost);cursor:pointer;
+  display:flex;align-items:center;gap:.4rem;transition:color .2s}
+.back-pill:hover{color:var(--cyan)}
+
+
+/* ─── SLIDE 1: INTRO ─── */
+#slide-intro{background:linear-gradient(158deg,#020810 0%,#030d1c 45%,#050f1e 100%);
+  display:grid;grid-template-rows:auto 1fr;
+  overflow:hidden}
+.intro-l{position:relative;z-index:2;display:flex;flex-direction:column;
+  padding:1.4rem 2.2rem 1.4rem 3.2rem;
+  border-right:1px solid rgba(0,130,200,.08);overflow-y:auto;scrollbar-width:none}
+.intro-l::-webkit-scrollbar{display:none}
+.intro-eyebrow{font-family:var(--fm);font-size:.56rem;letter-spacing:.32em;color:var(--violet);
+  opacity:.65;text-transform:uppercase;margin-bottom:.55rem}
+.intro-title{font-family:var(--fd);font-size:clamp(2.4rem,4.5vw,4rem);letter-spacing:.06em;line-height:.88;margin-bottom:.85rem}
+.intro-title em{font-style:normal;-webkit-text-stroke:1px rgba(136,85,255,.38);color:transparent}
+.intro-body{font-size:.88rem;font-weight:400;line-height:1.65;color:rgba(150,200,245,.62);margin-bottom:.75rem}
+.intro-body strong{color:var(--white)}
+.intro-body em{font-style:italic;color:rgba(200,170,255,.72)}
+.pull-quote{border-left:2px solid rgba(136,85,255,.32);padding:.6rem 1rem;
+  margin:.7rem 0 1rem;background:rgba(136,85,255,.04)}
+.pull-quote p{font-family:var(--fp);font-size:.9rem;font-style:italic;
+  color:rgba(200,185,255,.65);line-height:1.52}
+.pull-quote cite{display:block;font-family:var(--fm);font-size:.48rem;letter-spacing:.14em;
+  color:var(--ghost);margin-top:.35rem;text-transform:uppercase}
+.modules-row{display:flex;flex-direction:column;gap:.4rem}
+.mod-pill{display:flex;align-items:center;gap:.85rem;padding:.5rem .85rem;
+  border:1px solid rgba(0,130,200,.15);border-radius:2px;background:rgba(6,14,28,.55);
+  transition:all .25s;cursor:pointer;position:relative;overflow:hidden}
+.mod-pill::after{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;opacity:0;transition:opacity .25s}
+.mod-pill:hover{border-color:rgba(0,180,255,.26);background:rgba(0,100,200,.05)}
+.mod-pill:hover::after{opacity:1}
+.mod-pill.v{color:var(--violet)}.mod-pill.v::after{background:var(--violet)}
+.mod-pill.g{color:var(--gold)}.mod-pill.g::after{background:var(--gold)}
+.mod-pill.c{color:var(--cyan)}.mod-pill.c::after{background:var(--cyan)}
+.mod-num{font-family:var(--fd);font-size:1.3rem;color:var(--ghost);letter-spacing:.04em;flex-shrink:0;width:26px}
+.mod-pill:hover .mod-num{color:var(--white)}
+.mod-name{font-family:var(--fb);font-size:.85rem;font-weight:700;letter-spacing:.05em;color:var(--white)}
+.mod-sub{font-family:var(--fm);font-size:.48rem;letter-spacing:.09em;color:var(--muted);margin-top:.06rem}
+.mod-go{margin-left:auto;font-family:var(--fm);font-size:.6rem;color:var(--ghost)}
+.mod-pill:hover .mod-go{color:var(--cyan)}
+
+/* ══ HORIZONTAL TIMELINE ══ */
+.intro-r{position:relative;z-index:2;display:flex;flex-direction:column;
+  padding:1.4rem 3.2rem 1.4rem 2.2rem;overflow-y:auto;scrollbar-width:none}
+.intro-r::-webkit-scrollbar{display:none}
+
+/* columns wrapper sits below the timeline strip */
+.intro-cols{display:grid;grid-template-columns:400px 1fr;flex:1;min-height:0;overflow:hidden}
+
+/* top label row */
+.htl-top-label{font-family:var(--fm);font-size:.54rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--ghost);flex-shrink:0;margin-bottom:.7rem;
+  display:flex;align-items:center;justify-content:space-between}
+.htl-top-label em{color:var(--muted);font-style:normal}
+
+/* horizontal rail */
+.htl-rail-wrap{position:relative;flex-shrink:0;margin-bottom:.4rem}
+.htl-rail{position:relative;height:1px;
+  background:linear-gradient(90deg,var(--violet),rgba(0,150,255,.45),rgba(255,107,53,.3));
+  border-radius:1px;}
+/* progress indicator */
+.htl-rail-fill{position:absolute;left:0;top:0;height:1px;border-radius:1px;
+  background:var(--violet);transition:width .4s ease;opacity:.6}
+.htl-dots-row{display:flex;justify-content:space-between;
+  position:absolute;top:50%;left:0;right:0;transform:translateY(-50%)}
+.htl-dot{width:9px;height:9px;border-radius:50%;border:1px solid rgba(0,150,200,.28);
+  background:var(--void);cursor:pointer;flex-shrink:0;transition:all .22s;position:relative;}
+.htl-dot:hover{transform:scale(1.5)}
+.htl-dot.active{transform:scale(1.8);border-width:2px;}
+.htl-dot.anc{border-color:rgba(136,85,255,.55);box-shadow:0 0 7px rgba(136,85,255,.35)}
+.htl-dot.anc.active{background:rgba(136,85,255,.28)}
+.htl-dot.med{border-color:rgba(0,150,255,.5);box-shadow:0 0 7px rgba(0,150,255,.28)}
+.htl-dot.med.active{background:rgba(0,150,255,.2)}
+.htl-dot.mod{border-color:rgba(0,229,160,.48);box-shadow:0 0 7px rgba(0,229,160,.24)}
+.htl-dot.mod.active{background:rgba(0,229,160,.18)}
+.htl-dot.con{border-color:rgba(240,192,64,.48);box-shadow:0 0 7px rgba(240,192,64,.24)}
+.htl-dot.con.active{background:rgba(240,192,64,.18)}
+.htl-dot.fut{border-color:rgba(255,107,53,.48);box-shadow:0 0 7px rgba(255,107,53,.24)}
+.htl-dot.fut.active{background:rgba(255,107,53,.18)}
+
+/* tick labels */
+.htl-ticks{display:flex;justify-content:space-between;padding:.55rem 0 .2rem}
+.htl-tick{font-family:var(--fm);font-size:.4rem;letter-spacing:.04em;color:var(--ghost);
+  text-align:center;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  cursor:pointer;transition:color .22s;padding:0 1px}
+.htl-tick.active{color:var(--elec)}
+
+/* content slides */
+.htl-content{flex:1;position:relative;overflow:hidden}
+.htl-slide{position:absolute;inset:0;display:flex;flex-direction:column;gap:.7rem;
+  padding:.4rem 0;
+  opacity:0;pointer-events:none;
+  transition:opacity .32s ease,transform .32s ease;
+  transform:translateX(48px)}
+.htl-slide.active{opacity:1;pointer-events:all;transform:translateX(0)}
+.htl-slide.exit-l{opacity:0;transform:translateX(-48px)}
+
+.htl-era-badge{display:inline-flex;align-items:center;gap:.6rem;flex-shrink:0}
+.htl-era-pill{font-family:var(--fm);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid;border-radius:2px;padding:.18rem .6rem}
+.htl-slide-num{font-family:var(--fm);font-size:.5rem;letter-spacing:.1em;color:var(--ghost)}
+.htl-title{font-family:var(--fd);font-size:clamp(1.9rem,3.2vw,2.8rem);letter-spacing:.07em;line-height:.95;flex-shrink:0}
+.htl-body{font-family:var(--fp);font-size:.9rem;font-style:italic;
+  color:rgba(155,210,250,.62);line-height:1.68;flex-shrink:0}
+.htl-watermark{font-family:var(--fd);font-size:clamp(3rem,5.5vw,6rem);
+  letter-spacing:.06em;line-height:1;color:rgba(136,85,255,.03);
+  -webkit-text-stroke:1px rgba(136,85,255,.05);
+  pointer-events:none;word-break:break-all;margin-top:auto;overflow:hidden}
+
+/* prev / next */
+.htl-nav{display:flex;align-items:center;justify-content:space-between;
+  flex-shrink:0;padding-top:.5rem;border-top:1px solid rgba(0,130,200,.08);margin-top:.3rem}
+.htl-progress{font-family:var(--fm);font-size:.56rem;letter-spacing:.12em;color:var(--ghost)}
+.htl-progress strong{color:var(--muted)}
+.htl-btns{display:flex;gap:.4rem}
+.htl-btn{padding:.35rem .85rem;border-radius:2px;cursor:pointer;
+  font-family:var(--fm);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid rgba(0,120,190,.2);color:var(--muted);background:rgba(6,14,28,.7);
+  transition:all .22s;display:flex;align-items:center;gap:.4rem}
+.htl-btn:hover:not(:disabled){border-color:var(--elec);color:var(--elec)}
+.htl-btn:disabled{opacity:.2;cursor:default}
+
+/* ─── SLIDE 2: LEARN MUSIC ─── */
+#slide-learn{background:linear-gradient(155deg,#030a18 0%,#040d1c 50%,#030a16 100%);
+  display:flex;flex-direction:column;padding:1.6rem 3.2rem 1rem;overflow:hidden}
+.section-eye{font-family:var(--fm);font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;opacity:.55;margin-bottom:.3rem}
+.section-head{font-family:var(--fd);font-size:clamp(2.2rem,4vw,3.6rem);letter-spacing:.07em;line-height:.9;margin-bottom:.9rem}
+.sub-tabs{display:flex;gap:.4rem;flex-shrink:0;margin-bottom:1rem}
+.stab{padding:.38rem 1rem;border-radius:2px;cursor:pointer;
+  font-family:var(--fb);font-size:.73rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid rgba(0,120,190,.2);color:var(--muted);background:rgba(6,14,28,.6);transition:all .22s;position:relative}
+.stab::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:2px;transition:width .25s}
+.stab.active{color:var(--cyan);border-color:rgba(0,229,255,.28);background:rgba(0,200,255,.07)}
+.stab.active::after{width:55%;background:var(--cyan)}
+.stab:hover:not(.active){border-color:var(--elec);color:var(--elec)}
+.sub-panel{display:none;flex:1;overflow:hidden;animation:pIn .38s ease both}
+.sub-panel.active{display:grid}
+@keyframes pIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* theory panel */
+#panel-theory{grid-template-columns:1.1fr 1fr;gap:1.8rem;align-items:start}
+.theory-l{display:flex;flex-direction:column;gap:.7rem;overflow-y:auto;
+  scrollbar-width:thin;scrollbar-color:rgba(0,100,180,.1) transparent}
+.theory-l::-webkit-scrollbar{width:2px}
+.theory-l::-webkit-scrollbar-thumb{background:rgba(0,100,180,.12)}
+.theory-block{border:1px solid rgba(0,120,190,.14);border-radius:3px;padding:.9rem 1.1rem;
+  background:linear-gradient(140deg,rgba(8,18,36,.94),rgba(4,10,22,.97));
+  transition:all .25s;cursor:default;position:relative;overflow:hidden}
+.theory-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;opacity:0;transition:opacity .25s;
+  background:linear-gradient(90deg,transparent,var(--cyan),transparent)}
+.theory-block:hover{border-color:rgba(0,180,255,.24);transform:translateX(3px)}
+.theory-block:hover::before{opacity:.7}
+.tb-icon{font-size:1.3rem;margin-bottom:.4rem}
+.tb-title{font-family:var(--fb);font-size:.95rem;font-weight:700;letter-spacing:.04em;color:var(--white);margin-bottom:.25rem}
+.tb-body{font-family:var(--fb);font-size:.78rem;font-weight:400;line-height:1.55;color:var(--muted)}
+.tb-tags{display:flex;gap:.3rem;flex-wrap:wrap;margin-top:.45rem}
+.tb-tag{font-family:var(--fm);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid rgba(0,130,200,.18);color:var(--ghost);border-radius:2px;padding:.1rem .4rem}
+
+.theory-r{display:flex;flex-direction:column;gap:.65rem;overflow-y:auto;
+  scrollbar-width:thin;scrollbar-color:rgba(0,100,180,.1) transparent}
+.theory-r::-webkit-scrollbar{width:2px}
+.theory-r::-webkit-scrollbar-thumb{background:rgba(0,100,180,.12)}
+
+.vis-card{background:linear-gradient(140deg,rgba(6,14,30,.96),rgba(3,8,18,.98));
+  border:1px solid rgba(0,120,190,.14);border-radius:3px;padding:.95rem 1.2rem}
+.vis-label{font-family:var(--fm);font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ghost);margin-bottom:.65rem}
+.staff-wrap{height:58px;position:relative;margin-bottom:.5rem}
+.staff-line{position:absolute;left:0;right:0;height:1px;background:rgba(0,150,220,.18)}
+.staff-note{position:absolute;width:12px;height:9px;border-radius:50%;background:var(--cyan);opacity:.65}
+.interval-row{display:flex;gap:.3rem;flex-wrap:wrap}
+.intv{font-family:var(--fm);font-size:.5rem;letter-spacing:.07em;
+  border:1px solid rgba(0,150,220,.15);color:var(--muted);border-radius:2px;padding:.18rem .45rem;transition:all .18s;cursor:default}
+.intv:hover{border-color:var(--cyan);color:var(--cyan)}
+.wave-wrap{height:46px;position:relative;overflow:hidden}
+.wave-bar{position:absolute;bottom:0;width:3px;border-radius:2px 2px 0 0;
+  background:linear-gradient(180deg,var(--cyan),rgba(0,150,255,.3));opacity:.5;transition:height 1.1s ease}
+.curr-row{display:flex;align-items:center;gap:.65rem;margin-bottom:.42rem}
+.curr-name{font-family:var(--fm);font-size:.54rem;letter-spacing:.06em;color:var(--muted);width:100px;flex-shrink:0;text-transform:uppercase}
+.curr-bar{flex:1;height:4px;background:rgba(0,100,180,.12);border-radius:2px;overflow:hidden}
+.curr-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,rgba(0,140,255,.55),var(--cyan));transition:width 1.4s cubic-bezier(.22,1,.36,1)}
+.curr-pct{font-family:var(--fm);font-size:.5rem;color:var(--muted);width:26px;text-align:right;flex-shrink:0}
+
+/* instrumentation panel */
+#panel-instrumentation{grid-template-columns:190px 1fr;gap:1.2rem;align-items:start}
+.inst-families{display:flex;flex-direction:column;gap:.28rem;overflow-y:auto;
+  scrollbar-width:thin;scrollbar-color:rgba(0,100,180,.1) transparent}
+.inst-families::-webkit-scrollbar{width:2px}
+.inst-families::-webkit-scrollbar-thumb{background:rgba(0,100,180,.12)}
+.inst-fam{display:flex;align-items:center;gap:.65rem;padding:.45rem .7rem;
+  border-radius:2px;border:1px solid transparent;cursor:pointer;transition:all .2s}
+.inst-fam:hover{background:rgba(0,100,180,.06);border-color:rgba(0,130,200,.14)}
+.inst-fam.active{background:rgba(0,150,255,.09);border-color:rgba(0,180,255,.22)}
+.inst-fam-icon{font-size:1rem;flex-shrink:0;width:22px;text-align:center}
+.inst-fam-name{font-family:var(--fb);font-size:.78rem;font-weight:700;letter-spacing:.03em;color:var(--muted);transition:color .2s}
+.inst-fam.active .inst-fam-name,.inst-fam:hover .inst-fam-name{color:var(--white)}
+.inst-fam-count{font-family:var(--fm);font-size:.46rem;letter-spacing:.07em;color:var(--ghost);margin-left:auto}
+.inst-detail{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:.6rem;overflow-y:auto;align-content:start;
+  scrollbar-width:thin;scrollbar-color:rgba(0,100,180,.1) transparent}
+.inst-detail::-webkit-scrollbar{width:2px}
+.inst-detail::-webkit-scrollbar-thumb{background:rgba(0,100,180,.12)}
+.inst-card{background:linear-gradient(140deg,rgba(8,18,36,.94),rgba(4,10,22,.97));
+  border:1px solid rgba(0,110,180,.13);border-radius:3px;padding:.8rem .9rem;
+  cursor:default;transition:all .25s;position:relative;overflow:hidden}
+.inst-card:hover{border-color:rgba(0,180,255,.26);transform:translateY(-2px)}
+.inst-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--elec),transparent);opacity:0;transition:opacity .25s}
+.inst-card:hover::before{opacity:.6}
+.ic-icon{font-size:1.5rem;margin-bottom:.4rem}
+.ic-name{font-family:var(--fb);font-size:.85rem;font-weight:700;letter-spacing:.04em;color:var(--white);margin-bottom:.15rem}
+.ic-role{font-family:var(--fm);font-size:.5rem;letter-spacing:.09em;color:var(--muted);text-transform:uppercase;margin-bottom:.4rem}
+.ic-desc{font-family:var(--fb);font-size:.74rem;font-weight:400;color:var(--muted);line-height:1.5}
+.ic-diff{display:flex;gap:.28rem;margin-top:.45rem}
+.ic-dot{width:6px;height:6px;border-radius:50%;background:rgba(0,130,200,.14)}
+.ic-dot.on{background:var(--cyan);box-shadow:0 0 4px rgba(0,200,255,.35)}
+
+/* ─── SLIDE 3: ARTISTRY ─── */
+#slide-artistry{background:linear-gradient(158deg,#030b1a 0%,#040e1d 50%,#030a18 100%);
+  display:flex;flex-direction:column;padding:1.6rem 3.2rem 1rem;overflow:hidden}
+#panel-composition{grid-template-columns:1fr 1fr;gap:1.8rem;align-items:start}
+#panel-performance{grid-template-columns:1fr 1fr;gap:1.8rem;align-items:start}
+.twin-col{display:flex;flex-direction:column;gap:.7rem;overflow-y:auto;
+  scrollbar-width:thin;scrollbar-color:rgba(0,100,180,.1) transparent}
+.twin-col::-webkit-scrollbar{width:2px}
+.twin-col::-webkit-scrollbar-thumb{background:rgba(0,100,180,.12)}
+
+.comp-block{background:linear-gradient(140deg,rgba(8,18,36,.94),rgba(4,10,22,.97));
+  border:1px solid rgba(0,110,180,.13);border-radius:3px;padding:.9rem 1.1rem;
+  transition:all .25s;cursor:default;position:relative;overflow:hidden}
+.comp-block:hover{border-color:rgba(136,85,255,.26);transform:translateX(3px)}
+.comp-block::after{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--violet);opacity:0;transition:opacity .25s}
+.comp-block:hover::after{opacity:.8}
+.cb-label{font-family:var(--fm);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(136,85,255,.5);margin-bottom:.3rem}
+.cb-title{font-family:var(--fb);font-size:.92rem;font-weight:700;letter-spacing:.04em;color:var(--white);margin-bottom:.25rem}
+.cb-body{font-family:var(--fb);font-size:.77rem;font-weight:400;color:var(--muted);line-height:1.58}
+
+.perf-block{background:linear-gradient(140deg,rgba(8,18,36,.94),rgba(4,10,22,.97));
+  border:1px solid rgba(0,110,180,.13);border-radius:3px;padding:.9rem 1.1rem;
+  transition:all .25s;cursor:default;position:relative;overflow:hidden}
+.perf-block:hover{border-color:rgba(240,192,64,.26);transform:translateX(3px)}
+.perf-block::after{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold);opacity:0;transition:opacity .25s}
+.perf-block:hover::after{opacity:.8}
+.pb-label{font-family:var(--fm);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,192,64,.48);margin-bottom:.3rem}
+.pb-title{font-family:var(--fb);font-size:.92rem;font-weight:700;letter-spacing:.04em;color:var(--white);margin-bottom:.25rem}
+.pb-body{font-family:var(--fb);font-size:.77rem;font-weight:400;color:var(--muted);line-height:1.58}
+
+/* score visual */
+.score-card{background:linear-gradient(140deg,rgba(6,14,30,.96),rgba(3,8,18,.98));
+  border:1px solid rgba(136,85,255,.12);border-radius:3px;padding:.95rem 1.2rem}
+.score-label{font-family:var(--fm);font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(136,85,255,.42);margin-bottom:.75rem}
+.score-row{display:flex;align-items:center;gap:.5rem;margin-bottom:.55rem}
+.score-clef{font-size:1.1rem;opacity:.38;flex-shrink:0}
+.score-staff{flex:1;height:22px;position:relative;border-bottom:1px solid rgba(0,150,220,.09)}
+.score-staff::before,.score-staff::after{content:'';position:absolute;left:0;right:0;height:1px;background:rgba(0,150,220,.07)}
+.score-staff::before{top:33%}.score-staff::after{top:66%}
+.snote-grp{position:absolute;top:0;bottom:0;display:flex;align-items:center;gap:2px}
+.snote{width:6px;height:5px;border-radius:50%;background:rgba(136,85,255,.55)}
+.snote.stem::after{content:'';position:absolute;width:1px;height:11px;background:rgba(136,85,255,.45);top:-11px;right:0}
+
+/* stage card */
+.stage-card{background:linear-gradient(140deg,rgba(6,14,30,.96),rgba(3,8,18,.98));
+  border:1px solid rgba(240,192,64,.1);border-radius:3px;padding:.95rem 1.2rem}
+.stage-label{font-family:var(--fm);font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(240,192,64,.38);margin-bottom:.65rem}
+.stage-scene{position:relative;height:80px;overflow:hidden;border-radius:2px;
+  background:linear-gradient(180deg,rgba(2,5,12,.9),rgba(4,10,20,.95));margin-bottom:.65rem}
+.spotlight{position:absolute;top:-18px;border-left:18px solid transparent;border-right:18px solid transparent;border-top:72px solid;opacity:.11}
+.sl-1{left:18%;border-top-color:#f0c040}.sl-2{left:44%;border-top-color:#00aaff}.sl-3{right:18%;border-top-color:#8855ff}
+.silhouette{position:absolute;bottom:0;width:5px;border-radius:2px 2px 0 0;background:rgba(240,192,64,.28)}
+.sil-1{left:20%;height:34px}.sil-2{left:40%;height:40px}.sil-3{left:60%;height:32px}.sil-4{right:18%;height:38px}
+.stage-floor{position:absolute;bottom:0;left:0;right:0;height:5px;
+  background:linear-gradient(90deg,rgba(240,192,64,.05),rgba(0,150,255,.05),rgba(136,85,255,.05))}
+.metric-row{display:flex;gap:.5rem}
+.metric-pill{flex:1;background:rgba(6,14,28,.8);border:1px solid rgba(0,100,180,.12);border-radius:2px;padding:.5rem .6rem;text-align:center}
+.metric-val{font-family:var(--fd);font-size:1.25rem;letter-spacing:.04em}
+.metric-lbl{font-family:var(--fm);font-size:.46rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ghost);margin-top:.1rem}
+
+/* ─── SLIDE 4: FINISHED WORK ─── */
+#slide-finished{background:linear-gradient(158deg,#020c1a 0%,#030e1d 50%,#020a16 100%);
+  display:flex;flex-direction:column;padding:1.6rem 3.2rem 1rem;overflow:hidden}
+.finished-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:1.4rem;flex:1;min-height:0}
+.showcase-col{display:flex;flex-direction:column;gap:.6rem;overflow-y:auto;
+  scrollbar-width:thin;scrollbar-color:rgba(0,100,180,.1) transparent}
+.showcase-col::-webkit-scrollbar{width:2px}
+.showcase-col::-webkit-scrollbar-thumb{background:rgba(0,100,180,.12)}
+.work-card{background:linear-gradient(140deg,rgba(8,18,36,.95),rgba(4,10,22,.98));
+  border:1px solid rgba(0,110,180,.13);border-radius:3px;overflow:hidden;
+  cursor:pointer;transition:all .25s;display:grid;grid-template-columns:82px 1fr}
+.work-card:hover{border-color:rgba(0,200,255,.24);transform:translateY(-2px)}
+.work-img{display:flex;align-items:center;justify-content:center;font-size:2.1rem;
+  position:relative;background-color:rgba(4,10,22,.9)}
+.work-img::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(4,10,22,.45))}
+.play-icon{position:absolute;z-index:2;width:26px;height:26px;border-radius:50%;
+  background:rgba(0,200,255,.14);border:1px solid rgba(0,200,255,.28);
+  display:flex;align-items:center;justify-content:center;font-size:.65rem;
+  opacity:0;transition:opacity .2s}
+.work-card:hover .play-icon{opacity:1}
+.work-body{padding:.65rem .9rem;display:flex;flex-direction:column;gap:.18rem}
+.work-genre{font-family:var(--fm);font-size:.48rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ghost)}
+.work-title{font-family:var(--fb);font-size:.9rem;font-weight:700;letter-spacing:.03em;color:var(--white)}
+.work-artist{font-family:var(--fm);font-size:.54rem;letter-spacing:.08em;color:var(--muted)}
+.work-tags{display:flex;gap:.28rem;margin-top:.28rem;flex-wrap:wrap}
+.wtag{font-family:var(--fm);font-size:.46rem;letter-spacing:.09em;text-transform:uppercase;
+  border:1px solid rgba(0,120,180,.14);color:var(--ghost);border-radius:2px;padding:.08rem .35rem}
+.wtag.comp{border-color:rgba(136,85,255,.22);color:rgba(136,85,255,.58)}
+.wtag.perf{border-color:rgba(240,192,64,.2);color:rgba(240,192,64,.58)}
+.wtag.rec{border-color:rgba(0,229,160,.2);color:rgba(0,229,160,.58)}
+.finished-r{display:flex;flex-direction:column;gap:.75rem;overflow-y:auto;
+  scrollbar-width:thin;scrollbar-color:rgba(0,100,180,.1) transparent}
+.finished-r::-webkit-scrollbar{width:2px}
+.finished-r::-webkit-scrollbar-thumb{background:rgba(0,100,180,.12)}
+.fcard{background:linear-gradient(140deg,rgba(8,18,36,.94),rgba(4,10,22,.97));
+  border:1px solid rgba(0,110,180,.14);border-radius:3px;padding:1rem 1.2rem}
+.fcard-title{font-family:var(--fd);font-size:1.3rem;letter-spacing:.08em;color:var(--white);margin-bottom:.55rem}
+.grad-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.45rem;margin-bottom:.6rem}
+.gstat{background:rgba(6,14,28,.8);border:1px solid rgba(0,100,180,.12);border-radius:2px;padding:.5rem .6rem;text-align:center}
+.gstat-val{font-family:var(--fd);font-size:1.35rem;letter-spacing:.05em}
+.gstat-lbl{font-family:var(--fm);font-size:.46rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ghost);margin-top:.1rem}
+.cert-icon{font-size:1.7rem;margin-bottom:.4rem}
+.cert-body{font-family:var(--fb);font-size:.8rem;font-weight:400;color:var(--muted);line-height:1.55;margin-bottom:.75rem}
+.cert-badges{display:flex;gap:.38rem;flex-wrap:wrap;margin-bottom:.75rem}
+.cbadge{font-family:var(--fm);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid;border-radius:2px;padding:.14rem .48rem}
+.cbadge.t{border-color:rgba(0,200,255,.25);color:var(--cyan)}
+.cbadge.a{border-color:rgba(136,85,255,.25);color:var(--violet)}
+.cbadge.p{border-color:rgba(240,192,64,.22);color:var(--gold)}
+.cbadge.c{border-color:rgba(0,229,160,.22);color:var(--green)}
+.enrol-row{display:flex;flex-direction:column;gap:.4rem}
+.enrol-input{background:rgba(4,10,22,.85);border:1px solid rgba(0,120,190,.18);border-radius:2px;
+  padding:.45rem .75rem;font-family:var(--fm);font-size:.6rem;letter-spacing:.05em;
+  color:var(--white);outline:none;transition:border-color .2s;width:100%}
+.enrol-input::placeholder{color:var(--ghost);opacity:.7}
+.enrol-input:focus{border-color:var(--cyan)}
+.enrol-select{appearance:none;-webkit-appearance:none;background:rgba(4,10,22,.85);
+  border:1px solid rgba(0,120,190,.18);border-radius:2px;padding:.45rem .75rem;
+  font-family:var(--fm);font-size:.6rem;letter-spacing:.05em;color:var(--white);outline:none;width:100%;cursor:pointer}
+.enrol-select:focus{border-color:var(--cyan)}
+option{background:#040c1a}
+.enrol-btn{width:100%;padding:.6rem;border-radius:2px;cursor:pointer;
+  font-family:var(--fb);font-size:.8rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  background:rgba(136,85,255,.12);border:1px solid rgba(136,85,255,.28);color:var(--violet);transition:all .25s;margin-top:.1rem}
+.enrol-btn:hover{background:rgba(136,85,255,.22);box-shadow:0 0 20px rgba(136,85,255,.16)}
+
+/* ═══ CARD DETAIL OVERLAY ═══ */
+#cdo{
+  position:fixed;inset:0;z-index:500;
+  display:grid;grid-template-rows:58px 1fr;
+  background:linear-gradient(158deg,#020810 0%,#030d1c 50%,#040e1d 100%);
+  transform:translateX(100%);
+  transition:transform .48s cubic-bezier(.22,1,.36,1);
+  overflow:hidden;
+}
+#cdo::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;
+  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,170,255,.006) 3px,rgba(0,170,255,.006) 4px)}
+#cdo.open{transform:translateX(0)}
+
+/* overlay header bar */
+#cdo-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 3rem;border-bottom:1px solid rgba(0,140,220,.12);
+  background:rgba(2,8,16,.95);backdrop-filter:blur(16px);z-index:10;
+}
+#cdo-breadcrumb{display:flex;align-items:center;gap:.7rem;
+  font-family:var(--fm);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase}
+.cdo-bc-module{color:var(--ghost)}
+.cdo-bc-sep{color:var(--ghost);opacity:.4}
+.cdo-bc-card{color:var(--white)}
+#cdo-accent-bar{width:3px;height:28px;border-radius:2px;flex-shrink:0}
+#cdo-close{
+  display:flex;align-items:center;gap:.55rem;
+  font-family:var(--fm);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);background:rgba(6,14,28,.7);
+  border:1px solid rgba(0,120,190,.2);border-radius:2px;
+  padding:.38rem .9rem;cursor:pointer;transition:all .2s;
+}
+#cdo-close:hover{border-color:var(--cyan);color:var(--cyan)}
+#cdo-close .x{font-size:.85rem;line-height:1}
+
+/* overlay body */
+#cdo-body{
+  display:grid;grid-template-columns:260px 1fr;
+  height:100%;overflow:hidden;
+}
+
+/* topic sidebar */
+#cdo-sidebar{
+  border-right:1px solid rgba(0,120,200,.1);
+  overflow-y:auto;padding:1.6rem 1.2rem;
+  display:flex;flex-direction:column;gap:.3rem;
+  scrollbar-width:thin;scrollbar-color:rgba(0,100,180,.1) transparent;
+}
+#cdo-sidebar::-webkit-scrollbar{width:2px}
+#cdo-sidebar::-webkit-scrollbar-thumb{background:rgba(0,100,180,.12)}
+.cdo-card-icon{font-size:2.2rem;margin-bottom:.5rem;padding-left:.3rem}
+.cdo-card-title{font-family:var(--fd);font-size:1.8rem;letter-spacing:.07em;
+  color:var(--white);line-height:1;margin-bottom:.3rem;padding-left:.3rem}
+.cdo-card-sub{font-family:var(--fm);font-size:.52rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ghost);padding-left:.3rem;margin-bottom:1rem}
+.cdo-topic-label{font-family:var(--fm);font-size:.5rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ghost);padding:.5rem .4rem .25rem;}
+.cdo-topic{
+  display:flex;align-items:center;gap:.6rem;
+  padding:.5rem .65rem;border-radius:2px;
+  border:1px solid transparent;cursor:pointer;transition:all .2s;
+}
+.cdo-topic:hover{background:rgba(0,100,180,.06);border-color:rgba(0,130,200,.14)}
+.cdo-topic.active{background:rgba(0,150,255,.09);border-color:rgba(0,180,255,.2)}
+.cdo-topic-num{font-family:var(--fm);font-size:.5rem;color:var(--ghost);
+  width:18px;flex-shrink:0;text-align:right}
+.cdo-topic-name{font-family:var(--fb);font-size:.82rem;font-weight:700;
+  letter-spacing:.03em;color:var(--muted);transition:color .2s;line-height:1.2}
+.cdo-topic.active .cdo-topic-name,.cdo-topic:hover .cdo-topic-name{color:var(--white)}
+
+/* topic content area */
+#cdo-content{
+  overflow-y:auto;padding:2rem 3rem 3rem;
+  scrollbar-width:thin;scrollbar-color:rgba(0,100,180,.1) transparent;
+}
+#cdo-content::-webkit-scrollbar{width:2px}
+#cdo-content::-webkit-scrollbar-thumb{background:rgba(0,100,180,.14)}
+
+.cdo-topic-head{margin-bottom:1.4rem}
+.cdo-topic-eye{font-family:var(--fm);font-size:.56rem;letter-spacing:.26em;
+  text-transform:uppercase;opacity:.5;margin-bottom:.35rem}
+.cdo-topic-title{font-family:var(--fd);font-size:clamp(2rem,4vw,3.2rem);
+  letter-spacing:.06em;line-height:.92;margin-bottom:.5rem}
+.cdo-topic-intro{font-family:var(--fp);font-size:1rem;font-style:italic;
+  color:rgba(180,215,255,.6);line-height:1.6;margin-bottom:1.2rem;
+  border-left:2px solid rgba(0,180,255,.2);padding-left:1rem}
+
+/* content sections */
+.cdo-section{margin-bottom:1.6rem}
+.cdo-sec-title{font-family:var(--fb);font-size:1.05rem;font-weight:700;
+  letter-spacing:.05em;color:var(--white);margin-bottom:.5rem;
+  display:flex;align-items:center;gap:.6rem}
+.cdo-sec-title::after{content:'';flex:1;height:1px;background:rgba(0,130,200,.12)}
+.cdo-sec-body{font-family:var(--fb);font-size:.9rem;font-weight:400;
+  line-height:1.68;color:rgba(150,205,245,.7)}
+
+/* sub-item pills */
+.cdo-items{display:flex;flex-direction:column;gap:.5rem;margin-top:.65rem}
+.cdo-item{
+  background:linear-gradient(140deg,rgba(8,18,36,.94),rgba(4,10,22,.97));
+  border:1px solid rgba(0,110,180,.13);border-radius:3px;
+  padding:.75rem 1rem;transition:border-color .2s;
+}
+.cdo-item:hover{border-color:rgba(0,180,255,.24)}
+.cdo-item-name{font-family:var(--fb);font-size:.9rem;font-weight:700;
+  letter-spacing:.04em;color:var(--white);margin-bottom:.22rem}
+.cdo-item-desc{font-family:var(--fb);font-size:.8rem;font-weight:400;
+  color:var(--muted);line-height:1.55}
+.cdo-item-tags{display:flex;gap:.3rem;flex-wrap:wrap;margin-top:.4rem}
+.cdo-itag{font-family:var(--fm);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid rgba(0,130,200,.18);color:var(--ghost);border-radius:2px;padding:.1rem .38rem}
+
+/* staff SVG diagram */
+.cdo-staff-wrap{
+  background:linear-gradient(140deg,rgba(6,14,30,.96),rgba(3,8,18,.98));
+  border:1px solid rgba(0,120,190,.14);border-radius:3px;
+  padding:1.2rem 1.5rem;margin-top:.65rem;overflow-x:auto;
+}
+.cdo-staff-wrap svg{min-width:500px;width:100%;display:block}
+
+/* vocal / dance grids */
+.cdo-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.65rem}
+.cdo-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;margin-top:.65rem}
+.cdo-mini-card{
+  background:linear-gradient(140deg,rgba(8,18,36,.92),rgba(4,10,22,.96));
+  border:1px solid rgba(0,110,180,.12);border-radius:3px;padding:.7rem .85rem;
+}
+.cdo-mini-icon{font-size:1.4rem;margin-bottom:.3rem}
+.cdo-mini-name{font-family:var(--fb);font-size:.85rem;font-weight:700;
+  letter-spacing:.03em;color:var(--white);margin-bottom:.15rem}
+.cdo-mini-desc{font-family:var(--fb);font-size:.75rem;color:var(--muted);line-height:1.5}
+
+/* progression bars (vocal) */
+.cdo-prog-row{display:flex;align-items:center;gap:.7rem;margin-bottom:.45rem}
+.cdo-prog-label{font-family:var(--fm);font-size:.54rem;letter-spacing:.07em;
+  color:var(--muted);width:120px;flex-shrink:0;text-transform:uppercase}
+.cdo-prog-bar{flex:1;height:5px;background:rgba(0,100,180,.12);border-radius:2px;overflow:hidden}
+.cdo-prog-fill{height:100%;border-radius:2px;
+  background:linear-gradient(90deg,rgba(0,140,255,.55),var(--cyan))}
+.cdo-prog-val{font-family:var(--fm);font-size:.5rem;color:var(--muted);width:26px;text-align:right;flex-shrink:0}
+
+/* ── FINISHED WORK — secluded vault ── */
+#slide-finished{
+  background:linear-gradient(160deg,#010609 0%,#020a14 40%,#010608 100%) !important;
+}
+#slide-finished::before{
+  content:'FINISHED WORK';position:absolute;
+  right:-3rem;top:50%;transform:translateY(-50%) rotate(90deg);
+  font-family:var(--fd);font-size:9rem;letter-spacing:.1em;
+  color:rgba(240,192,64,.022);pointer-events:none;white-space:nowrap;z-index:0;
+}
+#slide-finished .section-eye{color:rgba(240,192,64,.5) !important}
+#slide-finished .section-head span{color:var(--gold) !important}
+#slide-finished .back-pill{top:1rem}
+#slide-finished .slide-next{display:none !important}
+/* gold accent border top */
+#slide-finished::after{
+  content:'';position:absolute;top:0;left:3.5rem;right:3.5rem;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(240,192,64,.18),transparent);
+  pointer-events:none;
+}
+
+/* ── PERFORMANCE WAY CARDS ── */
+.perf-ways-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:.8rem;flex:1;overflow-y:auto;align-content:start;
+  scrollbar-width:thin;scrollbar-color:rgba(0,100,180,.1) transparent;
+}
+.perf-ways-grid::-webkit-scrollbar{width:2px}
+.perf-ways-grid::-webkit-scrollbar-thumb{background:rgba(0,100,180,.12)}
+
+.perf-way-card{
+  background:linear-gradient(140deg,rgba(8,18,36,.95),rgba(4,10,22,.98));
+  border:1px solid rgba(0,110,180,.14);border-radius:3px;
+  padding:1.2rem 1.4rem;cursor:pointer;transition:all .28s;
+  position:relative;overflow:hidden;display:flex;flex-direction:column;gap:.55rem;
+  min-height:160px;
+}
+.perf-way-card::before{content:'';position:absolute;left:0;top:0;bottom:0;
+  width:2px;opacity:0;transition:opacity .28s}
+.perf-way-card:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,60,160,.18)}
+.perf-way-card:hover::before{opacity:1}
+.perf-way-card:active{transform:scale(.98)}
+
+.perf-way-card.instruments{border-color:rgba(0,180,255,.16)}
+.perf-way-card.instruments::before{background:var(--cyan)}
+.perf-way-card.instruments:hover{border-color:rgba(0,200,255,.3)}
+
+.perf-way-card.djaying{border-color:rgba(136,85,255,.16)}
+.perf-way-card.djaying::before{background:var(--violet)}
+.perf-way-card.djaying:hover{border-color:rgba(136,85,255,.3)}
+
+.perf-way-card.singing{border-color:rgba(0,229,160,.16)}
+.perf-way-card.singing::before{background:var(--green)}
+.perf-way-card.singing:hover{border-color:rgba(0,229,160,.3)}
+
+.perf-way-card.dancing{border-color:rgba(255,107,53,.16)}
+.perf-way-card.dancing::before{background:var(--hot)}
+.perf-way-card.dancing:hover{border-color:rgba(255,107,53,.3)}
+
+.pw-num{font-family:var(--fd);font-size:3.5rem;position:absolute;right:.8rem;top:.4rem;
+  opacity:.06;letter-spacing:.04em;pointer-events:none}
+.pw-icon{font-size:2rem;margin-bottom:.2rem}
+.pw-label{font-family:var(--fm);font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.2rem}
+.pw-title{font-family:var(--fd);font-size:1.6rem;letter-spacing:.06em;line-height:.95;color:var(--white)}
+.pw-sub{font-family:var(--fb);font-size:.8rem;font-weight:400;color:var(--muted);line-height:1.55;margin-top:auto}
+.pw-tags{display:flex;gap:.35rem;flex-wrap:wrap;margin-top:.4rem}
+.pw-tag{font-family:var(--fm);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid rgba(0,130,200,.18);color:var(--ghost);border-radius:2px;padding:.1rem .38rem}
+
+/* make all clickable perf-way-card show pointer */
+.perf-way-card{cursor:pointer}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">3HRILL</a>
+  <ul class="nav-links">
+    <li><a href="#">Gigs</a></li>
+    <li><a href="#">News</a></li>
+    <li><a href="#">Library</a></li>
+    <li><a href="#">Store</a></li>
+    <li><a href="#" class="active">School</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="nav-badge">// Music School</div>
+    <div class="nav-clock" id="navClock">3HRILL<br>—</div>
+  </div>
+</nav>
+
+<div id="slides">
+
+<!-- SLIDE 1: INTRO -->
+<section class="slide" id="slide-intro">
+  <div class="mesh"></div>
+
+  <!-- ── HORIZONTAL TIMELINE STRIP ── -->
+  <div style="position:relative;z-index:2;padding:.9rem 3.2rem .6rem;border-bottom:1px solid rgba(0,130,200,.1);flex-shrink:0;background:rgba(2,8,16,.3);backdrop-filter:blur(4px)">
+    <div style="display:flex;align-items:center;gap:1.2rem">
+      <div style="font-family:var(--fm);font-size:.5rem;letter-spacing:.25em;color:var(--ghost);text-transform:uppercase;white-space:nowrap;flex-shrink:0">// History of Music</div>
+      <!-- RAIL -->
+      <div style="flex:1;position:relative;height:28px;display:flex;align-items:center">
+        <div class="htl-rail"></div>
+        <div class="htl-rail-fill" id="htlFill"></div>
+        <div class="htl-dots-row" id="htlDots"></div>
+      </div>
+      <!-- NAV BUTTONS -->
+      <div class="htl-btns" style="flex-shrink:0">
+        <button class="htl-btn" id="htlPrev" onclick="htlNav(-1)">‹ Prev</button>
+        <button class="htl-btn" id="htlNext" onclick="htlNav(1)">Next ›</button>
+      </div>
+    </div>
+    <!-- tick labels -->
+    <div class="htl-ticks" id="htlTicks"></div>
+  </div>
+
+  <!-- ── BODY: manifesto LEFT · period content RIGHT ── -->
+  <div class="intro-cols">
+
+    <div class="intro-l">
+      <div class="intro-eyebrow">// 3HRILL Music School</div>
+      <h1 class="intro-title" style="margin-bottom:.8rem">THE<br>LANGUAGE<br>OF <em>SOUND</em></h1>
+      <p class="intro-body">Music is not merely sound organised in time. It is <strong>humanity's oldest living language</strong> — a grammar of emotion, a syntax of culture, a vocabulary that predates every written word. To learn music is to gain access to something older than memory and more universal than speech.</p>
+      <p class="intro-body">Once understood at its roots — <strong>theory, instrumentation, composition, performance</strong> — music becomes not just something you hear but something that reveals the <em>character</em> of everything you feel and put into the world.</p>
+      <div class="pull-quote">
+        <p>"Music gives a soul to the universe, wings to the mind, flight to the imagination, and life to everything."</p>
+        <cite>— Plato</cite>
+      </div>
+      <div class="modules-row" style="margin-top:auto">
+        <div class="mod-pill c" onclick="goSlide(1)">
+          <div class="mod-num">01</div>
+          <div><div class="mod-name">Learn Music</div><div class="mod-sub">Music Theory · Instrumentation</div></div>
+          <div class="mod-go">→</div>
+        </div>
+        <div class="mod-pill v" onclick="goSlide(2)">
+          <div class="mod-num">02</div>
+          <div><div class="mod-name">Artistry</div><div class="mod-sub">Composition · Performance</div></div>
+          <div class="mod-go">→</div>
+        </div>
+        <div class="mod-pill g" onclick="goSlide(3)">
+          <div class="mod-num">03</div>
+          <div><div class="mod-name">Finished Work</div><div class="mod-sub">Showcase · Certificate · Enrolment</div></div>
+          <div class="mod-go">→</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="intro-r">
+      <div class="htl-content" id="htlContent"></div>
+      <div class="htl-nav">
+        <div class="htl-progress" id="htlProgress"><strong>01</strong> / 14</div>
+        <div class="htl-btns">
+          <button class="htl-btn" id="htlPrev2" onclick="htlNav(-1)">‹ Prev</button>
+          <button class="htl-btn" id="htlNext2" onclick="htlNav(1)">Next ›</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="slide-next" onclick="goSlide(1)"><span>Learn Music</span><div class="arr"></div></div>
+</section>
+
+<!-- SLIDE 2: LEARN MUSIC -->
+<section class="slide" id="slide-learn">
+  <div class="mesh"></div>
+  <div class="back-pill" onclick="goSlide(0)">↑ Intro</div>
+  <div class="section-eye" style="color:var(--cyan)">// 01 — Learn Music</div>
+  <h2 class="section-head">LEARN <span style="color:var(--cyan)">MUSIC</span></h2>
+  <div class="sub-tabs" id="learnTabs">
+    <button class="stab active" data-panel="theory" onclick="switchTab('learn','theory')">Music Theory</button>
+    <button class="stab" data-panel="instrumentation" onclick="switchTab('learn','instrumentation')">Instrumentation</button>
+  </div>
+  <div class="sub-panel active" id="panel-theory"></div>
+  <div class="sub-panel" id="panel-instrumentation"></div>
+  <div class="slide-next" onclick="goSlide(2)"><span>Artistry</span><div class="arr"></div></div>
+</section>
+
+<!-- SLIDE 3: ARTISTRY -->
+<section class="slide" id="slide-artistry">
+  <div class="mesh"></div>
+  <div class="back-pill" onclick="goSlide(1)">↑ Learn Music</div>
+  <div class="section-eye" style="color:var(--violet)">// 02 — Artistry</div>
+  <h2 class="section-head">ARTISTRY — <span style="color:var(--violet)">YOUR VOICE</span></h2>
+  <div class="sub-tabs" id="artistryTabs">
+    <button class="stab active" data-panel="composition" onclick="switchTab('artistry','composition')">Composition</button>
+    <button class="stab" data-panel="performance" onclick="switchTab('artistry','performance')">Performance</button>
+  </div>
+  <div class="sub-panel active" id="panel-composition"></div>
+  <div class="sub-panel" id="panel-performance"></div>
+  <div class="slide-next" onclick="goSlide(3)"><span>Finished Work</span><div class="arr"></div></div>
+</section>
+
+<!-- SLIDE 4: FINISHED WORK -->
+<section class="slide" id="slide-finished">
+  <div class="mesh"></div>
+  <div class="back-pill" onclick="goSlide(2)">↑ Artistry</div>
+  <div class="section-eye" style="color:var(--gold)">// 03 — Finished Work</div>
+  <h2 class="section-head">FINISHED <span style="color:var(--gold)">WORK</span></h2>
+  <div class="finished-grid">
+    <div class="showcase-col" id="showcaseCol"></div>
+    <div class="finished-r" id="finishedR"></div>
+  </div>
+</section>
+
+</div><!-- /slides -->
+
+<!-- ═══ CARD DETAIL OVERLAY ═══ -->
+<div id="cdo">
+  <div id="cdo-bar">
+    <div style="display:flex;align-items:center;gap:.8rem">
+      <div id="cdo-accent-bar"></div>
+      <div id="cdo-breadcrumb">
+        <span class="cdo-bc-module" id="cdoBcModule">—</span>
+        <span class="cdo-bc-sep">›</span>
+        <span class="cdo-bc-card" id="cdoBcCard">—</span>
+      </div>
+    </div>
+    <button id="cdo-close" onclick="closeCDO()">
+      <span class="x">✕</span> Close
+    </button>
+  </div>
+  <div id="cdo-body">
+    <div id="cdo-sidebar">
+      <div class="cdo-card-icon" id="cdoIcon"></div>
+      <div class="cdo-card-title" id="cdoCardTitle"></div>
+      <div class="cdo-card-sub" id="cdoCardSub"></div>
+      <div class="cdo-topic-label">Topics</div>
+      <div id="cdoTopicList"></div>
+    </div>
+    <div id="cdo-content"></div>
+  </div>
+</div>
+
+<script>
+/* NAV */
+function goSlide(i){document.querySelectorAll('.slide')[i]?.scrollIntoView({behavior:'smooth'})}
+function switchTab(slide,panelId){
+  const tid=slide==='learn'?'learnTabs':'artistryTabs';
+  document.querySelectorAll(`#${tid} .stab`).forEach(b=>b.classList.toggle('active',b.dataset.panel===panelId));
+  document.querySelectorAll(`#slide-${slide} .sub-panel`).forEach(p=>p.classList.toggle('active',p.id==='panel-'+panelId));
+}
+setInterval(()=>{const d=new Date();document.getElementById('navClock').innerHTML='3HRILL<br>'+d.toUTCString().slice(17,22)+' UTC'},1000);
+
+/* TIMELINE — HORIZONTAL SLIDE ENGINE */
+const TL=[
+  {dot:'anc',era:'c.40,000 BC',short:'40K BC',title:'The First Instruments',body:'Bone flutes carved from vulture and mammoth ivory found in Germany\'s Swabian Jura — the oldest known instruments — prove music predates agriculture, writing, and civilisation itself. The human impulse to make music is as old as the human impulse to survive.'},
+  {dot:'anc',era:'c.3,000 BC',short:'3000 BC',title:'Mesopotamian Harps & Lyres',body:'Sumerian courts maintained full orchestras. The Lyre of Ur, buried in 2,550 BC, demonstrates complex craftsmanship and resonance understanding centuries before Egypt\'s pyramids. Music was inseparable from temple worship and royal ceremony.'},
+  {dot:'anc',era:'c.500 BC',short:'500 BC',title:'Greek Modes & Theory',body:'Pythagoras formalises the mathematical basis of musical intervals. Greek modes — Dorian, Phrygian, Lydian — become the first codified scale systems, embedding music in philosophy, mathematics, and civic education. Plato believed music shaped character itself.'},
+  {dot:'med',era:'900–1400 AD',short:'900 AD',title:'Gregorian Chant & Polyphony',body:'Medieval Europe develops sacred monophony into multi-voice polyphony. Guido d\'Arezzo invents staff notation around 1025 AD — the same grid musicians still write on today. The cathedral becomes the concert hall of its age.'},
+  {dot:'med',era:'1400–1600',short:'1400s',title:'Renaissance Harmony',body:'Composers like Palestrina master counterpoint. The printing press of 1501 publishes the first mass-produced music books, spreading musical literacy across Europe for the first time. Music becomes a shared written language across borders.'},
+  {dot:'mod',era:'1600–1750',short:'1600s',title:'Baroque Form & Fugue',body:'Bach, Handel, and Vivaldi construct the architecture of Western music. Equal temperament tuning resolves centuries of harmonic conflict and unlocks all 24 keys simultaneously. The fugue becomes the supreme test of compositional intellect.'},
+  {dot:'mod',era:'1750–1820',short:'1750s',title:'Classical Period',body:'Mozart and Haydn define symphony, string quartet, and sonata form. Concert halls replace palace chambers, democratising music access for the first time in history. Music for the public, not just the aristocracy.'},
+  {dot:'mod',era:'1820–1900',short:'1820s',title:'Romantic Expression',body:'Beethoven shatters formal constraints. Chopin, Liszt, and Wagner pour personal emotion into music. The orchestra expands to 100 players. Music becomes the supreme art of the interior life — the language of what cannot be said in words.'},
+  {dot:'con',era:'1900–1940',short:'1900s',title:'Jazz, Blues & the African Diaspora',body:'From the Mississippi Delta and New Orleans, African American musicians create Jazz and Blues — the most influential musical development of the 20th century and the root of nearly every modern genre. Rhythm becomes the primary language.'},
+  {dot:'con',era:'1950–1970',short:'1950s',title:'Rock, Soul & Motown',body:'Electric amplification transforms music into a mass cultural force. Chuck Berry, Aretha Franklin, James Brown. The electric guitar becomes the icon of an entire generation worldwide. Music becomes the loudest voice in the culture.'},
+  {dot:'con',era:'1970–1990',short:'1970s',title:'Electronic Music & Hip-Hop',body:'Synthesisers and drum machines emerge as instruments. Kraftwerk shapes the future of electronic sound. The Bronx block parties of 1973 birth Hip-Hop — an entirely new compositional language built from records, rhythm, and rhyme.'},
+  {dot:'con',era:'1990–2010',short:'1990s',title:'Digital Audio & Afrobeats Rise',body:'DAWs and the internet democratise music production. Anyone with a laptop can make a professional record. Afrobeats emerges from Lagos fusing Highlife and Funk — producing Fela Kuti\'s descendants: Burna Boy, Wizkid, Davido.'},
+  {dot:'fut',era:'2010–Now',short:'2010s',title:'The Streaming Era & AI',body:'Music becomes borderless. K-Pop, Amapiano, Reggaeton and Drill circulate globally in hours. AI begins composing, raising fundamental questions about authorship, creativity, and what distinguishes a human musical act from a generated one.'},
+  {dot:'fut',era:'Now — Forward',short:'Future',title:'Your Chapter',body:'Every student who learns music adds a sentence to this story. The language does not end. It grows with every voice that chooses to speak it — and transforms with every generation brave enough to say something new. This is where you enter.'},
+];
+
+let htlIdx = 0;
+
+const DOT_COLORS = {
+  anc:'rgba(136,85,255,.55)', med:'rgba(0,150,255,.5)',
+  mod:'rgba(0,229,160,.5)',   con:'rgba(240,192,64,.5)', fut:'rgba(255,107,53,.5)'
+};
+const ERA_COLORS = {
+  anc:'var(--violet)', med:'var(--elec)',
+  mod:'var(--green)',  con:'var(--gold)', fut:'var(--hot)'
+};
+
+(function buildHTL(){
+  const dotsEl  = document.getElementById('htlDots');
+  const ticksEl = document.getElementById('htlTicks');
+  const contEl  = document.getElementById('htlContent');
+
+  /* dots + ticks */
+  TL.forEach((t, i) => {
+    /* dot */
+    const d = document.createElement('div');
+    d.className = `htl-dot ${t.dot}` + (i===0?' active':'');
+    d.title = t.era;
+    d.style.cssText = `position:absolute;left:${(i/(TL.length-1))*100}%;transform:translateX(-50%)`;
+    d.addEventListener('click', () => htlGoTo(i));
+    dotsEl.appendChild(d);
+
+    /* tick label */
+    const tk = document.createElement('div');
+    tk.className = 'htl-tick' + (i===0?' active':'');
+    tk.textContent = t.short;
+    tk.addEventListener('click', () => htlGoTo(i));
+    ticksEl.appendChild(tk);
+
+    /* slide */
+    const sl = document.createElement('div');
+    sl.className = 'htl-slide' + (i===0?' active':'');
+    sl.id = 'htl-slide-' + i;
+    sl.innerHTML = `
+      <div class="htl-era-badge">
+        <div class="htl-era-pill" style="border-color:${DOT_COLORS[t.dot]};color:${ERA_COLORS[t.dot]}">${t.era}</div>
+        <div class="htl-slide-num">${String(i+1).padStart(2,'0')} / ${String(TL.length).padStart(2,'0')}</div>
+      </div>
+      <div class="htl-title" style="color:${ERA_COLORS[t.dot]}">${t.title}</div>
+      <div class="htl-body">${t.body}</div>
+      <div class="htl-watermark">${t.title.split(' ').slice(0,2).join(' ')}</div>`;
+    contEl.appendChild(sl);
+  });
+
+  htlRender(0, 1);
+})();
+
+function htlGoTo(idx) {
+  const dir = idx > htlIdx ? 1 : -1;
+  htlRender(idx, dir);
+}
+
+function htlNav(dir) {
+  const next = Math.max(0, Math.min(TL.length-1, htlIdx + dir));
+  if (next === htlIdx) return;
+  htlRender(next, dir);
+}
+
+function htlRender(idx, dir=1) {
+  const prev = htlIdx;
+  htlIdx = idx;
+
+  /* update dots */
+  document.querySelectorAll('.htl-dot').forEach((d,i) => d.classList.toggle('active', i===idx));
+  document.querySelectorAll('.htl-tick').forEach((t,i) => t.classList.toggle('active', i===idx));
+
+  /* rail fill */
+  const pct = (idx/(TL.length-1))*100;
+  document.getElementById('htlFill').style.width = pct + '%';
+
+  /* slide transition */
+  const prevSlide = document.getElementById('htl-slide-'+prev);
+  const nextSlide = document.getElementById('htl-slide-'+idx);
+
+  if (prevSlide && prevSlide !== nextSlide) {
+    prevSlide.classList.remove('active');
+    prevSlide.style.transform = dir > 0 ? 'translateX(-48px)' : 'translateX(48px)';
+    prevSlide.style.opacity = '0';
+    setTimeout(() => { prevSlide.style.transform = ''; prevSlide.style.opacity = ''; }, 350);
+  }
+
+  if (nextSlide) {
+    nextSlide.style.transform = dir > 0 ? 'translateX(48px)' : 'translateX(-48px)';
+    nextSlide.style.opacity   = '0';
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        nextSlide.classList.add('active');
+        nextSlide.style.transform = 'translateX(0)';
+        nextSlide.style.opacity   = '1';
+      });
+    });
+  }
+
+  /* progress + button states */
+  const prog = document.getElementById('htlProgress');
+  if (prog) prog.innerHTML = `<strong>${String(idx+1).padStart(2,'0')}</strong> / ${TL.length}`;
+
+  ['htlPrev','htlPrev2'].forEach(id => {
+    const b = document.getElementById(id); if(b) b.disabled = idx===0;
+  });
+  ['htlNext','htlNext2'].forEach(id => {
+    const b = document.getElementById(id); if(b) b.disabled = idx===TL.length-1;
+  });
+}
+
+/* THEORY */
+const THEORY_BLOCKS=[
+  {icon:'🎼',title:'Notation & Staff Reading',body:'The five-line staff, clef signs, note values, time signatures, key signatures — the visual grammar through which music is encoded and transmitted across time.',tags:['Notes','Rests','Clefs','Key Sigs']},
+  {icon:'🔢',title:'Rhythm & Metre',body:'The pulse beneath everything. Simple and compound time, syncopation, polyrhythm, swing feel, and the relationship between written and felt time — the groove that holds all music together.',tags:['Time Sig','Syncopation','Polyrhythm','Groove']},
+  {icon:'📐',title:'Scales & Modes',body:'Major, minor, pentatonic, blues, church modes, non-Western scales. Understanding the emotional colour each scale carries and how to navigate between tonal centres with intention.',tags:['Major','Minor','Modes','Pentatonic']},
+  {icon:'🔗',title:'Harmony & Chord Theory',body:'How notes stack into chords, how chords move through progressions — diatonic harmony, secondary dominants, borrowed chords, jazz voicings, and the logic of tension and resolution.',tags:['Triads','7ths','Progressions','Voice Leading']},
+  {icon:'👂',title:'Ear Training & Aural Skills',body:'The bridge between theory on the page and music in the room. Interval recognition, chord quality identification, melodic dictation — training your ear to hear what your eye reads.',tags:['Intervals','Dictation','Solfège','Relative Pitch']},
+  {icon:'🔄',title:'Form & Structure',body:'Verse-chorus, binary, ternary, rondo, sonata form, through-composed. Understanding how great music is architected from the first bar to the final cadence — form as meaning itself.',tags:['Song Form','Cadences','Development','Recapitulation']},
+];
+const CURRICULUM=[{n:'Notation',p:100},{n:'Rhythm',p:100},{n:'Scales',p:88},{n:'Harmony',p:72},{n:'Ear Training',p:60},{n:'Form',p:45}];
+(function buildTheory(){
+  const panel=document.getElementById('panel-theory');
+  panel.innerHTML=`<div class="theory-l" id="theoryL"></div><div class="theory-r" id="theoryR"></div>`;
+  const tl=document.getElementById('theoryL');
+  THEORY_BLOCKS.forEach(b=>{tl.innerHTML+=`<div class="theory-block"><div class="tb-icon">${b.icon}</div><div class="tb-title">${b.title}</div><div class="tb-body">${b.body}</div><div class="tb-tags">${b.tags.map(t=>`<span class="tb-tag">${t}</span>`).join('')}</div></div>`;});
+  const tr=document.getElementById('theoryR');
+  /* staff */
+  let stHtml=`<div class="vis-card"><div class="vis-label">// Staff Notation</div><div class="staff-wrap" id="staffWrap"></div><div class="interval-row">`;
+  ['Uni','m2','M2','m3','M3','P4','TT','P5','m6','M6','m7','M7','8ve'].forEach(i=>stHtml+=`<div class="intv">${i}</div>`);
+  stHtml+=`</div></div>`;
+  /* waveform */
+  stHtml+=`<div class="vis-card"><div class="vis-label">// Sound Wave Frequencies</div><div class="wave-wrap" id="waveWrap"></div></div>`;
+  /* curriculum */
+  stHtml+=`<div class="vis-card"><div class="vis-label">// Curriculum Progress</div><div id="currRows"></div></div>`;
+  tr.innerHTML=stHtml;
+  /* staff lines & notes */
+  const sw=document.getElementById('staffWrap');
+  [11,25,39,53,67].forEach(top=>{const l=document.createElement('div');l.className='staff-line';l.style.top=top+'%';sw.appendChild(l);});
+  [{l:9,t:14},{l:21,t:32},{l:33,t:20},{l:45,t:48},{l:57,t:24},{l:69,t:38},{l:81,t:16}].forEach(n=>{const nd=document.createElement('div');nd.className='staff-note';nd.style.cssText=`left:${n.l}%;top:${n.t}%;`;sw.appendChild(nd);});
+  /* wave bars */
+  const ww=document.getElementById('waveWrap');
+  [18,32,52,68,78,70,58,42,28,18,26,44,60,74,68,55,40,28,20,30,48,66,72,62,50,36,24,18].forEach((h,i)=>{const b=document.createElement('div');b.className='wave-bar';b.style.cssText=`left:${i*3.6}%;height:0%;`;b.dataset.h=h+'%';ww.appendChild(b);});
+  /* curriculum rows */
+  const cr=document.getElementById('currRows');
+  CURRICULUM.forEach(c=>{cr.innerHTML+=`<div class="curr-row"><div class="curr-name">${c.n}</div><div class="curr-bar"><div class="curr-fill" style="width:0%" data-w="${c.p}%"></div></div><div class="curr-pct">${c.p}%</div></div>`;});
+  /* animate on intersection */
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.curr-fill').forEach(b=>b.style.width=b.dataset.w);document.querySelectorAll('.wave-bar').forEach(b=>b.style.height=b.dataset.h);obs.disconnect();}});},{threshold:.2});
+  obs.observe(panel);
+})();
+
+/* INSTRUMENTATION */
+const INST_FAMS=[{icon:'🎸',n:'String',count:24},{icon:'🎹',n:'Keyboard',count:16},{icon:'🎷',n:'Woodwind',count:18},{icon:'🎺',n:'Brass',count:12},{icon:'🥁',n:'Percussion',count:22},{icon:'🎛️',n:'Electronic',count:20},{icon:'🪕',n:'World',count:26},{icon:'🎤',n:'Voice',count:8}];
+const INST_DETAIL={
+  String:[{icon:'🎸',n:'Classical Guitar',role:'Melody · Harmony',desc:'6-string nylon instrument — foundation of Spanish, Flamenco and Classical traditions. Right-hand technique governs all tone production.',diff:4},{icon:'⚡',n:'Electric Guitar',role:'Lead · Rhythm',desc:'Solid-body magnetic pickup instrument enabling distortion, effects, and modern sonic manipulation. Blues, Rock, Jazz, Fusion.',diff:3},{icon:'🎻',n:'Violin',role:'Lead · Ensemble',desc:'The soprano voice of the string family — bowed, plucked, or strummed. Extremely expressive, famously demanding and deeply rewarding.',diff:5},{icon:'🎻',n:'Cello',role:'Bass · Melody',desc:'The baritone of strings — its rich tone is often described as closest to the male singing voice. Sits between violin and double bass.',diff:4},{icon:'🎸',n:'Bass Guitar',role:'Bass · Foundation',desc:'Holds harmonic and rhythmic foundation. Works in dialogue with the kick drum — the invisible architecture of a great recording.',diff:3}],
+  Keyboard:[{icon:'🎹',n:'Grand Piano',role:'Harmony · Melody',desc:'88 keys spanning 7+ octaves. The most complete single instrument — capable of orchestral density or intimate whisper.',diff:5},{icon:'🎹',n:'Synthesizer',role:'Sound Design',desc:'Electronic oscillator-based instruments that create tones no acoustic instrument can produce — from massive basses to alien textures.',diff:4},{icon:'🎹',n:'Organ',role:'Harmony · Sustain',desc:'Wind-driven pipe or electronic drawbar instrument. Infinite sustain, rich overtones — cornerstone of Gospel, Jazz, and Church music.',diff:3}],
+  Woodwind:[{icon:'🎷',n:'Alto Saxophone',role:'Lead · Melody',desc:'The most versatile woodwind — equally at home in Jazz, Classical, R&B. Single-reed with brass body. Intuitive fingering system.',diff:3},{icon:'🎷',n:'Clarinet',role:'Melody · Harmony',desc:'Single-reed cylindrical bore — bridges Classical and Jazz. A three-register tonal range makes it the chameleon of woodwinds.',diff:4},{icon:'🎵',n:'Flute',role:'Melody · Color',desc:'The oldest instrument archetype. Transverse blown aerophone. Brilliant, agile tone used in orchestras, folk, and West African traditions.',diff:4},{icon:'🎷',n:'Oboe',role:'Lead Voice',desc:'Double-reed with a penetrating, nasal tone. Gives orchestras their tuning A. Demanding embouchure, uniquely expressive once mastered.',diff:5}],
+  Brass:[{icon:'🎺',n:'Trumpet',role:'Lead · Call',desc:'The most brilliant brass voice. Cylindrical bore, piston valves. From Baroque fanfare to Miles Davis\'s muted cool — immense expressive range.',diff:4},{icon:'🎺',n:'Trombone',role:'Harmony · Bass',desc:'Slide mechanism allows glissando unavailable to any other brass instrument. Powerful, warm, and foundational to jazz and orchestral brass.',diff:3},{icon:'🎺',n:'French Horn',role:'Harmony · Color',desc:'The most complex brass instrument — coiled tubing, conical bore, hand-in-bell technique. Its tone bridges brass and woodwind worlds.',diff:5}],
+  Percussion:[{icon:'🥁',n:'Drum Kit',role:'Rhythm · Pulse',desc:'A modular collection of tuned and untuned drums and cymbals. The heartbeat of every popular music genre — played with sticks and feet.',diff:3},{icon:'🥁',n:'Djembe',role:'Rhythm · Texture',desc:'West African goblet drum played with bare hands. Bass, tone, and slap sounds create complex polyrhythmic textures within one instrument.',diff:3},{icon:'🎼',n:'Marimba',role:'Melody · Harmony',desc:'Tuned wooden bars with resonator tubes. The mallet-struck sibling of the xylophone — warmer tone, wider range, orchestral and solo use.',diff:4}],
+  Electronic:[{icon:'🎛️',n:'Modular Synth',role:'Sound Design',desc:'Patch-cable synthesis — every connection is a choice. No two patches the same. Infinite sonic possibility, zero factory presets.',diff:5},{icon:'🥁',n:'Drum Machine',role:'Rhythm · Production',desc:'From Roland TR-808 to modern VSTs, drum machines define Hip-Hop, House, Techno, and R&B. Programming rhythms is compositional art.',diff:2},{icon:'🎚️',n:'Effects Pedals',role:'Tone Shaping',desc:'Distortion, reverb, delay, chorus, wah — pedals transform raw instrument tone. Understanding signal chains is fundamental to electric mastery.',diff:2}],
+  World:[{icon:'🪕',n:'Kora',role:'Melody · Harmony',desc:'A 21-string bridge harp-lute from West Africa. Played with thumbs and index fingers, producing a shimmering harp-guitar hybrid in Mande griot tradition.',diff:5},{icon:'🪕',n:'Oud',role:'Melody · Improvisation',desc:'The fretless ancestor of the European lute — foundational to Arabic maqam tradition. Its absence of frets requires perfect intonation by ear.',diff:4},{icon:'🎵',n:'Kalimba',role:'Melody · Meditation',desc:'Tines plucked with thumbs over a resonating board. Deeply melodic, accessible to beginners, profound in the hands of masters.',diff:1},{icon:'🥁',n:'Tabla',role:'Rhythm · Conversation',desc:'North Indian classical paired drums. A complex language of bols (spoken syllables) corresponds to hand strokes — the most intricate percussion tradition.',diff:5}],
+  Voice:[{icon:'🎤',n:'Soprano',role:'Upper Register',desc:'The highest female voice type. From operatic high Cs to contemporary pop — the soprano is the most recognised of all voice classifications.',diff:4},{icon:'🎤',n:'Baritone',role:'Mid-Low Register',desc:'The most common male voice type — the narrative voice of opera, the commercial voice of pop. Versatile, warm, and naturally expressive.',diff:3},{icon:'🎤',n:'Contemporary Voice',role:'Style · Genre',desc:'Beyond classical classification — chest voice, head voice, mix, belt, falsetto, vocal fry. Contemporary technique demands multi-register fluency.',diff:3}],
+};
+let activeFamily='String';
+(function buildInst(){
+  const panel=document.getElementById('panel-instrumentation');
+  panel.innerHTML=`<div class="inst-families" id="instFam"></div><div class="inst-detail" id="instDet"></div>`;
+  const fam=document.getElementById('instFam');
+  INST_FAMS.forEach(f=>{
+    const el=document.createElement('div');
+    el.className='inst-fam'+(f.n===activeFamily?' active':'');
+    el.id='ifam-'+f.n;
+    el.innerHTML=`<span class="inst-fam-icon">${f.icon}</span><span class="inst-fam-name">${f.n}</span><span class="inst-fam-count">${f.count}</span>`;
+    el.addEventListener('click',()=>{document.querySelectorAll('.inst-fam').forEach(b=>b.classList.remove('active'));el.classList.add('active');activeFamily=f.n;renderInst(f.n);});
+    fam.appendChild(el);
+  });
+  renderInst(activeFamily);
+})();
+function renderInst(fam){
+  const el=document.getElementById('instDet');
+  if(!el)return;
+  el.innerHTML='';
+  (INST_DETAIL[fam]||[]).forEach(inst=>{
+    const dots=Array.from({length:5},(_,i)=>`<div class="ic-dot${i<inst.diff?' on':''}"></div>`).join('');
+    el.innerHTML+=`<div class="inst-card"><div class="ic-icon">${inst.icon}</div><div class="ic-name">${inst.n}</div><div class="ic-role">${inst.role}</div><div class="ic-desc">${inst.desc}</div><div class="ic-diff">${dots}</div></div>`;
+  });
+}
+
+/* COMPOSITION */
+const COMP_L=[
+  {label:'Melodic Writing',title:'Crafting a Melody',body:'A melody is a conversation between expectation and surprise. Stepwise motion vs leaps, phrase lengths, motifs, sequences — how a melody earns its emotional destination.'},
+  {label:'Harmonic Language',title:'Choosing Your Chords',body:'Functional harmony, modal harmony, quartal voicings, chromatic mediant relationships. The chords you choose define the emotional world a listener inhabits.'},
+  {label:'Counterpoint',title:'Two Voices, One Truth',body:'Writing independent melodic lines that coexist beautifully. From Bach\'s inventions to Afrobeats polyrhythmic vocal layering — the architecture of musical complexity.'},
+];
+const COMP_R=[
+  {label:'Song Structure',title:'Form as Meaning',body:'Why does a chorus feel like release? Why does a bridge create anticipation? Form is not a container — it is meaning itself. AABA, verse-chorus, through-composed, and beyond.'},
+  {label:'Orchestration',title:'Colour & Texture',body:'Choosing which instruments carry which ideas — register, blend, and the relationship between timbre and emotion. The difference between a score that works and one that sings.'},
+  {label:'The Process',title:'From Silence to Score',body:'Spark, development, editing, revision. How composers from Beethoven\'s sketchbooks to Timbaland\'s sessions begin with nothing and architect something inevitable.'},
+];
+(function buildComp(){
+  const panel=document.getElementById('panel-composition');
+  panel.innerHTML=`<div class="twin-col" id="compL"></div><div class="twin-col" id="compR"></div>`;
+  const cL=document.getElementById('compL'),cR=document.getElementById('compR');
+  COMP_L.forEach(b=>cL.innerHTML+=`<div class="comp-block"><div class="cb-label">${b.label}</div><div class="cb-title">${b.title}</div><div class="cb-body">${b.body}</div></div>`);
+  /* score visual */
+  let scoreHtml=`<div class="score-card"><div class="score-label">// Compositional Score</div>`;
+  [['𝄞',['8%','48%','74%']],['𝄞',['10%','52%','76%']]].forEach(([clef,positions])=>{
+    scoreHtml+=`<div class="score-row"><div class="score-clef">${clef}</div><div class="score-staff">`;
+    positions.forEach((left,i)=>scoreHtml+=`<div class="snote-grp" style="left:${left}"><div class="snote${i===0?' stem':''}"></div>${i<1?'<div class="snote stem"></div>':''}</div>`);
+    scoreHtml+=`</div></div>`;
+  });
+  scoreHtml+=`</div>`;
+  COMP_R.forEach(b=>scoreHtml+=`<div class="comp-block"><div class="cb-label">${b.label}</div><div class="cb-title">${b.title}</div><div class="cb-body">${b.body}</div></div>`);
+  cR.innerHTML=scoreHtml;
+})();
+
+/* PERFORMANCE — 4 WAYS */
+const PERF_WAYS = [
+  {
+    cls:'instruments', icon:'🎸', num:'01', label:'Way One',
+    title:'Playing Instruments',
+    sub:'The mastery of a physical instrument — producing, shaping, and expressing music through the hands, breath, and body in direct conversation with an acoustic or electric instrument.',
+    tags:['Acoustic','Electric','Ensemble','Solo','Technique'],
+    id:'playing-instruments',
+  },
+  {
+    cls:'djaying', icon:'💿', num:'02', label:'Way Two',
+    title:'Disc Jockeying',
+    sub:'The art of selecting, mixing, and sequencing recorded music in real time — DJaying is composition and performance simultaneously, building crowd narrative from the existing sonic archive.',
+    tags:['Turntablism','Mixing','Cueing','Beatmatching','Live Sets'],
+    id:'djaying',
+  },
+  {
+    cls:'singing', icon:'🎤', num:'03', label:'Way Three',
+    title:'Singing',
+    sub:'Performing the lyrics and melody of a composition with the human voice — the most intimate and universal performance act. From breath support and vocal registers to runs, genre styles, and vocal health.',
+    tags:['Vocal Technique','Breath','Registers','Melisma','Stage Voice'],
+    id:'singing',
+  },
+  {
+    cls:'dancing', icon:'💃', num:'04', label:'Way Four',
+    title:'Dancing',
+    sub:'Translating music into movement — the body\'s response to sound made intentional and communicative. From choreographed stage performance to freestyle improvisation, dance is music made visible.',
+    tags:['Choreography','Freestyle','Afrobeats','Hip-Hop','Body Musicality'],
+    id:'dancing',
+  },
+];
+
+(function buildPerf(){
+  const panel=document.getElementById('panel-performance');
+  panel.innerHTML=`<div class="perf-ways-grid" id="perfWaysGrid"></div>`;
+  const grid = document.getElementById('perfWaysGrid');
+  PERF_WAYS.forEach(w => {
+    const card = document.createElement('div');
+    card.className = `perf-way-card ${w.cls}`;
+    card.innerHTML = `
+      <div class="pw-num">${w.num}</div>
+      <div class="pw-icon">${w.icon}</div>
+      <div class="pw-label" style="color:var(--${w.cls==='instruments'?'cyan':w.cls==='djaying'?'violet':w.cls==='singing'?'green':'hot'})">${w.label}</div>
+      <div class="pw-title">${w.title}</div>
+      <div class="pw-sub">${w.sub}</div>
+      <div class="pw-tags">${w.tags.map(t=>`<span class="pw-tag">${t}</span>`).join('')}</div>`;
+    card.addEventListener('click', () => openCDO(w.id));
+    grid.appendChild(card);
+  });
+})();
+
+
+/* ═══════════════════════════════════════════════════
+   CARD DETAIL DATA
+═══════════════════════════════════════════════════ */
+const CARD_DATA = {
+
+  /* ── THEORY ── */
+  'notation': {
+    icon:'🎼', title:'Notation & Staff Reading', module:'Music Theory', accent:'var(--cyan)',
+    sub:'How music is written, read, and decoded',
+    topics:[
+      { id:'staff-diagram', name:'Staff Notation Diagram', type:'staff-diagram',
+        intro:'The five-line staff is the grid on which all Western music is written. Every line and space represents a specific pitch, mapped precisely by the clef sign at the start.',
+        sections:[
+          {t:'The Five-Line Staff',b:'Five horizontal lines and four spaces between them. Each position represents a distinct pitch. Notes can also sit on ledger lines above and below the staff, extending the range.'},
+          {t:'Reading Treble Clef',b:'Lines from bottom to top: E G B D F ("Every Good Boy Deserves Fudge"). Spaces: F A C E ("FACE"). The treble clef wraps around the G line — the second line from the bottom.'},
+          {t:'Reading Bass Clef',b:'Lines: G B D F A ("Good Boys Deserve Fudge Always"). Spaces: A C E G ("All Cows Eat Grass"). The bass clef\'s two dots straddle the F line.'},
+        ]
+      },
+      { id:'clefs', name:'Clef Signs', type:'items',
+        intro:'A clef is a symbol placed at the start of a staff that defines the pitch of the notes. Different clefs serve different ranges.',
+        items:[
+          {n:'Treble Clef (𝄞)',d:'Used by guitar, piano right hand, violin, flute, trumpet, and most high voices. Wraps around the G on the second line.',tags:['G Clef','High Range']},
+          {n:'Bass Clef (𝄢)',d:'Used by piano left hand, cello, bass guitar, trombone, tuba. Two dots frame the F on the fourth line.',tags:['F Clef','Low Range']},
+          {n:'Alto Clef (𝄡)',d:'A C clef on the middle (third) line. Used exclusively by the viola. Middle C sits on the clef\'s centre line.',tags:['C Clef','Viola']},
+          {n:'Tenor Clef',d:'A C clef on the fourth line. Used by the upper range of trombone, bassoon, and cello when notes climb above the bass staff.',tags:['C Clef','Upper Bass']},
+        ]
+      },
+      { id:'note-values', name:'Note Values & Duration', type:'items',
+        intro:'Note values define how long a sound lasts relative to the beat. Each value is exactly half the length of the one above it.',
+        items:[
+          {n:'Whole Note (Semibreve)',d:'4 beats in 4/4 time. An open oval with no stem. The longest standard note value.',tags:['4 Beats']},
+          {n:'Half Note (Minim)',d:'2 beats. An open oval with a stem. Exactly half of a whole note.',tags:['2 Beats']},
+          {n:'Quarter Note (Crotchet)',d:'1 beat. A filled oval with a stem. The most common reference unit for the beat.',tags:['1 Beat']},
+          {n:'Eighth Note (Quaver)',d:'½ beat. Filled oval with a stem and one flag — or beamed together in groups.',tags:['½ Beat','Beamed']},
+          {n:'Sixteenth Note',d:'¼ beat. Two flags on the stem. Four sixteenths equal one beat.',tags:['¼ Beat']},
+          {n:'Dotted Notes',d:'A dot after a note adds half its value. A dotted half note = 3 beats. A dotted quarter = 1½ beats.',tags:['Augmentation']},
+        ]
+      },
+      { id:'rests', name:'Rests', type:'items',
+        intro:'Rests are silent beats — not empty space, but deliberate silence. They have equal rhythmic weight to notes of the same value.',
+        items:[
+          {n:'Whole Rest',d:'Hangs below the fourth line like a brick. Four beats of silence. Also used to indicate a full bar\'s rest in any time signature.',tags:['4 Beats']},
+          {n:'Half Rest',d:'Sits on top of the third line like a hat. Two beats of silence.',tags:['2 Beats']},
+          {n:'Quarter Rest',d:'A zigzag symbol. One beat of silence — the most common rest in rhythmic writing.',tags:['1 Beat']},
+          {n:'Eighth & Sixteenth Rests',d:'Smaller values of silence matching eighth and sixteenth note durations respectively.',tags:['½ Beat','¼ Beat']},
+        ]
+      },
+      { id:'time-sigs', name:'Time Signatures', type:'items',
+        intro:'The time signature tells you how many beats are in each bar, and what note value counts as one beat.',
+        items:[
+          {n:'4/4 (Common Time)',d:'Four quarter-note beats per bar. The most common time signature in popular, rock, jazz, and most global music.',tags:['Simple','Duple']},
+          {n:'3/4 (Waltz Time)',d:'Three quarter-note beats per bar. Creates the lilt of a waltz or minuet — a strong downbeat with two weaker beats.',tags:['Simple','Triple']},
+          {n:'6/8',d:'Six eighth-note beats grouped as two sets of three. Feels like two beats but has a flowing, compound feel.',tags:['Compound','Duple']},
+          {n:'5/4 & 7/8',d:'Irregular or asymmetric time signatures. Found in progressive music, jazz, and folk traditions from Turkey, Bulgaria, and West Africa.',tags:['Asymmetric']},
+        ]
+      },
+      { id:'key-sigs', name:'Key Signatures', type:'items',
+        intro:'A key signature is a set of sharps or flats at the start of each staff, indicating the tonal centre and scale the piece uses.',
+        items:[
+          {n:'Sharp Keys',d:'One sharp = G major / E minor. Each additional sharp moves up a fifth. The order of sharps: F♯ C♯ G♯ D♯ A♯ E♯ B♯.',tags:['Circle of Fifths']},
+          {n:'Flat Keys',d:'One flat = F major / D minor. Each additional flat moves up a fourth. The order of flats: B♭ E♭ A♭ D♭ G♭ C♭ F♭.',tags:['Circle of Fourths']},
+          {n:'C Major / A minor',d:'No sharps or flats. The natural or "white key" key — the starting reference point for all key relationships.',tags:['No Accidentals']},
+          {n:'Enharmonic Keys',d:'Some keys sound identical but are written differently — C♯ major and D♭ major. The choice depends on context and readability.',tags:['Enharmonic Equivalence']},
+        ]
+      },
+    ]
+  },
+
+  'rhythm': {
+    icon:'🔢', title:'Rhythm & Metre', module:'Music Theory', accent:'var(--cyan)',
+    sub:'The pulse, the groove, and the language of time',
+    topics:[
+      { id:'pulse', name:'Pulse & The Beat', type:'items',
+        intro:'The pulse is the heartbeat of music — a steady, underlying tick against which all rhythmic activity is measured.',
+        items:[
+          {n:'Pulse vs Rhythm',d:'The pulse is constant and steady. Rhythm is the pattern of long and short sounds that moves over it. Music creates tension by playing between the two.',tags:['Foundation']},
+          {n:'Tempo',d:'The speed of the pulse, measured in BPM (beats per minute). Largo (~50 BPM) to Presto (~200 BPM). Tempo sets the emotional character of a piece.',tags:['BPM','Character']},
+          {n:'Downbeat & Upbeat',d:'The downbeat is the first, strongest beat of the bar. The upbeat is the last beat before it — the anticipatory beat that "lifts" into the next bar.',tags:['Accent']},
+        ]
+      },
+      { id:'simple-time', name:'Simple Time', type:'items',
+        intro:'In simple time, each beat divides naturally into two equal parts.',
+        items:[
+          {n:'2/4 — March Time',d:'Two quarter-note beats per bar. Strong-weak pattern. Found in marches, polkas, and basic dance forms.',tags:['Duple']},
+          {n:'3/4 — Waltz Time',d:'Three beats per bar. Strong-weak-weak. Creates the circular momentum of the waltz, minuet, and sarabande.',tags:['Triple']},
+          {n:'4/4 — Common Time',d:'Four beats per bar. Strong-weak-medium-weak. The most used time signature across all popular music globally.',tags:['Quadruple']},
+        ]
+      },
+      { id:'compound-time', name:'Compound Time', type:'items',
+        intro:'In compound time, each beat divides into three equal parts, giving a flowing, lilting feel.',
+        items:[
+          {n:'6/8',d:'Two compound beats, each dividing into three eighth notes. "ONE-and-a TWO-and-a." Found in Irish jigs, lullabies, and Afrobeat rhythms.',tags:['Compound Duple']},
+          {n:'9/8',d:'Three compound beats. "ONE-and-a TWO-and-a THREE-and-a." Used in compound triple patterns and some jazz ballads.',tags:['Compound Triple']},
+          {n:'12/8',d:'Four compound beats. Very common in slow blues and gospel — the shuffle feel lives here.',tags:['Compound Quadruple','Blues']},
+        ]
+      },
+      { id:'syncopation', name:'Syncopation', type:'items',
+        intro:'Syncopation shifts the accent from the expected strong beat to a weaker position — creating tension, surprise, and groove.',
+        items:[
+          {n:'Off-beat Accents',d:'Placing emphasis on the "and" (the upbeat) rather than the downbeat. The cornerstone of jazz, funk, reggae, and nearly all African-derived rhythms.',tags:['Groove']},
+          {n:'Tied Notes Across Barlines',d:'Holding a note from a weak beat across to a strong beat — delaying the arrival of the expected accent.',tags:['Tie','Anticipation']},
+          {n:'Hemiola',d:'Grouping beats in threes against a background of twos — or vice versa. A rhythmic device found in Brahms, Afrobeats, and Latin jazz.',tags:['Cross-Rhythm']},
+        ]
+      },
+      { id:'polyrhythm', name:'Polyrhythm', type:'items',
+        intro:'Polyrhythm is the simultaneous use of two or more conflicting rhythmic patterns — a cornerstone of African music.',
+        items:[
+          {n:'3 Against 2',d:'Playing three notes in the time of two. Or two in the time of three. The simplest form of polyrhythm — creates a rolling, elastic feel.',tags:['Cross-Rhythm']},
+          {n:'4 Against 3',d:'West African and Cuban traditions layer rhythmic cycles of different lengths simultaneously, creating a complex, interlocking texture.',tags:['West African']},
+          {n:'Clave',d:'The fundamental two-bar rhythmic pattern of Afro-Cuban music (Son Clave, Rumba Clave). All other rhythmic parts orient to it.',tags:['Afro-Cuban','Foundation']},
+        ]
+      },
+      { id:'swing', name:'Swing Feel', type:'items',
+        intro:'Swing transforms written eighth notes into a long-short pattern, creating the lilting, forward-moving feel of jazz.',
+        items:[
+          {n:'What is Swing?',d:'Written as two equal eighth notes — played as a triplet pair (long-short, roughly 2:1 ratio). The foundation of jazz and blues interpretation.',tags:['Jazz','Feel']},
+          {n:'Straight vs Swing',d:'Hip-Hop, funk, and electronic music often use straight (even) eighth notes. Jazz swings them. Knowing which to apply is essential stylistic literacy.',tags:['Interpretation']},
+          {n:'Groove & Micro-timing',d:'Beyond notated swing — the tiny, intentional placements of notes slightly before or behind the beat. This is where music breathes and feels human.',tags:['Pocket','Feel']},
+        ]
+      },
+    ]
+  },
+
+  'scales': {
+    icon:'📐', title:'Scales & Modes', module:'Music Theory', accent:'var(--cyan)',
+    sub:'The tonal vocabulary of music across all traditions',
+    topics:[
+      { id:'major', name:'Major Scale', type:'items',
+        intro:'The major scale is the most fundamental tonal framework in Western music — the basis of keys, harmony, and melody across centuries.',
+        items:[
+          {n:'Structure',d:'W–W–H–W–W–W–H (whole and half steps). Seven distinct pitches plus the octave. C major: C D E F G A B C.',tags:['Formula','Diatonic']},
+          {n:'Bright & Resolute Character',d:'Major scales tend to sound bright, stable, and resolved. Most pop, classical, and march music is grounded in major tonality.',tags:['Tonality','Mood']},
+          {n:'All 12 Major Keys',d:'Every chromatic pitch can serve as the root of a major scale. The circle of fifths organises all 12 keys by their relationship to one another.',tags:['Circle of 5ths']},
+        ]
+      },
+      { id:'minor', name:'Minor Scale', type:'items',
+        intro:'The minor scale family creates the darker, more ambiguous emotional landscape of music. Three distinct forms each serve different harmonic purposes.',
+        items:[
+          {n:'Natural Minor',d:'W–H–W–W–H–W–W. The aeolian mode built on the 6th degree of the major scale. A minor = A B C D E F G A. Melancholic, searching.',tags:['Aeolian','Relative Minor']},
+          {n:'Harmonic Minor',d:'Natural minor with a raised 7th scale degree. Creates a strong leading tone and the characteristic augmented second between ♭6 and 7. Used in classical, jazz, and Middle Eastern music.',tags:['Leading Tone','Exotic']},
+          {n:'Melodic Minor',d:'Ascending: raises both 6th and 7th degrees. Descending: reverts to natural minor. Smooth melodic motion up, natural colour down.',tags:['Ascending','Smooth Voice Leading']},
+        ]
+      },
+      { id:'modes', name:'Modes', type:'items',
+        intro:'Modes are scales built by starting the major scale on a different degree. Each mode has a unique interval structure, colour, and emotional character.',
+        items:[
+          {n:'Ionian (1st Mode)',d:'Identical to the major scale. The default bright, resolved tonality of most Western music.',tags:['= Major']},
+          {n:'Dorian (2nd Mode)',d:'Minor scale with a raised 6th. Soulful, funky, slightly hopeful. The scale of "So What" (Miles Davis) and most minor jazz tunes.',tags:['Minor+6','Jazz','Funk']},
+          {n:'Phrygian (3rd Mode)',d:'Minor scale with a ♭2. Dark, exotic, Flamenco-flavoured. Used in Spanish music, metal, and Middle Eastern modal music.',tags:['♭2','Spanish','Metal']},
+          {n:'Lydian (4th Mode)',d:'Major scale with a ♯4. Dreamy, floaty, other-worldly. John Williams uses it constantly for wonder and magic.',tags:['♯4','Film Music','Dream']},
+          {n:'Mixolydian (5th Mode)',d:'Major scale with a ♭7. Rock and blues territory. The scale of the dominant chord — used in virtually all blues-derived music.',tags:['♭7','Rock','Blues','Dominant']},
+          {n:'Aeolian (6th Mode)',d:'The natural minor scale. Dark, introspective, emotional. The default minor tonality.',tags:['= Natural Minor']},
+          {n:'Locrian (7th Mode)',d:'Minor scale with ♭2 and ♭5. Unstable, dissonant, theoretical. Rarely used melodically but important for half-diminished chord construction.',tags:['♭5','Diminished','Theoretical']},
+        ]
+      },
+      { id:'pentatonic', name:'Pentatonic Scale', type:'items',
+        intro:'Five-note scales that appear in virtually every musical culture on Earth — from West Africa to Japan, from the Scottish Highlands to the American South.',
+        items:[
+          {n:'Major Pentatonic',d:'Degrees 1–2–3–5–6 of the major scale. Remove the 4th and 7th. Bright, open, universally consonant. The scale of folk songs worldwide.',tags:['5 Notes','Universal','Folk']},
+          {n:'Minor Pentatonic',d:'Degrees 1–♭3–4–5–♭7. The blues and rock vocabulary. Add the ♭5 (blue note) for the full blues scale.',tags:['Blues','Rock','Lead Guitar']},
+          {n:'Global Pentatonics',d:'Japanese Yo scale, Celtic pentatonic, African Mbira tunings — each culture developed its own five-note vocabulary, often independently.',tags:['Cross-Cultural','World Music']},
+        ]
+      },
+      { id:'blues-scale', name:'Blues Scale', type:'items',
+        intro:'The blues scale is the minor pentatonic plus the "blue note" — the ♭5 (or tritone) that creates the characteristic bent, expressive sound of the blues.',
+        items:[
+          {n:'Structure',d:'1–♭3–4–♭5–5–♭7. Six notes. The ♭5 is the blue note — often bent or slid into rather than attacked directly.',tags:['6 Notes','Blue Note','♭5']},
+          {n:'Expressive Use',d:'The blue note creates tension against the underlying harmony. In performance, it\'s often bent toward the natural 5th — the slide between the two is where the blues lives.',tags:['Bending','Expression']},
+          {n:'In All Genres',d:'Blues scale vocabulary appears in jazz, rock, gospel, R&B, hip-hop, Afrobeats, and any music rooted in the African American musical tradition.',tags:['Universal','African American']},
+        ]
+      },
+      { id:'world-scales', name:'Non-Western Scales', type:'items',
+        intro:'Beyond the Western tonal system lies an enormous diversity of scale systems — each encoding a different cultural relationship to pitch, colour, and emotion.',
+        items:[
+          {n:'Arabic Maqamat',d:'A system of melodic modes, each with specific emotional associations, ornamentation styles, and appropriate times for performance. Quarter-tones are integral.',tags:['Quarter Tones','Maqam']},
+          {n:'Indian Ragas',d:'Each raga is a melodic framework with specific ascending and descending rules, emotional associations (rasa), and times of day or seasons for performance.',tags:['Rasa','Time of Day']},
+          {n:'Whole Tone Scale',d:'Six equally spaced whole steps. No semitones — no tonal gravity. Debussy used it for dream-like, ambiguous, floating harmonies.',tags:['Symmetric','Impressionism']},
+          {n:'Diminished Scale',d:'Alternating whole and half steps. Eight notes. Symmetric — repeats every minor third. Used in jazz over dominant and diminished chords.',tags:['Symmetric','Jazz']},
+        ]
+      },
+    ]
+  },
+
+  'harmony': {
+    icon:'🔗', title:'Harmony & Chord Theory', module:'Music Theory', accent:'var(--cyan)',
+    sub:'How notes stack, move, and create meaning together',
+    topics:[
+      { id:'intervals', name:'Intervals', type:'items',
+        intro:'An interval is the distance between two pitches. Every chord, every scale, every harmonic relationship is built from intervals.',
+        items:[
+          {n:'Perfect Intervals',d:'Unison (0), Perfect 4th (5 semitones), Perfect 5th (7 semitones), Octave (12). These intervals sound stable and "pure" — no beating between the notes.',tags:['Stable','Pure']},
+          {n:'Major & Minor Intervals',d:'2nds, 3rds, 6ths, and 7ths each have major and minor versions. Major = 1 semitone wider than minor. These intervals carry the emotional colour of chords.',tags:['Colour']},
+          {n:'Augmented & Diminished',d:'An augmented interval is 1 semitone wider than perfect/major. Diminished is 1 semitone narrower. The augmented 4th/diminished 5th (tritone) is the most dissonant interval.',tags:['Tritone','Tension']},
+        ]
+      },
+      { id:'triads', name:'Triads', type:'items',
+        intro:'A triad is a three-note chord built by stacking two thirds. Four types — each with a distinct emotional character.',
+        items:[
+          {n:'Major Triad',d:'Root + major 3rd + perfect 5th. Bright, stable, resolved. C major = C E G.',tags:['Bright','Stable']},
+          {n:'Minor Triad',d:'Root + minor 3rd + perfect 5th. Dark, melancholy, introspective. C minor = C E♭ G.',tags:['Dark','Emotional']},
+          {n:'Augmented Triad',d:'Root + major 3rd + augmented 5th. Tense, unstable, mysterious. Often used as a transition chord.',tags:['Tense','Transition']},
+          {n:'Diminished Triad',d:'Root + minor 3rd + diminished 5th. The most tense triad — wants urgently to resolve. Built on the 7th degree of the major scale.',tags:['Dissonant','Resolution']},
+        ]
+      },
+      { id:'seventh-chords', name:'7th Chords', type:'items',
+        intro:'Adding a fourth note — a 7th above the root — creates richer, more complex harmonies that are central to jazz, blues, and soul.',
+        items:[
+          {n:'Major 7th (Δ7)',d:'Major triad + major 7th. Lush, dreamy, sophisticated. The chord of smooth jazz and impressionist piano.',tags:['Lush','Jazz']},
+          {n:'Dominant 7th (V7)',d:'Major triad + minor 7th. The most harmonically active chord — creates the strongest urge to resolve to the tonic. The engine of harmonic motion.',tags:['Tension','Resolution']},
+          {n:'Minor 7th (m7)',d:'Minor triad + minor 7th. Soulful, mellow, blues-tinged. The ii chord in major harmony. Central to jazz, R&B, and funk.',tags:['Soulful','ii Chord']},
+          {n:'Half-Diminished (ø7)',d:'Diminished triad + minor 7th. The ii chord in minor harmony. A softer dissonance used in jazz ballads.',tags:['Minor Harmony']},
+          {n:'Fully Diminished (°7)',d:'Diminished triad + diminished 7th. Maximally tense — equally spaced minor thirds. Symmetric chord used in classical modulation.',tags:['Maximum Tension','Symmetric']},
+        ]
+      },
+      { id:'progressions', name:'Chord Progressions', type:'items',
+        intro:'A chord progression is a sequence of chords — the harmonic story that music tells over time.',
+        items:[
+          {n:'I–IV–V–I',d:'The most foundational progression in Western music. Tonic → Subdominant → Dominant → Tonic. The backbone of blues, country, rock, and gospel.',tags:['Blues','Gospel','Rock']},
+          {n:'ii–V–I',d:'The most important progression in jazz. ii (supertonic minor 7th) → V (dominant 7th) → I (major 7th). Creates a strong, directed sense of arrival.',tags:['Jazz','Functional']},
+          {n:'I–V–vi–IV',d:'"Axis progression." Used in thousands of pop songs. C–G–Am–F. The Axis Theory — four chords that underpin a huge percentage of contemporary pop.',tags:['Pop','Contemporary']},
+          {n:'12-Bar Blues',d:'I–I–I–I / IV–IV–I–I / V–IV–I–V. The structural framework of blues, R&B, early rock and roll, and jazz. 12 bars, endlessly repeated with variations.',tags:['Blues','Jazz','R&B']},
+        ]
+      },
+    ]
+  },
+
+  'ear-training': {
+    icon:'👂', title:'Ear Training & Aural Skills', module:'Music Theory', accent:'var(--cyan)',
+    sub:'Teaching the ear to hear what the mind knows',
+    topics:[
+      { id:'interval-rec', name:'Interval Recognition', type:'items',
+        intro:'The ability to identify the distance between two pitches by ear — the foundation of all aural musicianship.',
+        items:[
+          {n:'Reference Songs',d:'Every interval has a famous song that starts with it. Minor 2nd: "Jaws." Major 2nd: "Happy Birthday." Perfect 4th: "Here Comes the Bride." Perfect 5th: "Star Wars."',tags:['Memory Trick']},
+          {n:'Ascending vs Descending',d:'Train intervals in both directions. A falling major 3rd sounds completely different from a rising one — both must be recognised instantly.',tags:['Direction']},
+          {n:'Harmonic Intervals',d:'Two notes sounding simultaneously. Develop the ability to identify them from the quality of the "beat" or "vibration" between the pitches.',tags:['Simultaneous']},
+        ]
+      },
+      { id:'chord-id', name:'Chord Quality', type:'items',
+        intro:'Listening to a chord and identifying whether it is major, minor, augmented, diminished, or a 7th type.',
+        items:[
+          {n:'Major vs Minor',d:'The most fundamental distinction. Major sounds bright and complete. Minor sounds darker and unresolved. The difference is a single semitone on the 3rd.',tags:['Foundation']},
+          {n:'Dominant 7th',d:'That characteristic tense, bluesy sound — the major triad with a flattened 7th. Once heard clearly, it is unmistakable and instantly recognisable.',tags:['Tension','Blues']},
+          {n:'Chord Inversions',d:'The same chord with a different note in the bass. Hearing inversions teaches you to identify chords by their quality, not just their bass note.',tags:['Inversion','Bass']},
+        ]
+      },
+      { id:'dictation', name:'Melodic Dictation', type:'items',
+        intro:'Listening to a melody and writing it down precisely — one of the highest-level aural skills.',
+        items:[
+          {n:'The Process',d:'First identify the key. Then the rhythm. Then the contour (up/down). Then the specific intervals. Tackle each dimension separately before combining them.',tags:['Systematic']},
+          {n:'Solfège',d:'Do Re Mi Fa Sol La Ti Do — each syllable maps to a scale degree. Moveable Do (used in most ear training) makes every major scale use the same syllables regardless of key.',tags:['Solfège','Moveable Do']},
+          {n:'Transcription',d:'Listening to recordings and writing out what you hear — the practical application of dictation. Jazz musicians have transcribed solos for a century.',tags:['Transcription','Jazz Study']},
+        ]
+      },
+    ]
+  },
+
+  'form': {
+    icon:'🔄', title:'Form & Structure', module:'Music Theory', accent:'var(--cyan)',
+    sub:'The architecture of musical meaning across time',
+    topics:[
+      { id:'verse-chorus', name:'Verse–Chorus Form', type:'items',
+        intro:'The dominant form of popular music globally — a cycle of contrasting sections that creates narrative and emotional release.',
+        items:[
+          {n:'Verse',d:'Tells the story. Lyrics change each verse. Melodically and harmonically stable but opens outward. Sets up the emotional context for the chorus.',tags:['Narrative','Variable Lyrics']},
+          {n:'Pre-Chorus',d:'An optional transitional section that builds tension and anticipation before the chorus arrives. Creates the sense of "about to break."',tags:['Tension','Transition']},
+          {n:'Chorus',d:'The emotional peak. Repeated lyrics. The hook. Melodically higher or more intense than the verse. The part everyone remembers.',tags:['Hook','Repeated','Peak']},
+          {n:'Bridge',d:'Appears once — offers contrast in key, rhythm, or lyrical perspective. Refreshes the form before a final chorus. Often the emotional turning point.',tags:['Contrast','Pivot']},
+        ]
+      },
+      { id:'binary-ternary', name:'Binary & Ternary', type:'items',
+        intro:'The foundational structural principles underlying most musical forms across all traditions.',
+        items:[
+          {n:'Binary (AB)',d:'Two contrasting sections. Each is typically repeated. The first moves away from the tonic; the second returns. Found in Baroque dances — minuets, gavottes, sarabandes.',tags:['AB','Baroque']},
+          {n:'Ternary (ABA)',d:'Three sections: the first idea, a contrasting middle section, then a return of the first. Creates the satisfying sense of departure and homecoming.',tags:['ABA','Return']},
+          {n:'AABA (32-Bar Form)',d:'The standard form of the American Songbook — Gershwin, Cole Porter, Rodgers & Hart. Four 8-bar sections: verse / verse / bridge / verse. Still used in jazz.',tags:['Jazz Standard','Tin Pan Alley']},
+        ]
+      },
+      { id:'sonata', name:'Sonata Form', type:'items',
+        intro:'The sophisticated three-part form that organises most movements of Classical and Romantic symphonies, string quartets, and piano sonatas.',
+        items:[
+          {n:'Exposition',d:'Presents two contrasting themes — the first in the tonic key, the second in the dominant (or relative major). Establishes the conflict.',tags:['Two Themes','Conflict']},
+          {n:'Development',d:'Breaks apart the exposition themes, modulates through many keys, creates maximum tension. The intellectual heart of the movement.',tags:['Tension','Modulation']},
+          {n:'Recapitulation',d:'Returns both themes — now both in the tonic key. Resolves the conflict established in the exposition.',tags:['Resolution','Tonic']},
+          {n:'Coda',d:'An optional concluding section after the recapitulation — extends the sense of arrival and finality.',tags:['Conclusion']},
+        ]
+      },
+    ]
+  },
+
+  /* ── COMPOSITION ── */
+  'melody': {
+    icon:'🎵', title:'Crafting a Melody', module:'Composition', accent:'var(--violet)',
+    sub:'How to write a melody that listeners cannot forget',
+    topics:[
+      { id:'contour', name:'Melodic Contour', type:'items', intro:'The shape of a melody — how it rises and falls over time — is its most immediate expressive quality.',
+        items:[
+          {n:'Arch Shape',d:'Rises to a climax then descends. The most universally satisfying melodic shape — mirrors a breath, a sentence, a story.',tags:['Shape','Climax']},
+          {n:'Wave Shape',d:'Multiple rises and falls creating a flowing, undulating line. Creates ongoing momentum without a single dramatic peak.',tags:['Flow']},
+          {n:'Stepwise vs Leaping',d:'Stepwise motion (moving by 2nds) is smooth and singable. Leaps create drama and emphasis. Great melodies balance both.',tags:['Conjunct','Disjunct']},
+        ]
+      },
+      { id:'motif', name:'Motifs & Development', type:'items', intro:'A motif is a short, identifiable musical idea — a melodic seed from which entire compositions can grow.',
+        items:[
+          {n:'What Makes a Motif',d:'As few as 3–4 notes with a distinctive rhythm or interval pattern. Beethoven\'s four-note "fate" motif in Symphony No.5 is the most famous example.',tags:['3-4 Notes','Identity']},
+          {n:'Sequence',d:'Repeating a motif starting on a different pitch, moving up or down stepwise. Creates a sense of momentum and direction.',tags:['Repetition','Transposition']},
+          {n:'Inversion & Retrograde',d:'Playing a motif upside down (inversion) or backwards (retrograde). Compositional techniques that develop an idea without introducing new material.',tags:['Transformation']},
+        ]
+      },
+      { id:'phrase', name:'Phrase Structure', type:'items', intro:'Melodies are organised into phrases — musical sentences with clear beginnings, middles, and ends.',
+        items:[
+          {n:'Antecedent & Consequent',d:'"Question and answer." The antecedent phrase opens up (often ends on the dominant); the consequent closes down (returns to the tonic).',tags:['Question/Answer','Balance']},
+          {n:'Phrase Length',d:'Most popular and classical melodies use 4-bar or 8-bar phrases. Irregular phrase lengths (3, 5, 7 bars) create surprise and freshness.',tags:['Regularity','Surprise']},
+          {n:'Cadences',d:'The "punctuation" of a phrase. Perfect cadence (V–I) = full stop. Imperfect cadence (I–V) = comma. Interrupted cadence = surprise.',tags:['Cadence','Punctuation']},
+        ]
+      },
+    ]
+  },
+
+  'harm-lang': {
+    icon:'🔗', title:'Choosing Your Chords', module:'Composition', accent:'var(--violet)',
+    sub:'Building harmonic worlds that serve the music',
+    topics:[
+      { id:'functional-harmony', name:'Functional Harmony', type:'items', intro:'In functional harmony, chords have specific roles — tonic (home), subdominant (departure), dominant (tension) — and move in predictable but expressive ways.',
+        items:[
+          {n:'Tonic Function',d:'Chords built on I and vi. Home base — stable, resolved, restful. Music returns here to breathe and settle.',tags:['I','vi','Stability']},
+          {n:'Dominant Function',d:'Chords built on V and vii°. Maximum tension — creates the strongest pull back to the tonic. The dominant 7th is the most directional chord in tonal music.',tags:['V','V7','Tension']},
+          {n:'Subdominant Function',d:'Chords built on IV and ii. Departure from home — neither resolved nor maximally tense. Creates motion and direction without urgency.',tags:['IV','ii','Motion']},
+        ]
+      },
+      { id:'borrowed-chords', name:'Borrowed Chords', type:'items', intro:'Borrowing chords from the parallel minor (or major) adds unexpected colour and emotional depth.',
+        items:[
+          {n:'♭VII in a Major Key',d:'The chord built on the flattened seventh. Rock\'s favourite borrowed chord — adds a raw, anthemic, Mixolydian flavour. C major → B♭ major.',tags:['Rock','Mixolydian']},
+          {n:'iv in a Major Key',d:'Using a minor iv instead of a major IV. Bittersweet, melancholic — a touch of shadow in an otherwise bright key.',tags:['Minor Subdominant','Bittersweet']},
+          {n:'Picardy Third',d:'A major tonic chord at the end of a minor key piece. Sudden brightness and resolution after darkness — used by Bach constantly.',tags:['Minor to Major','Baroque']},
+        ]
+      },
+    ]
+  },
+
+  'counterpoint': {
+    icon:'🔄', title:'Two Voices, One Truth', module:'Composition', accent:'var(--violet)',
+    sub:'The discipline of independent voices in harmony',
+    topics:[
+      { id:'species', name:'Species Counterpoint', type:'items', intro:'Species counterpoint is the systematic study of how two voices can move together — teaching the rules of motion, consonance, and dissonance.',
+        items:[
+          {n:'First Species (1:1)',d:'Note against note. One note in the counterpoint for every note in the cantus firmus. Focus: consonance, motion types, avoiding parallels.',tags:['Note vs Note']},
+          {n:'Second Species (2:1)',d:'Two notes against one. Introduces passing tones on the weak beat — the first use of controlled dissonance.',tags:['Passing Tones']},
+          {n:'Fourth Species (Suspension)',d:'Tied notes that create dissonance on the strong beat, resolving down by step. The suspension — the most expressive contrapuntal device.',tags:['Suspension','4-3','7-6']},
+        ]
+      },
+      { id:'motion-types', name:'Types of Motion', type:'items', intro:'The relative movement between two voices defines the character and safety of each melodic moment.',
+        items:[
+          {n:'Contrary Motion',d:'Voices move in opposite directions. The safest and most independent-feeling motion — the gold standard of counterpoint.',tags:['Independence','Preferred']},
+          {n:'Oblique Motion',d:'One voice stays on the same note while the other moves. Creates a stable anchor against moving colour.',tags:['Static/Moving']},
+          {n:'Parallel Motion',d:'Both voices move in the same direction by the same interval. Parallel 5ths and octaves are forbidden in strict counterpoint — they destroy the sense of independence.',tags:['Avoid P5s','Rules']},
+        ]
+      },
+    ]
+  },
+
+  'song-structure': {
+    icon:'🏗️', title:'Form as Meaning', module:'Composition', accent:'var(--violet)',
+    sub:'Why structure is not a container — it is meaning itself',
+    topics:[
+      { id:'pop-form', name:'Pop & Song Form', type:'items', intro:'The architecture of a song is the skeleton that holds the emotional journey together.',
+        items:[
+          {n:'Intro',d:'Sets the atmosphere before the first vocal entry. Establishes tempo, key, and mood. Often returns as outro.',tags:['Opening']},
+          {n:'Verse → Pre-chorus → Chorus',d:'The most common Western pop arc. Verse tells the story; pre-chorus builds tension; chorus releases it.',tags:['Arc','Release']},
+          {n:'Post-Chorus & Outro',d:'The post-chorus extends the emotional peak. The outro winds down — or erupts one final time. Ending is as important as beginning.',tags:['Resolution']},
+        ]
+      },
+      { id:'classical-form', name:'Classical Forms', type:'items', intro:'Classical forms provide the intellectual architecture for extended musical thought.',
+        items:[
+          {n:'Theme & Variations',d:'A melody stated, then altered through different rhythms, harmonies, keys, and textures — while remaining recognisable. From Beethoven to Afrobeat drumming.',tags:['Development']},
+          {n:'Rondo (ABACABA)',d:'A recurring main theme alternates with contrasting episodes. The refrain creates familiarity; episodes create contrast and journey.',tags:['Refrain','Episodes']},
+          {n:'Suite',d:'A collection of contrasting movements — often dances. Baroque suites move through Allemande, Courante, Sarabande, Gigue. Each different tempo and character.',tags:['Multi-Movement']},
+        ]
+      },
+    ]
+  },
+
+  'orchestration': {
+    icon:'🎼', title:'Colour & Texture', module:'Composition', accent:'var(--violet)',
+    sub:'The art of writing for multiple instruments together',
+    topics:[
+      { id:'instrument-families', name:'Orchestral Families', type:'items', intro:'The symphony orchestra organises its instruments into four families — each with distinct tonal colour, range, and role.',
+        items:[
+          {n:'Strings',d:'Violins I & II, violas, cellos, double basses. The orchestra\'s foundation — capable of infinite gradation from whisper to thunder. Most versatile section.',tags:['Foundation','Versatile']},
+          {n:'Woodwinds',d:'Flutes, oboes, clarinets, bassoons. Individual character voices — each distinctly coloured. Often given melodic leads and chamber textures.',tags:['Melody','Colour']},
+          {n:'Brass',d:'Horns, trumpets, trombones, tuba. Power, brilliance, and warmth. Used for climaxes, fanfares, and the richest harmonic padding.',tags:['Power','Warmth']},
+          {n:'Percussion',d:'Timpani, snare, cymbals, mallet instruments, piano. Rhythmic drive, colour, and dramatic accent. The spine of the orchestra\'s pulse.',tags:['Rhythm','Drama']},
+        ]
+      },
+      { id:'blend-register', name:'Blend & Register', type:'items', intro:'Where you place a chord in pitch space, and which instruments play it, fundamentally changes its emotional effect.',
+        items:[
+          {n:'Doubling',d:'Two instruments playing the same pitch. Reinforces and blends — but can muffle individual character. Doubling at the octave adds brightness and weight.',tags:['Reinforcement']},
+          {n:'Register & Weight',d:'Low register = weight, darkness, foundation. High register = brilliance, lightness, transparency. Mid register = core warmth.',tags:['Range','Texture']},
+          {n:'Spacing',d:'Close voicing (notes clustered together) sounds dense. Open voicing (notes spread across wide intervals) sounds spacious and grand.',tags:['Voicing','Space']},
+        ]
+      },
+    ]
+  },
+
+  'process': {
+    icon:'✍️', title:'From Silence to Score', module:'Composition', accent:'var(--violet)',
+    sub:'The compositional process from first spark to finished work',
+    topics:[
+      { id:'spark', name:'The Creative Spark', type:'items', intro:'Every composition begins with something — a fragment, a feeling, a mistake. Learning to recognise and trust the spark is the first skill of a composer.',
+        items:[
+          {n:'Finding the Seed',d:'It might be a three-note motif hummed in the shower. A chord voicing you stumble onto. A rhythm tapped on a desk. The seed is not the composition — but everything grows from it.',tags:['Motif','Accident','Intuition']},
+          {n:'Working From Constraints',d:'Limitations are generative. "Write something using only three pitches" forces creativity. Many great works begin from self-imposed rules.',tags:['Constraints','Generative']},
+          {n:'Sketching',d:'Beethoven\'s sketchbooks are full of half-formed ideas, crossed out and revised. The first version is never the final one. Write freely, edit ruthlessly.',tags:['Drafts','Revision']},
+        ]
+      },
+      { id:'development', name:'Development & Editing', type:'items', intro:'Development is the craft of taking a seed idea and building it into something larger, richer, and more complete.',
+        items:[
+          {n:'Expanding a Motif',d:'Take your seed and ask: what if it went up instead of down? What if it were twice as slow? What if it were harmonised differently? Development is systematic questioning.',tags:['Variation','Transformation']},
+          {n:'Knowing When to Stop',d:'Editing is removing everything that is not the composition. Every note should earn its place. If a section is not doing something, cut it.',tags:['Economy','Clarity']},
+          {n:'The Role of the Unconscious',d:'Leave a piece unfinished and return to it. Sleep on it. Walk away. The brain continues working on compositional problems in the background.',tags:['Rest','Incubation']},
+        ]
+      },
+    ]
+  },
+
+  /* ── PERFORMANCE WAYS ── */
+  'playing-instruments': {
+    icon:'🎸', title:'Playing Musical Instruments', module:'Performance', accent:'var(--cyan)',
+    sub:'The art of making music through a physical instrument',
+    topics:[
+      { id:'first-contact', name:'Choosing Your Instrument', type:'items',
+        intro:'Your first instrument is not a lifetime sentence — but it is a profound choice. Each instrument opens a different door into music\'s architecture.',
+        items:[
+          {n:'What Draws You',d:'Sound before logic. Listen to recordings and find the sound that makes you lean in — the cello\'s warmth, the guitar\'s immediacy, the piano\'s completeness. Start there.',tags:['Instinct','Sound','Identity']},
+          {n:'Your Natural Access Point',d:'Guitar and piano are the most self-contained harmony instruments. Wind and brass demand breath and embouchure. Strings demand bow arm and left hand independence. Choose deliberately.',tags:['Harmony','Melody','Rhythm']},
+          {n:'Small vs Large Acquisition',d:'A student guitar, a digital piano, a used snare — a small acquisition is enough to begin. Professional instruments reward technical development that takes years. Start with access, upgrade with intention.',tags:['Beginner','Professional','Investment']},
+        ]
+      },
+      { id:'instrument-technique', name:'Technique is Everything', type:'items',
+        intro:'Technique is not separate from music — it is the physical ability to play what you hear in your mind. Without it, the gap between imagination and output never closes.',
+        items:[
+          {n:'Posture & Ergonomics',d:'Every instrument has an optimal physical relationship between player and instrument. Bad posture causes injury, limits technique, and costs tone. Learn correctly from the beginning.',tags:['Foundation','Injury Prevention']},
+          {n:'The First 100 Hours',d:'The first 100 hours of instrument study is the steepest learning curve. Expect physical discomfort — calluses, embouchure soreness, bow arm fatigue. This is the price of entry. Pay it.',tags:['Beginner','Commitment']},
+          {n:'Practice Methodology',d:'Isolate what is difficult. Play slowly. Use a metronome. Record yourself. The musician who practices intelligently for 30 minutes outperforms one who plays through pieces for 2 hours.',tags:['Deliberate Practice','Method']},
+        ]
+      },
+      { id:'ensemble-solo', name:'Solo vs Ensemble Playing', type:'items',
+        intro:'Both contexts demand completely different skills — one demands self-sufficiency; the other demands listening, restraint, and collective intelligence.',
+        items:[
+          {n:'Solo Performance',d:'When you play alone, you are responsible for every element — melody, harmony, rhythm, dynamics, narrative arc. The solo performer must be orchestra and soloist simultaneously.',tags:['Self-Contained','Complete']},
+          {n:'Ensemble Dynamics',d:'In a band or orchestra, your role is specific and your ears are as important as your hands. Playing too loud, too soft, or rushing the tempo disrupts the collective sound.',tags:['Listening','Restraint','Role']},
+          {n:'Improvisation Within a Group',d:'Jazz, blues, jam sessions — adding improvised lines to a group context requires knowing when to lead and when to support. Space is as important as notes.',tags:['Improvisation','Space','Support']},
+        ]
+      },
+      { id:'instrument-families', name:'Instrument Families', type:'items',
+        intro:'Every instrument family has its own learning path, physical demands, and musical role. Understanding where your instrument sits shapes how you develop.',
+        items:[
+          {n:'Strings (Bowed)',d:'Violin, viola, cello, double bass. Years of bow technique before beautiful tone. The most demanding of all families for a beginner — and among the most rewarding for a master.',tags:['Bow','Tone','Long Arc']},
+          {n:'Keyboards',d:'Piano is the most horizontally complete instrument — every note visible, every chord accessible. The universal starting point for music theory. Digital pianos make entry affordable.',tags:['Harmony','Theory','Universal']},
+          {n:'Woodwinds & Brass',d:'Saxophone, clarinet, trumpet, trombone. Breath is your bow. Embouchure — the shape of mouth and lips on the mouthpiece — takes months to develop but produces uniquely personal tone.',tags:['Breath','Embouchure','Character']},
+          {n:'Percussion',d:'Drums, djembe, marimba. Rhythm and coordination. The drummer\'s limbs become independent rhythmic voices — the most physically demanding coordination in music.',tags:['Coordination','Rhythm','Independence']},
+        ]
+      },
+    ]
+  },
+
+  'djaying': {
+    icon:'💿', title:'Disc Jockeying', module:'Performance', accent:'var(--violet)',
+    sub:'The art of performing with recorded music — selection, mix, and narrative',
+    topics:[
+      { id:'dj-foundations', name:'DJ Foundations', type:'items',
+        intro:'DJaying is not pressing play on a playlist. It is a live performance art that demands musical knowledge, technical skill, and an acute understanding of crowd psychology.',
+        items:[
+          {n:'The DJ as Performer',d:'A DJ curates a musical journey in real time — reading the room, building energy arcs, creating tension and release through track selection and mixing. The crowd is their instrument.',tags:['Live Performance','Curation','Real-Time']},
+          {n:'Equipment Overview',d:'Turntables (vinyl or CDJs), a DJ mixer, and headphones are the core setup. Controllers offer entry-level access. Each setup has its own learning curve and sonic character.',tags:['Turntables','CDJs','Controllers','Mixer']},
+          {n:'BPM & Key Awareness',d:'DJs must understand tempo (BPM) to beatmatch smoothly, and musical key to mix harmonically. Modern software displays both — but understanding them by ear is the professional standard.',tags:['BPM','Harmonic Mixing','Key']},
+        ]
+      },
+      { id:'beatmatching', name:'Beatmatching & Mixing', type:'items',
+        intro:'Beatmatching is the foundational technical skill — aligning two tracks so their beats fall simultaneously. It is the entry fee to DJ performance.',
+        items:[
+          {n:'Manual Beatmatching',d:'By ear — listening in headphones to the incoming track while the outgoing plays live, adjusting pitch/speed until both align. The traditional vinyl DJ skill. Takes months to master.',tags:['By Ear','Vinyl','Foundation']},
+          {n:'Sync Technology',d:'Modern software (Rekordbox, Serato, Traktor) can auto-sync BPM. Used skillfully it liberates the DJ for more creative decisions; used as a crutch it creates lifeless sets.',tags:['Software','Rekordbox','Serato']},
+          {n:'Transition Types',d:'Cut (instant switch), blend (gradual crossfade), filter transition, echo out, loop in. Each creates a different moment — the DJ\'s vocabulary of movement between tracks.',tags:['Cut','Blend','Filter','Loop']},
+        ]
+      },
+      { id:'set-building', name:'Building a Set', type:'items',
+        intro:'A DJ set is a composition across time — it has an intro, development, peaks, valleys, and an ending. The best DJs are composers of experience.',
+        items:[
+          {n:'Reading the Room',d:'The crowd tells you what they need. Too much energy too early burns them out. Too long in a low-energy zone loses them. The DJ reads and responds constantly.',tags:['Crowd Psychology','Real-Time','Adaptive']},
+          {n:'Energy Arc',d:'A classic arc: warm-up → build → peak → peak → breakdown → second peak → close. Deviating from expectation at the right moment creates the most powerful crowd reactions.',tags:['Energy','Arc','Peaks']},
+          {n:'Track Selection',d:'The most important DJ skill after the mix. Knowing an enormous catalogue of music — across tempos, keys, eras, and genres — is what separates a competent technician from an artist.',tags:['Catalogue','Knowledge','Curation']},
+        ]
+      },
+      { id:'turntablism', name:'Turntablism', type:'items',
+        intro:'Turntablism transforms the turntable from a playback device into a live instrument — scratching, beat juggling, and manipulation of the record as musical performance.',
+        items:[
+          {n:'Scratching',d:'Moving the record back and forth across the needle while manipulating the crossfader creates rhythmic and melodic scratch sounds. Baby scratch → forward scratch → transformer → chirp. A vocabulary of techniques.',tags:['Scratch','Technique','Hip-Hop']},
+          {n:'Beat Juggling',d:'Using two identical records to extend, re-arrange, and rhythmically manipulate a break beat in real time. The foundation of DJ competition culture — b-boy music on demand.',tags:['Break','Manipulation','Competition']},
+          {n:'Hip-Hop DJ Culture',d:'From Kool Herc isolating the break in the Bronx to DJ Premier\'s studio work — the hip-hop DJ is composer, curator, and performer. The scratch and the sample are original instruments.',tags:['Kool Herc','Premier','Culture','Foundation']},
+        ]
+      },
+    ]
+  },
+
+  /* ── PERFORMANCE ── */
+  'stage-presence': {
+    icon:'🎭', title:'Commanding the Room', module:'Performance', accent:'var(--gold)',
+    sub:'The physical and psychological grammar of live performance',
+    topics:[
+      { id:'body-language', name:'Body Language on Stage', type:'items', intro:'Before a single note is played, the audience is reading your body. Every posture, gesture, and movement communicates.',
+        items:[
+          {n:'Posture & Grounding',d:'Stand with feet hip-width apart, knees soft, spine tall. A grounded stance communicates confidence and gives your instrument optimal resonance.',tags:['Foundation','Confidence']},
+          {n:'Eye Contact',d:'The most powerful connection tool in live performance. Look at individuals in the audience — not over their heads. Make each person feel it was played for them.',tags:['Connection','Intimacy']},
+          {n:'Movement & Stillness',d:'Movement should be motivated by the music. Stillness can be as powerful as motion — a held moment of silence with stillness has tremendous dramatic weight.',tags:['Intention','Drama']},
+        ]
+      },
+      { id:'energy-management', name:'Energy Management', type:'items', intro:'A performance is a sustained act of physical and psychological expenditure — managing your energy intelligently makes the difference between a good show and a great one.',
+        items:[
+          {n:'Pre-Show Routine',d:'Warm up physically and mentally. Arrive early. Know your first action — the moment you step onstage is not the time to figure out your opening.',tags:['Preparation']},
+          {n:'Pacing a Set',d:'Plan the emotional arc of your set like a composition. Build to peaks, create valleys for rest, save something for the finale.',tags:['Arc','Set Design']},
+          {n:'Recovery',d:'When something goes wrong on stage — and it will — the audience almost never notices unless your reaction tells them. Keep moving. Recovery is part of performance.',tags:['Resilience','Real-Time']},
+        ]
+      },
+    ]
+  },
+
+  'tech-practice': {
+    icon:'⚙️', title:'The Architecture of Mastery', module:'Performance', accent:'var(--gold)',
+    sub:'How deliberate practice builds permanent technical ability',
+    topics:[
+      { id:'deliberate-practice', name:'Deliberate Practice', type:'items', intro:'Practice is not repetition — it is targeted problem-solving. Research shows that the quality of practice, not the quantity, determines mastery.',
+        items:[
+          {n:'Identify the Problem',d:'Practice the measure or passage that is difficult — not the ones that feel comfortable. Most musicians spend 90% of practice time on the 10% they already know.',tags:['Targeted','Focused']},
+          {n:'Slow Practice',d:'Playing slowly is not easy practice. It is rigorous practice — every note, every transition, every articulation examined under a microscope.',tags:['Slow','Detail']},
+          {n:'Metronome Work',d:'The metronome does not keep your tempo — it reveals the truth about your tempo. Practice gradually accelerating a difficult passage to internalize the rhythm.',tags:['Rhythm','Internalize']},
+        ]
+      },
+      { id:'technique-building', name:'Technical Exercises', type:'items', intro:'Technical exercises are not music — but they build the physical vocabulary that makes music fluent.',
+        items:[
+          {n:'Scales & Arpeggios',d:'Covering all 12 major and minor keys — in multiple octaves, at multiple tempos, in multiple rhythmic patterns. Technical and theoretical knowledge built simultaneously.',tags:['All Keys','Foundation']},
+          {n:'Etudes',d:'Studies written specifically to develop technical challenges — Chopin Etudes, Czerny, Kreutzer, Hanon. Musical pieces that solve specific problems.',tags:['Études','Technical Music']},
+          {n:'Sight-Reading',d:'Reading music at first sight — the professional musician\'s fundamental literacy skill. Read new music daily. Always. Even a little.',tags:['Literacy','Daily Practice']},
+        ]
+      },
+    ]
+  },
+
+  'improvisation': {
+    icon:'⚡', title:'Thinking in Real Time', module:'Performance', accent:'var(--gold)',
+    sub:'Composition at the speed of thought',
+    topics:[
+      { id:'improv-vocabulary', name:'Building Vocabulary', type:'items', intro:'Improvisation is fluency — you can only say what you know. Building a melodic and harmonic vocabulary is the first step.',
+        items:[
+          {n:'Transcription',d:'Learning solos by ear — note for note. Charlie Parker, Coltrane, Fela, Miles Davis. Their phrases become part of your vocabulary, which you then personalise.',tags:['Transcription','Language']},
+          {n:'Licks & Patterns',d:'A "lick" is a short, practised phrase that fits a harmonic context. Build a repertoire of licks, then learn to connect and vary them in real time.',tags:['Vocabulary','Phrases']},
+          {n:'Motivic Improvisation',d:'Take a short motif and develop it through the chord changes — transforming, inverting, extending it. Creates coherent, compositional solos rather than random scale runs.',tags:['Development','Coherence']},
+        ]
+      },
+      { id:'improv-contexts', name:'Improvisation Contexts', type:'items', intro:'Every musical tradition improvises — each with its own rules, vocabulary, and expressive goals.',
+        items:[
+          {n:'Jazz Improvisation',d:'Navigating chord changes with melodic lines drawn from bebop vocabulary, blues, pentatonic, and modal scales. Both harmonic and rhythmic freedom.',tags:['Changes','Bebop']},
+          {n:'Blues Improvisation',d:'Call and response, bending, vibrato, pentatonic vocabulary in conversation with the 12-bar form. Raw, emotional, direct communication.',tags:['Blues Scale','Bending']},
+          {n:'West African Griot Tradition',d:'Improvised storytelling in song — the griot improvises over a fixed rhythmic ostinato on kora or balafon. History, praise, and commentary improvised in the moment.',tags:['Griot','Storytelling','Africa']},
+        ]
+      },
+    ]
+  },
+
+  'ensemble': {
+    icon:'👥', title:'Listening as a Skill', module:'Performance', accent:'var(--gold)',
+    sub:'How great musicians make each other sound better',
+    topics:[
+      { id:'listening', name:'Active Listening', type:'items', intro:'In a group, your most important instrument is your ears. Playing well alone is technique — playing well together is musicianship.',
+        items:[
+          {n:'The Rhythm Section Lock',d:'Bass and drums must feel like one organism. The relationship between the kick drum and the bass guitar defines the groove of every track above it.',tags:['Rhythm Section','Groove']},
+          {n:'Dynamic Conversation',d:'Great ensemble playing is a conversation — you respond to what others play. Listen for moments to back off, to push, to support, to contrast.',tags:['Conversation','Response']},
+          {n:'Space',d:'What you choose not to play is as important as what you play. Space creates contrast, allows others to be heard, and makes your entries more impactful.',tags:['Rest','Space','Breathing']},
+        ]
+      },
+    ]
+  },
+
+  'recording': {
+    icon:'🎙️', title:'The Studio as Instrument', module:'Performance', accent:'var(--gold)',
+    sub:'Understanding the recorded environment',
+    topics:[
+      { id:'signal-chain', name:'Signal Chain', type:'items', intro:'The path your sound takes from instrument to recording — every element in the chain shapes the final result.',
+        items:[
+          {n:'Instrument → Preamp',d:'The microphone or pickup captures the sound. The preamp boosts it to line level. The quality of both defines the character of everything downstream.',tags:['Capture','Foundation']},
+          {n:'A/D Conversion',d:'Analogue-to-digital conversion transforms continuous electrical signals into binary data. Sample rate and bit depth determine the resolution of the digital recording.',tags:['Digital','Sample Rate']},
+          {n:'DAW Recording',d:'The digital audio workstation is where recordings live, are edited, layered, and mixed. Protools, Logic, Ableton, Reaper — each a different environment for the same process.',tags:['DAW','Editing']},
+        ]
+      },
+      { id:'mic-placement', name:'Microphone Placement', type:'items', intro:'Moving a microphone a few centimetres changes the character of a recording completely.',
+        items:[
+          {n:'On-Axis vs Off-Axis',d:'Pointing the mic directly at the source (on-axis) gives maximum brightness and clarity. Angling off-axis rolls off high frequencies, creating a warmer, more natural sound.',tags:['Angle','Character']},
+          {n:'Room Sound',d:'Recording in a live room captures natural reverb. Moving the microphone further from the source increases the room-to-source ratio — more ambience, less definition.',tags:['Ambience','Distance']},
+          {n:'ORTF Stereo',d:'Two cardioid mics at 17cm apart and 110° angle — captures a natural stereo image that correlates with human hearing. The gold standard for stereo acoustic instrument recording.',tags:['Stereo','Acoustic']},
+        ]
+      },
+    ]
+  },
+
+  'perf-mind': {
+    icon:'🧠', title:"Nerves, Focus & Flow", module:'Performance', accent:'var(--gold)',
+    sub:'The psychology of peak performance under pressure',
+    topics:[
+      { id:'anxiety', name:'Performance Anxiety', type:'items', intro:'Performance anxiety is not weakness — it is your body preparing for something important. Learning to work with it, not against it, is a skill.',
+        items:[
+          {n:'The Physiology',d:'Adrenaline raises heart rate, heightens senses, and prepares muscles for action. The same response that causes shaking hands also creates the heightened presence that makes performances electric.',tags:['Adrenaline','Physiology']},
+          {n:'Reframing',d:'"I am terrified" and "I am excited" are physiologically identical — only the interpretation differs. Research shows that reframing nerves as excitement measurably improves performance.',tags:['Mindset','Reframing']},
+          {n:'Breathing',d:'Slow, deep diaphragmatic breathing activates the parasympathetic nervous system and reduces acute anxiety. Practice it before every performance.',tags:['Breath','Parasympathetic']},
+        ]
+      },
+      { id:'flow-state', name:'Flow State', type:'items', intro:'Flow — Csikszentmihalyi\'s concept of optimal experience — is the state where challenge and skill are perfectly matched, and self-consciousness dissolves.',
+        items:[
+          {n:'Conditions for Flow',d:'Clear goals. Immediate feedback. The challenge slightly exceeds current skill level. No distractions. These conditions create the environment in which flow becomes possible.',tags:['Challenge-Skill','Goals']},
+          {n:'Pre-Performance Ritual',d:'A consistent ritual — same warm-up, same order of preparation — creates a psychological trigger that signals to the brain: "it is time to perform."',tags:['Ritual','Consistency']},
+          {n:'Trusting the Body',d:'After enough practice, the body knows what to do. The worst thing you can do in performance is think consciously about technique. Trust the preparation.',tags:['Automaticity','Trust']},
+        ]
+      },
+    ]
+  },
+
+  'singing': {
+    icon:'🎤', title:'Singing & Vocal Progression', module:'Performance', accent:'var(--green)',
+    sub:'The human voice — the original and most universal instrument',
+    topics:[
+      { id:'breath-support', name:'Breath Support', type:'items',
+        intro:'The voice is a wind instrument. The breath is not merely air — it is the engine, the bow, the pressure system that turns a physical organ into music.',
+        items:[
+          {n:'Diaphragmatic Breathing',d:'The diaphragm descends on inhale, expanding the lower lungs and belly. This is not chest breathing — the chest remains relatively still. The reservoir of breath lives below.',tags:['Foundation','Technique']},
+          {n:'Appoggio',d:'The Italian term for the "leaning" of breath against the vocal folds — maintaining steady, pressurised airflow while the folds resist. The basis of classical singing technique.',tags:['Classical','Resistance']},
+          {n:'Breath Management on Phrases',d:'Plan your breathing like a sentence — breathe at natural phrase breaks. A vocalist who runs out of breath on a climactic phrase loses the emotional moment.',tags:['Phrasing','Planning']},
+        ]
+      },
+      { id:'vocal-registers', name:'Vocal Registers', type:'vocal-prog',
+        intro:'The voice is not one thing — it is several distinct resonance systems that blend, break, and mix across the pitch range.',
+        registers:[
+          {n:'Chest Voice',d:'Full, powerful sound in the lower-middle range. Feels like resonance in the chest. The speaking voice register. Gospel, soul, and pop belting live here.',prog:85,color:'var(--hot)'},
+          {n:'Head Voice',d:'Lighter, higher register — resonance shifts into the head and sinuses. Softer, more ethereal quality. Classical sopranos and tenors use head voice for their upper range.',prog:70,color:'var(--elec)'},
+          {n:'Mix Voice',d:'A blend of chest and head registers — the key technique for contemporary singers. Allows power and brightness in the upper middle range without the "break."',prog:65,color:'var(--violet)'},
+          {n:'Falsetto',d:'A disconnected head register — light, breathy, usually male. Justin Timberlake, Prince, Smokey Robinson. Falsetto above the break, mix below — the split point differs per voice.',prog:60,color:'var(--cyan)'},
+          {n:'Vocal Fry',d:'The lowest register — a crackling, gravelly sound produced by loose, floppy vocal folds. Used as a stylistic device in R&B, indie pop, and contemporary singing.',prog:45,color:'var(--gold)'},
+        ]
+      },
+      { id:'runs-riffs', name:'Runs, Riffs & Melisma', type:'items',
+        intro:'A melisma is the singing of multiple notes on a single syllable — the defining vocal ornament of Gospel, R&B, soul, and many world vocal traditions.',
+        items:[
+          {n:'Melisma in Gospel & R&B',d:'The free, expressive decoration of a melody with rapid note passages — runs over a single vowel. Whitney Houston, Mariah Carey, and Beyoncé define the contemporary standard.',tags:['Gospel','R&B','Ornament']},
+          {n:'Runs & Turns',d:'A "run" is a rapid ascending or descending passage. A "turn" ornaments a single note with its upper and lower neighbours. Practice slowly, then accelerate.',tags:['Technique','Practice']},
+          {n:'Cultural Melisma',d:'Arabic, Indian classical, Flamenco, and West African vocal traditions all employ extensive ornamentation. Each has its own vocabulary of specific turns and inflections.',tags:['World Vocals','Ornament']},
+        ]
+      },
+      { id:'vocal-health', name:'Vocal Health', type:'items',
+        intro:'The voice is the only instrument you cannot replace. Its maintenance is not optional — it is the foundation of a sustainable singing life.',
+        items:[
+          {n:'Hydration',d:'The vocal folds vibrate best when lubricated. Drink water throughout the day — not just before singing. Coffee, alcohol, and smoke dry the folds.',tags:['Water','Daily Habit']},
+          {n:'Warm-up & Cool-down',d:'Never sing full voice cold. Begin with gentle sirens, lip trills, and humming. At the end of a demanding session, cool down with soft, easy phonation.',tags:['Protection','Warm-up']},
+          {n:'Vocal Rest',d:'Silence is recovery. After intense vocal use — a show, a long recording session — vocal rest is as important as sleep after exercise. Speak minimally. Whisper never.',tags:['Rest','Recovery']},
+          {n:'Avoiding Damage',d:'Screaming, shouting, and singing through illness damages the vocal folds. Nodules, polyps, and haemorrhages end careers. Listen to your body — any pain means stop.',tags:['Injury Prevention']},
+        ]
+      },
+      { id:'vocal-styles', name:'Genre Vocal Styles', type:'items',
+        intro:'Every genre has a distinct vocal aesthetic — a vocabulary of tone, technique, and ornamentation that signals membership of a tradition.',
+        items:[
+          {n:'Gospel & Soul',d:'Full chest voice, powerful belting, extensive melisma, call-and-response, emotional rawness. Aretha Franklin is the defining reference. The tradition from which R&B descended.',tags:['Gospel','Belting','Soul']},
+          {n:'Pop & Contemporary',d:'Mix voice for power without pushing. Breathy intimacy in verses, full brightness in choruses. Microphone technique and studio production are integral to the sound.',tags:['Mix','Contemporary']},
+          {n:'Jazz Vocal',d:'Rhythmic flexibility, conversational phrasing, interpretation over presentation. Great jazz singers bend notes, reshape melodies, and improvise like instrumentalists.',tags:['Jazz','Interpretation','Improv']},
+          {n:'Classical Voice',d:'Full resonance, pure tone, legato line, text clarity, and dynamic range without amplification. The operatic tradition requires years of dedicated training.',tags:['Opera','Classical','Legato']},
+          {n:'Afrobeats & High Life',d:'Conversational, speech-like delivery blended with melodic hooks. Often layers multiple vocal tracks. Language (Yoruba, Twi, Igbo, Patois) is part of the musical texture.',tags:['Afrobeats','Multilingual','Layering']},
+        ]
+      },
+    ]
+  },
+
+  'dancing': {
+    icon:'💃', title:'Dancing & Choreography', module:'Performance', accent:'var(--hot)',
+    sub:'The body as instrument — movement as musical expression',
+    topics:[
+      { id:'music-movement', name:'Music & Movement', type:'items',
+        intro:'Dance and music are not two separate arts that occasionally meet — they are the same impulse expressed through different bodies.',
+        items:[
+          {n:'Musicality in Dance',d:'Musicality is the dancer\'s ability to interpret what is heard — to make the body answer the music rather than simply move to a beat. It is the highest quality in a dancer.',tags:['Interpretation','Feeling']},
+          {n:'Rhythm & Body',d:'Every musical element — metre, syncopation, accent, phrasing, dynamics — can be expressed through the body. The dancer translates sound into space and time.',tags:['Rhythm','Translation']},
+          {n:'Groove & Feel',d:'The physical sensation of music\'s pulse in the body — the head nod, the shoulder roll, the weight shift. Before choreography comes groove.',tags:['Groove','Pulse','Natural Motion']},
+        ]
+      },
+      { id:'afrobeats-moves', name:'Afrobeats Movement', type:'items',
+        intro:'Afrobeats dance forms are some of the most globally influential movement languages of the 21st century — rooted in West and Central African traditions.',
+        items:[
+          {n:'Shaku Shaku',d:'A Lagos-originating street dance popularised around 2017. Loose-limbed, high-energy, signature hand movements. Part of a lineage of Nigerian street dances.',tags:['Lagos','Street','Nigeria']},
+          {n:'Zanku',d:'"Legwork" — lower body-focused, intricate foot and leg patterns. Associated with Zlatan Ibile. A evolution of the agbada dance tradition into contemporary form.',tags:['Legwork','Contemporary','Lagos']},
+          {n:'Amapiano — Umlando',d:'South African amapiano\'s signature dance — fluid, sliding, low-to-the-ground with emphatic beats. Originated in Umlando\'s viral dance challenge. Combines isigqi rhythm with body isolation.',tags:['South Africa','Amapiano','Viral']},
+          {n:'Azonto',d:'Ghanaian dance form — mimics everyday activities (washing, driving, farming) in rhythm with the music. Full-body, fluid, comedic, expressive.',tags:['Ghana','Highlife','Full Body']},
+        ]
+      },
+      { id:'hip-hop-dance', name:'Hip-Hop Dance Foundation', type:'items',
+        intro:'Hip-Hop dance is inseparable from Hip-Hop music — born in the same South Bronx streets as the music, it is a complete physical culture.',
+        items:[
+          {n:'Breaking (B-Boying)',d:'The original Hip-Hop dance — toprock, downrock (footwork), freezes, and power moves. A competitive, improvisational form rooted in funk and soul dance.',tags:['Breaking','B-Boy','Foundational']},
+          {n:'Popping & Locking',d:'West Coast funk styles — popping (muscle contractions to the beat) and locking (freezing in exaggerated poses). Michael Jackson absorbed both into his iconic style.',tags:['Funk','West Coast','Muscle Control']},
+          {n:'Freestyle',d:'Improvised movement that responds in real time to the music. The most direct form of musical translation — pure musicality expressed through the body.',tags:['Improvisation','Musicality']},
+        ]
+      },
+      { id:'choreography', name:'Stage Choreography', type:'items',
+        intro:'Choreography is composition in movement — the deliberate design of where bodies go, when, and how, to serve the music and the performance.',
+        items:[
+          {n:'Spacing & Formation',d:'How performers are arranged on stage. Formation changes signal structural shifts in the music — a chorus landing with a formation change amplifies the musical moment.',tags:['Formation','Visual Structure']},
+          {n:'Synchronisation',d:'Multiple dancers moving as one — synchronisation requires internalising both the music and the choreography until both are automatic.',tags:['Sync','Group Performance']},
+          {n:'Counter-Choreography',d:'Dancers deliberately moving against each other or against the beat — creates visual tension and complexity that parallels musical counterpoint.',tags:['Contrast','Tension']},
+          {n:'Improvised vs Choreographed',d:'The best live performances blend set choreography with improvised moments. Pre-planned structure gives confidence; improvisation gives aliveness.',tags:['Blend','Spontaneity']},
+        ]
+      },
+      { id:'body-musicality', name:'Body Musicality', type:'items',
+        intro:'Body musicality is the ability to express musical nuance — dynamics, phrasing, articulation — through physical movement rather than sound.',
+        items:[
+          {n:'Dynamics in Movement',d:'A soft musical passage expressed as soft, contained, slow movement. A forte accent expressed as a sharp, decisive physical gesture. The body mirrors the music\'s dynamic range.',tags:['Dynamics','Mirror']},
+          {n:'Phrasing',d:'A musical phrase has a beginning, direction, and arrival. A movement phrase does too. Great dancers breathe movement phrases the way great singers breathe melodic ones.',tags:['Phrasing','Breathing']},
+          {n:'Musical Instruments in Movement',d:'Musicians who also move — guitarists, vocalists, pianists — bring their instrument\'s movement vocabulary into performance. Strumming, bowing, and keyboard gesture all have physical expressiveness worth cultivating.',tags:['Performers','Gesture']},
+        ]
+      },
+    ]
+  },
+
+};
+
+/* ═══════════════════════════════════════════════════
+   OVERLAY ENGINE
+═══════════════════════════════════════════════════ */
+let cdoActiveTopicId = null;
+let cdoCurrentCard   = null;
+
+function openCDO(cardId) {
+  const data = CARD_DATA[cardId];
+  if (!data) return;
+  cdoCurrentCard = data;
+
+  /* header */
+  document.getElementById('cdoBcModule').textContent  = data.module;
+  document.getElementById('cdoBcCard').textContent    = data.title;
+  document.getElementById('cdo-accent-bar').style.background = data.accent;
+
+  /* sidebar */
+  document.getElementById('cdoIcon').textContent      = data.icon;
+  document.getElementById('cdoCardTitle').textContent = data.title;
+  document.getElementById('cdoCardSub').textContent   = data.sub;
+
+  const list = document.getElementById('cdoTopicList');
+  list.innerHTML = '';
+  data.topics.forEach((t, i) => {
+    const el = document.createElement('div');
+    el.className = 'cdo-topic' + (i === 0 ? ' active' : '');
+    el.innerHTML = `<span class="cdo-topic-num">${String(i+1).padStart(2,'0')}</span><span class="cdo-topic-name">${t.name}</span>`;
+    el.addEventListener('click', () => {
+      list.querySelectorAll('.cdo-topic').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      renderCDOContent(t, data.accent);
+    });
+    list.appendChild(el);
+  });
+
+  /* render first topic */
+  renderCDOContent(data.topics[0], data.accent);
+
+  document.getElementById('cdo').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCDO() {
+  document.getElementById('cdo').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function renderCDOContent(topic, accent) {
+  const el = document.getElementById('cdo-content');
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(10px)';
+
+  let html = `
+    <div class="cdo-topic-head">
+      <div class="cdo-topic-eye" style="color:${accent}">${cdoCurrentCard.module} // ${cdoCurrentCard.title}</div>
+      <div class="cdo-topic-title" style="color:${accent}">${topic.name}</div>
+      ${topic.intro ? `<div class="cdo-topic-intro">${topic.intro}</div>` : ''}
+    </div>`;
+
+  if (topic.type === 'staff-diagram') {
+    html += renderStaffDiagram();
+    (topic.sections || []).forEach(s => {
+      html += `<div class="cdo-section"><div class="cdo-sec-title">${s.t}</div><div class="cdo-sec-body">${s.b}</div></div>`;
+    });
+
+  } else if (topic.type === 'items') {
+    html += `<div class="cdo-items">`;
+    (topic.items || []).forEach(item => {
+      html += `<div class="cdo-item">
+        <div class="cdo-item-name">${item.n}</div>
+        <div class="cdo-item-desc">${item.d}</div>
+        ${item.tags ? `<div class="cdo-item-tags">${item.tags.map(t=>`<span class="cdo-itag">${t}</span>`).join('')}</div>` : ''}
+      </div>`;
+    });
+    html += `</div>`;
+
+  } else if (topic.type === 'vocal-prog') {
+    html += `<div class="cdo-section"><div class="cdo-sec-title">Register Map</div></div>`;
+    (topic.registers || []).forEach(r => {
+      html += `<div class="cdo-prog-row">
+        <div class="cdo-prog-label">${r.n}</div>
+        <div class="cdo-prog-bar"><div class="cdo-prog-fill" style="width:${r.prog}%;background:linear-gradient(90deg,${r.color}55,${r.color})"></div></div>
+        <div class="cdo-prog-val">${r.prog}%</div>
+      </div>
+      <div class="cdo-item" style="margin-bottom:.45rem">
+        <div class="cdo-item-name" style="font-size:.85rem">${r.n}</div>
+        <div class="cdo-item-desc">${r.d}</div>
+      </div>`;
+    });
+  }
+
+  el.innerHTML = html;
+
+  requestAnimationFrame(() => {
+    el.style.transition = 'opacity .38s ease, transform .38s ease';
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0)';
+  });
+}
+
+function renderStaffDiagram() {
+  return `<div class="cdo-staff-wrap">
+    <svg viewBox="0 0 600 160" xmlns="http://www.w3.org/2000/svg" style="height:160px">
+      <!-- staff lines -->
+      ${[30,50,70,90,110].map(y=>`<line x1="60" y1="${y}" x2="580" y2="${y}" stroke="rgba(0,180,255,.22)" stroke-width="1.5"/>`).join('')}
+      <!-- treble clef path (simplified) -->
+      <text x="62" y="102" font-size="88" fill="rgba(0,180,255,.35)" font-family="serif">𝄞</text>
+      <!-- notes C D E F G A B C with labels -->
+      ${[
+        {x:140,y:127,label:'C',ledger:true},{x:190,y:117,label:'D'},{x:240,y:110,label:'E'},
+        {x:290,y:100,label:'F'},{x:340,y:90,label:'G'},{x:390,y:80,label:'A'},
+        {x:440,y:70,label:'B'},{x:490,y:60,label:'C\'',ledger2:true}
+      ].map(n=>`
+        ${n.ledger?`<line x1="${n.x-12}" y1="127" x2="${n.x+12}" y2="127" stroke="rgba(0,180,255,.3)" stroke-width="1.5"/>`:''}
+        ${n.ledger2?`<line x1="${n.x-12}" y1="50" x2="${n.x+12}" y2="50" stroke="rgba(0,180,255,.3)" stroke-width="1.5"/>`:''}
+        <ellipse cx="${n.x}" cy="${n.y}" rx="10" ry="7" fill="rgba(0,200,255,.75)" transform="rotate(-15,${n.x},${n.y})"/>
+        <line x1="${n.x+10}" y1="${n.y}" x2="${n.x+10}" y2="${n.y-40}" stroke="rgba(0,200,255,.6)" stroke-width="1.5"/>
+        <text x="${n.x}" y="${n.y+24}" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(0,200,255,.55)">${n.label}</text>
+      `).join('')}
+      <!-- pitch label -->
+      <text x="60" y="150" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(0,140,200,.4)" letter-spacing="2">TREBLE CLEF — C MAJOR SCALE</text>
+    </svg>
+  </div>`;
+}
+
+/* ═══════════════════════════════════════════════════
+   CLICK DELEGATION — all cards open the overlay
+═══════════════════════════════════════════════════ */
+const CARD_ID_MAP = {
+  /* theory */
+  'Notation':       'notation',
+  'Rhythm':         'rhythm',
+  'Scales':         'scales',
+  'Harmony &':      'harmony',
+  'Ear Training':   'ear-training',
+  'Form &':         'form',
+  /* composition */
+  'Crafting':       'melody',
+  'Choosing Your':  'harm-lang',
+  'Two Voices':     'counterpoint',
+  'Form as':        'song-structure',
+  'Colour &':       'orchestration',
+  'Silence to':     'process',
+  /* performance */
+  'Commanding':     'stage-presence',
+  'Architecture':   'tech-practice',
+  'Thinking in':    'improvisation',
+  'Listening as':   'ensemble',
+  'Studio as':      'recording',
+  'Nerves':         'perf-mind',
+  'Singing &':      'singing',
+  'Dancing &':      'dancing',
+};
+
+document.addEventListener('click', e => {
+  const card = e.target.closest('.theory-block, .comp-block, .perf-block');
+  if (!card) return;
+  const titleEl = card.querySelector('.tb-title, .cb-title, .pb-title');
+  if (!titleEl) return;
+  const title = titleEl.textContent;
+  for (const [key, id] of Object.entries(CARD_ID_MAP)) {
+    if (title.includes(key)) { openCDO(id); return; }
+  }
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeCDO();
+});
+
+const WORKS=[
+  {emoji:'🎷',genre:'Jazz Composition',title:'Blue Meridian',artist:'Aisha Nkosi',tags:['comp','perf','rec'],bg:'rgba(0,150,255,.08)'},
+  {emoji:'🎸',genre:'Rock Arrangement',title:'Fault Lines',artist:'Marcus Teel',tags:['comp','perf'],bg:'rgba(255,107,53,.06)'},
+  {emoji:'🥁',genre:'Afrobeats Production',title:"Owó L'ówó",artist:'Temi Adewale',tags:['comp','rec'],bg:'rgba(240,192,64,.06)'},
+  {emoji:'🎹',genre:'Classical Piece',title:'Nocturne No.3 in D♭',artist:'Sasha Volkov',tags:['comp','perf','rec'],bg:'rgba(136,85,255,.06)'},
+  {emoji:'🎤',genre:'Vocal Performance',title:'Still Burning',artist:'Lena Osei',tags:['perf','rec'],bg:'rgba(0,229,160,.06)'},
+  {emoji:'🎻',genre:'String Quartet',title:'Harmattan Suite',artist:'Kwame Ensemble',tags:['comp','perf','rec'],bg:'rgba(0,200,255,.06)'},
+  {emoji:'🎛️',genre:'Electronic',title:'Circuit Garden',artist:'DJ Parallax',tags:['comp','rec'],bg:'rgba(255,80,150,.06)'},
+  {emoji:'🪕',genre:'World Fusion',title:'Kora & Cello',artist:'Nadia Ibrahim',tags:['comp','perf'],bg:'rgba(136,85,255,.05)'},
+];
+(function buildFinished(){
+  const col=document.getElementById('showcaseCol');
+  const tl={comp:'Composition',perf:'Performance',rec:'Recording'};
+  WORKS.forEach(w=>{col.innerHTML+=`<div class="work-card"><div class="work-img" style="background:${w.bg}"><span>${w.emoji}</span><div class="play-icon">▶</div></div><div class="work-body"><div class="work-genre">${w.genre}</div><div class="work-title">${w.title}</div><div class="work-artist">${w.artist}</div><div class="work-tags">${w.tags.map(t=>`<span class="wtag ${t}">${tl[t]}</span>`).join('')}</div></div></div>`;});
+  document.getElementById('finishedR').innerHTML=`
+    <div class="fcard"><div class="fcard-title">GRADUATES 2024–25</div><div class="grad-stats"><div class="gstat"><div class="gstat-val" style="color:var(--cyan)">284</div><div class="gstat-lbl">Students</div></div><div class="gstat"><div class="gstat-val" style="color:var(--gold)">142</div><div class="gstat-lbl">Works</div></div><div class="gstat"><div class="gstat-val" style="color:var(--green)">91%</div><div class="gstat-lbl">Completion</div></div></div></div>
+    <div class="fcard" style="border-color:rgba(136,85,255,.18);background:linear-gradient(135deg,rgba(136,85,255,.06),rgba(4,10,22,.97))"><div class="cert-icon">🎓</div><div class="fcard-title" style="font-size:1.2rem;margin-bottom:.4rem">3HRILL CERTIFICATE</div><div class="cert-body">Students completing all three modules receive the 3HRILL Music School Certificate — verified, shareable, and recognised across the 3HRILL music community and partner networks.</div><div class="cert-badges"><span class="cbadge t">Music Theory</span><span class="cbadge a">Artistry</span><span class="cbadge p">Performance</span><span class="cbadge c">Composition</span></div></div>
+    <div class="fcard"><div class="fcard-title" style="font-size:1.1rem;margin-bottom:.65rem">ENROL NOW</div><div class="enrol-row"><input class="enrol-input" type="text" placeholder="Full Name"><input class="enrol-input" type="email" placeholder="Email Address"><select class="enrol-select"><option value="">Select Starting Module</option><option>01 — Learn Music</option><option>02 — Artistry</option><option>Full Programme — All 3 Modules</option></select><select class="enrol-select"><option value="">Experience Level</option><option>Complete Beginner</option><option>Some Background</option><option>Intermediate</option><option>Advanced</option></select><button class="enrol-btn">Submit Enrolment →</button></div></div>`;
+})();
+</script>
+</body>
+</html>

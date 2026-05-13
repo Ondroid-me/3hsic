@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3HRILL MUSIC — Library Pass</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --void:#020810;
+  --deep:#040c1a;
+  --dark:#060f1e;
+  --panel:#0a1828;
+  --ridge:#0d2040;
+  --elec:#00aaff;
+  --cyan:#00e5ff;
+  --hot:#ff6b35;
+  --gold:#f0c040;
+  --green:#00e5a0;
+  --white:#e8f4ff;
+  --muted:#3a6080;
+  --ghost:#152535;
+  --fd:'Bebas Neue',sans-serif;
+  --fb:'Barlow Condensed',sans-serif;
+  --fm:'JetBrains Mono',monospace;
+  --fp:'Playfair Display',serif;
+}
+
+html,body{height:100%;overflow:hidden;background:var(--void);color:var(--white);font-family:var(--fb)}
+
+/* scanlines */
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
+  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,170,255,.008) 3px,rgba(0,170,255,.008) 4px)}
+
+/* ════════ NAV ════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;height:58px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 3rem;
+  background:linear-gradient(180deg,rgba(2,8,16,.98),rgba(2,8,16,.75));
+  border-bottom:1px solid rgba(0,140,220,.1);
+  backdrop-filter:blur(16px);
+}
+.nav-logo{
+  font-family:var(--fd);font-size:1.7rem;letter-spacing:.22em;
+  background:linear-gradient(110deg,#00e5ff,#0088ff 55%,#0044cc);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 14px rgba(0,180,255,.45));
+  text-decoration:none;
+}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{
+  font-family:var(--fb);font-size:.72rem;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color .2s;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan)}
+.nav-badge{
+  font-family:var(--fm);font-size:.56rem;letter-spacing:.22em;
+  color:var(--elec);background:rgba(0,180,255,.07);
+  border:1px solid rgba(0,180,255,.18);border-radius:2px;
+  padding:.28rem .75rem;
+}
+.nav-right{font-family:var(--fm);font-size:.55rem;letter-spacing:.1em;color:var(--ghost);text-align:right;line-height:1.8}
+
+/* ════════ SLIDE SYSTEM ════════ */
+#slides{
+  height:100vh;
+  overflow-y:scroll;
+  scroll-snap-type:y mandatory;
+  scrollbar-width:none;
+  padding-top:58px;
+}
+#slides::-webkit-scrollbar{display:none}
+.slide{
+  height:calc(100vh - 58px);
+  scroll-snap-align:start;
+  position:relative;
+  overflow:hidden;
+}
+
+/* mesh bg */
+.mesh{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 55% 65% at 10% 40%,rgba(6,30,70,.55) 0%,transparent 70%),
+    radial-gradient(ellipse 40% 40% at 90% 15%,rgba(4,20,55,.4) 0%,transparent 65%),
+    radial-gradient(ellipse 60% 50% at 50% 100%,rgba(2,10,30,.6) 0%,transparent 65%);
+}
+
+/* ══════════════════════════════
+   SLIDE 1 — INTRO
+══════════════════════════════ */
+#slide-intro{
+  background:linear-gradient(158deg,#020810 0%,#030d1c 45%,#050e1d 100%);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:0 4rem;
+  gap:4rem;
+}
+
+/* LEFT */
+.intro-left{position:relative;z-index:2}
+.intro-eyebrow{
+  font-family:var(--fm);font-size:.6rem;letter-spacing:.3em;
+  color:var(--elec);opacity:.6;text-transform:uppercase;margin-bottom:.7rem;
+}
+.intro-headline{
+  font-family:var(--fd);font-size:clamp(3rem,5.5vw,5.2rem);
+  letter-spacing:.06em;line-height:.92;
+  margin-bottom:1.4rem;
+}
+.intro-headline em{
+  font-style:normal;
+  -webkit-text-stroke:1px rgba(0,200,255,.35);
+  color:transparent;
+}
+.intro-body{
+  font-size:1.02rem;font-weight:400;line-height:1.7;
+  color:rgba(160,210,245,.7);max-width:420px;margin-bottom:1.8rem;
+}
+.intro-body strong{color:var(--white);font-weight:700}
+
+/* access mode pills */
+.access-modes{display:flex;flex-direction:column;gap:.6rem;margin-bottom:2.2rem}
+.amode{
+  display:flex;align-items:center;gap:1rem;
+  padding:.75rem 1.1rem;
+  border:1px solid rgba(0,130,200,.15);border-radius:3px;
+  background:rgba(6,14,28,.6);backdrop-filter:blur(4px);
+  transition:all .25s;cursor:default;
+}
+.amode:hover{border-color:rgba(0,180,255,.28);background:rgba(0,100,200,.06)}
+.amode.preferred{border-color:rgba(0,229,255,.3);background:rgba(0,180,255,.08)}
+.amode-icon{
+  width:36px;height:36px;border-radius:2px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:1.1rem;
+}
+.amode.preferred .amode-icon{background:rgba(0,229,255,.12)}
+.amode-info{}
+.amode-name{font-family:var(--fb);font-size:.88rem;font-weight:700;letter-spacing:.05em;color:var(--white)}
+.amode-desc{font-family:var(--fm);font-size:.54rem;letter-spacing:.07em;color:var(--muted);margin-top:.1rem}
+.amode-pref{
+  margin-left:auto;flex-shrink:0;
+  font-family:var(--fm);font-size:.52rem;letter-spacing:.14em;
+  color:var(--cyan);background:rgba(0,229,255,.08);
+  border:1px solid rgba(0,229,255,.2);border-radius:2px;
+  padding:.16rem .5rem;text-transform:uppercase;
+}
+
+.intro-cta-row{display:flex;gap:.8rem;align-items:center}
+.btn-primary{
+  padding:.65rem 1.8rem;
+  font-family:var(--fb);font-size:.82rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  background:rgba(0,170,255,.15);border:1px solid rgba(0,180,255,.35);
+  color:var(--cyan);border-radius:2px;cursor:pointer;transition:all .25s;
+}
+.btn-primary:hover{background:rgba(0,200,255,.25);box-shadow:0 0 24px rgba(0,200,255,.18)}
+.btn-ghost{
+  padding:.65rem 1.4rem;
+  font-family:var(--fb);font-size:.82rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  background:transparent;border:1px solid rgba(0,130,200,.2);
+  color:var(--muted);border-radius:2px;cursor:pointer;transition:all .25s;
+}
+.btn-ghost:hover{border-color:var(--elec);color:var(--elec)}
+
+/* RIGHT — archival visual */
+.intro-right{
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;gap:1.1rem;
+}
+.arch-card{
+  background:linear-gradient(135deg,rgba(8,18,38,.94),rgba(4,10,22,.97));
+  border:1px solid rgba(0,120,190,.14);border-radius:3px;
+  padding:1.1rem 1.3rem;
+  position:relative;overflow:hidden;
+  transition:border-color .25s;
+}
+.arch-card::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg,transparent,var(--elec),transparent);
+  opacity:0;transition:opacity .25s;
+}
+.arch-card:hover{border-color:rgba(0,160,255,.28)}
+.arch-card:hover::before{opacity:.7}
+.arch-card-num{font-family:var(--fd);font-size:3rem;color:var(--ghost);position:absolute;right:.8rem;top:.3rem;letter-spacing:.04em}
+.arch-card-title{font-family:var(--fd);font-size:1.35rem;letter-spacing:.08em;color:var(--white);margin-bottom:.3rem}
+.arch-card-body{font-size:.82rem;color:var(--muted);line-height:1.55;max-width:85%}
+.arch-card-tag{
+  display:inline-block;margin-top:.6rem;
+  font-family:var(--fm);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ghost);border:1px solid rgba(0,100,160,.15);border-radius:2px;padding:.15rem .5rem;
+}
+
+/* wave decoration */
+.intro-wave{
+  position:absolute;bottom:0;left:0;right:0;height:120px;
+  background:linear-gradient(180deg,transparent,rgba(2,8,16,.4));
+  pointer-events:none;z-index:1;
+}
+
+/* scroll indicator */
+.scroll-ind{
+  position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.4rem;
+  font-family:var(--fm);font-size:.55rem;letter-spacing:.22em;
+  color:var(--ghost);text-transform:uppercase;cursor:pointer;z-index:5;
+  animation:indBounce 2.5s ease infinite;
+}
+.scroll-ind .caret{width:16px;height:16px;border-right:1px solid rgba(0,160,255,.25);border-bottom:1px solid rgba(0,160,255,.25);transform:rotate(45deg)}
+@keyframes indBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+
+/* ══════════════════════════════
+   SLIDE 2 — GET PASS
+══════════════════════════════ */
+#slide-pass{
+  background:linear-gradient(155deg,#030a18 0%,#040c1c 50%,#030910 100%);
+  display:flex;flex-direction:column;
+  overflow-y:auto;scrollbar-width:none;
+  padding:2rem 4rem 2rem;
+}
+#slide-pass::-webkit-scrollbar{display:none}
+
+.pass-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:1.2rem;flex-shrink:0;
+}
+.pass-header-left .pass-eye{
+  font-family:var(--fm);font-size:.6rem;letter-spacing:.28em;
+  color:var(--elec);opacity:.55;text-transform:uppercase;margin-bottom:.4rem;
+}
+.pass-header-left h2{
+  font-family:var(--fd);font-size:clamp(2.5rem,4vw,4rem);letter-spacing:.07em;line-height:.92;
+}
+.pass-header-left h2 span{color:var(--elec)}
+.pass-header-right{
+  display:flex;gap:.65rem;align-items:center;flex-shrink:0;
+}
+
+/* action buttons row */
+.pass-actions{
+  display:flex;gap:.65rem;margin-bottom:1.4rem;flex-wrap:wrap;flex-shrink:0;
+}
+.pact-btn{
+  display:flex;align-items:center;gap:.55rem;
+  padding:.58rem 1.3rem;border-radius:2px;cursor:pointer;
+  font-family:var(--fb);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  transition:all .25s;border:1px solid;
+}
+.pact-btn.listen{
+  background:rgba(0,229,255,.12);border-color:rgba(0,229,255,.3);color:var(--cyan);
+}
+.pact-btn.listen:hover{background:rgba(0,229,255,.22);box-shadow:0 0 22px rgba(0,229,255,.18)}
+.pact-btn.radio{
+  background:rgba(240,192,64,.08);border-color:rgba(240,192,64,.25);color:var(--gold);
+}
+.pact-btn.radio:hover{background:rgba(240,192,64,.16)}
+.pact-btn.signup{
+  background:rgba(0,229,160,.08);border-color:rgba(0,229,160,.22);color:var(--green);
+}
+.pact-btn.signup:hover{background:rgba(0,229,160,.15)}
+.pact-btn svg{flex-shrink:0}
+
+/* SERVICE COLLEGE */
+.college-label{
+  font-family:var(--fm);font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--ghost);margin-bottom:.75rem;flex-shrink:0;
+}
+.college{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
+  gap:.7rem;
+  flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(0,100,180,.12) transparent;
+}
+.college::-webkit-scrollbar{width:2px}
+.college::-webkit-scrollbar-thumb{background:rgba(0,100,180,.15)}
+
+.svc-card{
+  background:linear-gradient(145deg,rgba(8,18,36,.94),rgba(4,10,22,.97));
+  border:1px solid rgba(0,110,180,.13);
+  border-radius:3px;padding:.9rem 1rem;
+  cursor:pointer;transition:all .25s;
+  display:flex;flex-direction:column;gap:.5rem;
+  position:relative;overflow:hidden;
+}
+.svc-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  opacity:0;transition:opacity .25s;
+}
+.svc-card:hover{transform:translateY(-3px);border-color:rgba(0,180,255,.28)}
+.svc-card:hover::after{opacity:1}
+.svc-card.selected{border-color:var(--cyan);background:rgba(0,180,255,.08)}
+.svc-card.selected::after{background:var(--cyan);opacity:.5}
+
+.svc-logo-wrap{
+  width:40px;height:40px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;flex-shrink:0;
+  border:1px solid rgba(255,255,255,.06);
+}
+.svc-name{font-family:var(--fb);font-size:.88rem;font-weight:700;letter-spacing:.04em;color:var(--white)}
+.svc-type{font-family:var(--fm);font-size:.52rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.svc-check{
+  position:absolute;top:.6rem;right:.6rem;
+  width:16px;height:16px;border-radius:50%;
+  border:1px solid rgba(0,180,255,.25);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.55rem;color:transparent;transition:all .2s;
+}
+.svc-card.selected .svc-check{
+  background:var(--cyan);border-color:var(--cyan);color:var(--void);font-size:.6rem;
+}
+
+/* ── colour accent per service ── */
+.svc-spotify .svc-logo-wrap{background:rgba(30,215,96,.1);border-color:rgba(30,215,96,.18)}
+.svc-apple   .svc-logo-wrap{background:rgba(252,60,60,.1);border-color:rgba(252,60,60,.18)}
+.svc-tidal   .svc-logo-wrap{background:rgba(0,200,255,.08);border-color:rgba(0,200,255,.18)}
+.svc-amazon  .svc-logo-wrap{background:rgba(255,153,0,.1);border-color:rgba(255,153,0,.18)}
+.svc-youtube .svc-logo-wrap{background:rgba(255,0,0,.1);border-color:rgba(255,0,0,.18)}
+.svc-deezer  .svc-logo-wrap{background:rgba(255,100,0,.08);border-color:rgba(255,100,0,.18)}
+.svc-soundcloud .svc-logo-wrap{background:rgba(255,85,0,.1);border-color:rgba(255,85,0,.18)}
+.svc-boomplay .svc-logo-wrap{background:rgba(255,60,130,.08);border-color:rgba(255,60,130,.18)}
+.svc-audiomack .svc-logo-wrap{background:rgba(255,165,0,.08);border-color:rgba(255,165,0,.18)}
+.svc-pandora .svc-logo-wrap{background:rgba(0,160,225,.1);border-color:rgba(0,160,225,.18)}
+.svc-qobuz  .svc-logo-wrap{background:rgba(0,120,200,.1);border-color:rgba(0,120,200,.18)}
+.svc-napster .svc-logo-wrap{background:rgba(180,60,255,.1);border-color:rgba(180,60,255,.18)}
+.svc-idagio  .svc-logo-wrap{background:rgba(200,200,200,.06);border-color:rgba(200,200,200,.14)}
+.svc-kkbox   .svc-logo-wrap{background:rgba(0,210,180,.08);border-color:rgba(0,210,180,.18)}
+.svc-jiosaavn .svc-logo-wrap{background:rgba(255,100,60,.08);border-color:rgba(255,100,60,.18)}
+.svc-anghami .svc-logo-wrap{background:rgba(255,60,120,.08);border-color:rgba(255,60,120,.18)}
+
+.svc-card:hover .svc-name{color:var(--cyan)}
+
+/* ══════════════════════════════
+   SLIDE 3 — BUY NOW
+══════════════════════════════ */
+#slide-buy{
+  background:linear-gradient(155deg,#020c1a 0%,#030a16 50%,#020810 100%);
+  display:flex;flex-direction:column;
+  overflow-y:auto;scrollbar-width:none;
+  padding:2rem 4rem 2rem;
+}
+#slide-buy::-webkit-scrollbar{display:none}
+
+.buy-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:1.2rem;flex-shrink:0;
+}
+.buy-header h2{font-family:var(--fd);font-size:clamp(2.5rem,4vw,4rem);letter-spacing:.07em;line-height:.92}
+.buy-header h2 span{color:var(--gold)}
+
+.buy-layout{
+  display:grid;
+  grid-template-columns:1fr 1.15fr;
+  gap:1.4rem;
+  flex:1;overflow:hidden;
+}
+
+/* STORE LIST */
+.store-col{display:flex;flex-direction:column;gap:.55rem;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(0,100,180,.1) transparent}
+.store-col::-webkit-scrollbar{width:2px}
+.store-col::-webkit-scrollbar-thumb{background:rgba(0,100,180,.12)}
+.store-label{font-family:var(--fm);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ghost);margin-bottom:.3rem;flex-shrink:0}
+
+.store-card{
+  background:linear-gradient(140deg,rgba(8,18,36,.93),rgba(4,10,22,.97));
+  border:1px solid rgba(0,110,180,.13);border-radius:3px;
+  padding:.85rem 1.1rem;display:flex;align-items:center;gap:.9rem;
+  cursor:pointer;transition:all .25s;position:relative;overflow:hidden;
+}
+.store-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--elec);opacity:0;transition:opacity .25s}
+.store-card:hover{border-color:rgba(0,180,255,.26);transform:translateX(4px)}
+.store-card:hover::before{opacity:.65}
+.store-icon{width:38px;height:38px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.store-info{flex:1}
+.store-name{font-family:var(--fb);font-size:.9rem;font-weight:700;letter-spacing:.04em;color:var(--white);margin-bottom:.15rem}
+.store-desc{font-family:var(--fm);font-size:.52rem;letter-spacing:.06em;color:var(--muted)}
+.store-tags{display:flex;gap:.35rem;margin-top:.35rem;flex-wrap:wrap}
+.stag{font-family:var(--fm);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ghost);border:1px solid rgba(0,100,160,.15);border-radius:2px;padding:.1rem .38rem}
+.stag.dig{border-color:rgba(0,180,255,.18);color:var(--elec)}
+.stag.phy{border-color:rgba(240,192,64,.18);color:var(--gold)}
+.store-arrow{color:var(--muted);font-size:.8rem;transition:all .25s;margin-left:auto;flex-shrink:0}
+.store-card:hover .store-arrow{color:var(--elec);transform:translateX(3px)}
+
+/* INFOGRAPH */
+.infograph-col{display:flex;flex-direction:column;gap:1rem;overflow-y:auto;scrollbar-width:thin}
+.infograph-col::-webkit-scrollbar{width:2px}
+.infograph-label{font-family:var(--fm);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ghost);margin-bottom:.3rem;flex-shrink:0}
+
+.infograph-panel{
+  background:linear-gradient(145deg,rgba(8,18,36,.93),rgba(4,10,22,.97));
+  border:1px solid rgba(0,110,180,.13);border-radius:3px;
+  padding:1.1rem 1.2rem;
+}
+.ig-title{font-family:var(--fd);font-size:1.2rem;letter-spacing:.08em;color:var(--white);margin-bottom:.9rem}
+
+/* bar chart */
+.bar-chart{display:flex;flex-direction:column;gap:.45rem}
+.bar-row{display:flex;align-items:center;gap:.7rem}
+.bar-label{font-family:var(--fm);font-size:.54rem;letter-spacing:.07em;color:var(--muted);width:88px;flex-shrink:0;text-transform:uppercase}
+.bar-track{flex:1;height:6px;background:rgba(0,100,180,.12);border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;position:relative;
+  background:linear-gradient(90deg,rgba(0,150,255,.6),rgba(0,229,255,.9));
+  transition:width 1.2s cubic-bezier(.22,1,.36,1);}
+.bar-fill.gold{background:linear-gradient(90deg,rgba(200,140,20,.6),rgba(240,192,64,.9))}
+.bar-fill.green{background:linear-gradient(90deg,rgba(0,160,100,.6),rgba(0,229,160,.9))}
+.bar-fill.hot{background:linear-gradient(90deg,rgba(200,80,20,.6),rgba(255,107,53,.9))}
+.bar-val{font-family:var(--fm);font-size:.54rem;letter-spacing:.07em;color:var(--muted);width:38px;text-align:right;flex-shrink:0}
+
+/* stat pills */
+.stat-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.55rem;margin-top:.3rem}
+.stat-pill{
+  background:rgba(0,100,180,.07);border:1px solid rgba(0,120,200,.14);border-radius:3px;
+  padding:.65rem .75rem;text-align:center;
+}
+.stat-val{font-family:var(--fd);font-size:1.55rem;letter-spacing:.06em;color:var(--cyan)}
+.stat-val.gold{color:var(--gold)}
+.stat-val.green{color:var(--green)}
+.stat-lbl{font-family:var(--fm);font-size:.5rem;letter-spacing:.1em;color:var(--ghost);text-transform:uppercase;margin-top:.15rem}
+
+/* donut chart */
+.donut-wrap{display:flex;align-items:center;gap:1.4rem;margin-top:.5rem}
+.donut-svg{flex-shrink:0}
+.donut-legend{display:flex;flex-direction:column;gap:.5rem}
+.dl-item{display:flex;align-items:center;gap:.55rem}
+.dl-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dl-name{font-family:var(--fm);font-size:.56rem;letter-spacing:.07em;color:var(--muted)}
+.dl-pct{font-family:var(--fd);font-size:.95rem;letter-spacing:.06em;margin-left:auto;padding-left:.5rem}
+
+/* back nav */
+.back-nav{
+  position:absolute;top:1.4rem;left:4rem;
+  font-family:var(--fm);font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ghost);cursor:pointer;display:flex;align-items:center;gap:.4rem;
+  z-index:5;transition:color .2s;
+}
+.back-nav:hover{color:var(--cyan)}
+
+/* ══════════════════════════════
+   WEB PLAYER MODAL
+══════════════════════════════ */
+#player-modal{
+  position:fixed;inset:0;z-index:400;
+  display:flex;align-items:flex-end;justify-content:center;
+  background:rgba(2,6,16,0);pointer-events:none;transition:background .35s;
+}
+#player-modal.open{background:rgba(2,6,16,.92);pointer-events:all}
+#player-panel{
+  background:linear-gradient(180deg,rgba(5,14,28,.99),rgba(2,8,18,1));
+  border:1px solid rgba(0,150,220,.18);border-top:none;
+  border-radius:4px 4px 0 0;
+  width:100%;max-width:700px;
+  padding:2.2rem 2.8rem 2.8rem;
+  transform:translateY(100%);
+  transition:transform .45s cubic-bezier(.22,1,.36,1);
+  position:relative;
+}
+#player-modal.open #player-panel{transform:translateY(0)}
+
+.player-close{
+  position:absolute;top:1.1rem;right:1.3rem;
+  width:32px;height:32px;background:rgba(0,100,180,.1);
+  border:1px solid rgba(0,140,220,.18);border-radius:2px;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;
+}
+.player-close:hover{background:rgba(0,180,255,.15);border-color:var(--cyan)}
+.player-close span{position:absolute;width:12px;height:1px;background:var(--white)}
+.player-close span:first-child{transform:rotate(45deg)}
+.player-close span:last-child{transform:rotate(-45deg)}
+
+.player-eye{font-family:var(--fm);font-size:.58rem;letter-spacing:.25em;color:var(--elec);opacity:.55;text-transform:uppercase;margin-bottom:.5rem}
+.player-title{font-family:var(--fd);font-size:2.2rem;letter-spacing:.1em;margin-bottom:.3rem}
+.player-sub{font-family:var(--fb);font-size:.88rem;color:var(--muted);margin-bottom:1.6rem}
+
+.player-svc-select{
+  display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem;
+}
+.psvc{
+  padding:.4rem .9rem;border-radius:2px;cursor:pointer;
+  font-family:var(--fm);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid rgba(0,120,190,.2);color:var(--muted);background:rgba(6,14,28,.7);
+  transition:all .2s;
+}
+.psvc:hover{border-color:var(--elec);color:var(--elec)}
+.psvc.active{border-color:var(--cyan);color:var(--cyan);background:rgba(0,229,255,.08)}
+
+.player-embed-area{
+  background:rgba(4,10,22,.9);border:1px solid rgba(0,120,190,.15);border-radius:3px;
+  padding:1.8rem;text-align:center;min-height:120px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;
+}
+.player-embed-icon{font-size:2.2rem;opacity:.4}
+.player-embed-msg{font-family:var(--fm);font-size:.65rem;letter-spacing:.12em;color:var(--muted)}
+.player-embed-btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.5rem 1.3rem;border-radius:2px;
+  font-family:var(--fb);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  background:rgba(0,160,255,.12);border:1px solid rgba(0,160,255,.28);
+  color:var(--cyan);cursor:pointer;transition:all .22s;text-decoration:none;
+}
+.player-embed-btn:hover{background:rgba(0,200,255,.2)}
+
+/* ══════════════════════════════
+   RADIO MODAL
+══════════════════════════════ */
+#radio-modal{
+  position:fixed;inset:0;z-index:400;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(2,6,16,0);pointer-events:none;transition:background .35s;
+}
+#radio-modal.open{background:rgba(2,6,16,.92);pointer-events:all}
+#radio-panel{
+  background:linear-gradient(160deg,rgba(5,14,28,.99),rgba(2,8,18,1));
+  border:1px solid rgba(0,150,220,.18);border-radius:4px;
+  width:90%;max-width:740px;max-height:82vh;
+  overflow:hidden;display:flex;flex-direction:column;
+  transform:scale(.92) translateY(20px);opacity:0;
+  transition:transform .4s cubic-bezier(.22,1,.36,1),opacity .35s;
+  position:relative;
+}
+#radio-modal.open #radio-panel{transform:scale(1) translateY(0);opacity:1}
+
+.radio-head{
+  padding:1.5rem 2rem 1.2rem;
+  border-bottom:1px solid rgba(0,120,200,.1);
+  display:flex;align-items:center;justify-content:space-between;
+  flex-shrink:0;
+}
+.radio-head-left .radio-eye{font-family:var(--fm);font-size:.58rem;letter-spacing:.25em;color:var(--gold);opacity:.6;text-transform:uppercase;margin-bottom:.3rem}
+.radio-head-left h3{font-family:var(--fd);font-size:2rem;letter-spacing:.1em}
+.radio-close{
+  width:32px;height:32px;background:rgba(0,100,180,.1);
+  border:1px solid rgba(0,140,220,.18);border-radius:2px;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;
+}
+.radio-close:hover{background:rgba(0,180,255,.15);border-color:var(--cyan)}
+.radio-close span{position:absolute;width:12px;height:1px;background:var(--white)}
+.radio-close span:first-child{transform:rotate(45deg)}
+.radio-close span:last-child{transform:rotate(-45deg)}
+
+/* now playing bar */
+.radio-now{
+  padding:.7rem 2rem;
+  background:rgba(0,150,255,.05);border-bottom:1px solid rgba(0,120,200,.08);
+  display:flex;align-items:center;gap:.8rem;flex-shrink:0;
+}
+.radio-playing-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:pulse 1.5s ease infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.65)}}
+.radio-np-label{font-family:var(--fm);font-size:.56rem;letter-spacing:.14em;color:var(--gold);opacity:.7;text-transform:uppercase}
+#radioNowText{font-family:var(--fb);font-size:.82rem;font-weight:700;color:var(--white);margin-left:.4rem}
+
+.radio-list{
+  overflow-y:auto;flex:1;padding:1rem 2rem 1.5rem;
+  scrollbar-width:thin;scrollbar-color:rgba(0,100,180,.12) transparent;
+}
+.radio-list::-webkit-scrollbar{width:2px}
+.radio-list::-webkit-scrollbar-thumb{background:rgba(0,100,180,.15)}
+
+.radio-section-label{
+  font-family:var(--fm);font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ghost);margin:.6rem 0 .5rem;
+}
+.radio-item{
+  display:flex;align-items:center;gap:.8rem;
+  padding:.65rem .75rem;border-radius:2px;
+  border:1px solid transparent;cursor:pointer;transition:all .22s;
+}
+.radio-item:hover{background:rgba(0,100,180,.06);border-color:rgba(0,150,220,.14)}
+.radio-item.playing{background:rgba(0,160,255,.08);border-color:rgba(0,200,255,.2)}
+.radio-flag{font-size:1.1rem;flex-shrink:0;width:28px;text-align:center}
+.radio-info{flex:1}
+.radio-name{font-family:var(--fb);font-size:.88rem;font-weight:700;color:var(--white);letter-spacing:.03em}
+.radio-item.playing .radio-name{color:var(--cyan)}
+.radio-freq{font-family:var(--fm);font-size:.52rem;letter-spacing:.07em;color:var(--muted)}
+.radio-genre-tag{
+  font-family:var(--fm);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid rgba(0,110,170,.15);color:var(--ghost);border-radius:2px;padding:.12rem .4rem;
+}
+.radio-play-btn{
+  width:28px;height:28px;border-radius:50%;
+  background:rgba(0,120,180,.1);border:1px solid rgba(0,150,220,.2);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--elec);font-size:.65rem;flex-shrink:0;transition:all .2s;
+}
+.radio-item:hover .radio-play-btn{background:rgba(0,180,255,.15);border-color:var(--cyan)}
+.radio-item.playing .radio-play-btn{background:rgba(0,229,255,.15);border-color:var(--cyan);color:var(--cyan)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">3HRILL</a>
+  <ul class="nav-links">
+    <li><a href="#">Gigs</a></li>
+    <li><a href="#">News</a></li>
+    <li><a href="#" class="active">Library Pass</a></li>
+    <li><a href="#">Artists</a></li>
+    <li><a href="#">Radio</a></li>
+  </ul>
+  <div class="nav-badge">// Library Pass</div>
+  <div class="nav-right" id="navClock">3HRILL MUSIC<br>—</div>
+</nav>
+
+<!-- ══════════ SLIDES ══════════ -->
+<div id="slides">
+
+<!-- ── SLIDE 1 · INTRO ── -->
+<section class="slide" id="slide-intro">
+  <div class="mesh"></div>
+
+  <div class="intro-left">
+    <div class="intro-eyebrow">// 01 — Music Library</div>
+    <h1 class="intro-headline">ACCESS THE<br><em>ARCHIVE</em><br>PASS IN</h1>
+
+    <p class="intro-body">
+      Every song ever recorded is part of a living archive — a vast library of human sound.
+      <strong>3HRILL Library Pass</strong> is your gateway into how music is preserved, catalogued,
+      and distributed across the world. Whether you consume music as <strong>text</strong>,
+      <strong>audio</strong>, or <strong>video</strong> — physically or digitally — the library
+      holds it all.
+    </p>
+
+    <div class="access-modes">
+      <div class="amode">
+        <div class="amode-icon">📄</div>
+        <div class="amode-info">
+          <div class="amode-name">Read Notes</div>
+          <div class="amode-desc">Sheet music, lyrics, liner notes — archived text formats</div>
+        </div>
+      </div>
+      <div class="amode preferred">
+        <div class="amode-icon">🎧</div>
+        <div class="amode-info">
+          <div class="amode-name">Audio Stream</div>
+          <div class="amode-desc">Digital or physical — streaming, download, vinyl, CD</div>
+        </div>
+        <div class="amode-pref">Preferred</div>
+      </div>
+      <div class="amode">
+        <div class="amode-icon">🎬</div>
+        <div class="amode-info">
+          <div class="amode-name">Video</div>
+          <div class="amode-desc">Music videos, live sessions, soft or hard copy distribution</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="intro-cta-row">
+      <button class="btn-primary" onclick="goSlide(1)">Get Your Pass</button>
+      <button class="btn-ghost"   onclick="goSlide(2)">Buy Music</button>
+    </div>
+  </div>
+
+  <div class="intro-right">
+    <div class="arch-card">
+      <div class="arch-card-num">01</div>
+      <div class="arch-card-title">Digital Archives</div>
+      <div class="arch-card-body">Petabytes of audio held across streaming platforms, cloud libraries, and digital stores — instantly accessible anywhere on Earth.</div>
+      <span class="arch-card-tag">Soft Copy</span>
+    </div>
+    <div class="arch-card">
+      <div class="arch-card-num">02</div>
+      <div class="arch-card-title">Physical Vaults</div>
+      <div class="arch-card-body">Vinyl records, magnetic tape, CDs, and cassettes — the original medium through which music survived and spread across generations.</div>
+      <span class="arch-card-tag">Hard Copy</span>
+    </div>
+    <div class="arch-card">
+      <div class="arch-card-num">03</div>
+      <div class="arch-card-title">Catalogue Metadata</div>
+      <div class="arch-card-body">ISRCs, rights registry, liner notes, and site-readable scores — the hidden architecture that links every recording to its creators.</div>
+      <span class="arch-card-tag">Read Notes</span>
+    </div>
+  </div>
+
+  <div class="scroll-ind" onclick="goSlide(1)"><span>Get Pass</span><div class="caret"></div></div>
+  <div class="intro-wave"></div>
+</section>
+
+<!-- ── SLIDE 2 · GET PASS ── -->
+<section class="slide" id="slide-pass">
+  <div class="mesh"></div>
+
+  <div class="back-nav" onclick="goSlide(0)">↑ Intro</div>
+
+  <div class="pass-header">
+    <div class="pass-header-left">
+      <div class="pass-eye">// 02 — Get Pass</div>
+      <h2>CHOOSE YOUR<br><span>LIBRARY</span></h2>
+    </div>
+    <div class="pass-header-right">
+      <div style="font-family:var(--fm);font-size:.58rem;letter-spacing:.1em;color:var(--ghost)">
+        Select a service · then<br>sign in or create account
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTION BUTTONS -->
+  <div class="pass-actions">
+    <button class="pact-btn listen" onclick="openPlayer()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+      Now Listen
+    </button>
+    <button class="pact-btn radio" onclick="openRadio()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 9.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 0h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 7.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 14.92z"/></svg>
+      Online Radio
+    </button>
+    <button class="pact-btn signup" onclick="openSignup()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Sign Up / Log In
+    </button>
+    <button class="pact-btn" style="border-color:rgba(0,130,200,.2);color:var(--muted)" onclick="goSlide(2)">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      Buy Music
+    </button>
+  </div>
+
+  <div class="college-label">// Music Streaming Services — pick yours</div>
+
+  <!-- SERVICE COLLEGE -->
+  <div class="college" id="serviceCollege"></div>
+
+</section>
+
+<!-- ── SLIDE 3 · BUY NOW ── -->
+<section class="slide" id="slide-buy">
+  <div class="mesh"></div>
+  <div class="back-nav" onclick="goSlide(1)">↑ Get Pass</div>
+
+  <div class="buy-header">
+    <div>
+      <div style="font-family:var(--fm);font-size:.6rem;letter-spacing:.28em;color:var(--gold);opacity:.55;text-transform:uppercase;margin-bottom:.4rem">// 03 — Buy Music</div>
+      <h2>OWN YOUR<br><span>SOUND</span></h2>
+    </div>
+    <div style="font-family:var(--fm);font-size:.58rem;letter-spacing:.08em;color:var(--ghost);text-align:right;line-height:1.9">
+      Digital &amp; physical · singles &amp; albums<br>
+      <span style="color:var(--muted)" id="buyDate">—</span>
+    </div>
+  </div>
+
+  <div class="buy-layout">
+
+    <!-- STORES -->
+    <div class="store-col">
+      <div class="store-label">// Stores</div>
+      <div id="storeList"></div>
+    </div>
+
+    <!-- INFOGRAPH -->
+    <div class="infograph-col">
+      <div class="infograph-label">// Sales Infograph</div>
+
+      <!-- global stats -->
+      <div class="infograph-panel">
+        <div class="ig-title">Global Music Sales 2024</div>
+        <div class="stat-row">
+          <div class="stat-pill"><div class="stat-val">$28.6B</div><div class="stat-lbl">Total Revenue</div></div>
+          <div class="stat-pill"><div class="stat-val gold">67%</div><div class="stat-lbl">Streaming</div></div>
+          <div class="stat-pill"><div class="stat-val green">$4.1B</div><div class="stat-lbl">Physical</div></div>
+        </div>
+      </div>
+
+      <!-- singles bar chart -->
+      <div class="infograph-panel">
+        <div class="ig-title">Singles — Top Genre Sales</div>
+        <div class="bar-chart" id="singlesChart"></div>
+      </div>
+
+      <!-- album bar chart -->
+      <div class="infograph-panel">
+        <div class="ig-title">Albums — Format Split</div>
+        <div class="bar-chart" id="albumsChart"></div>
+      </div>
+
+      <!-- format donut -->
+      <div class="infograph-panel">
+        <div class="ig-title">Format Distribution</div>
+        <div class="donut-wrap">
+          <svg class="donut-svg" width="88" height="88" viewBox="0 0 88 88">
+            <circle cx="44" cy="44" r="34" fill="none" stroke="rgba(0,100,180,.1)" stroke-width="12"/>
+            <!-- streaming 67% -->
+            <circle cx="44" cy="44" r="34" fill="none" stroke="rgba(0,200,255,.75)" stroke-width="12"
+              stroke-dasharray="143 213" stroke-dashoffset="0" transform="rotate(-90 44 44)"/>
+            <!-- downloads 10% -->
+            <circle cx="44" cy="44" r="34" fill="none" stroke="rgba(240,192,64,.7)" stroke-width="12"
+              stroke-dasharray="21 335" stroke-dashoffset="-143" transform="rotate(-90 44 44)"/>
+            <!-- physical 14% -->
+            <circle cx="44" cy="44" r="34" fill="none" stroke="rgba(0,229,160,.65)" stroke-width="12"
+              stroke-dasharray="30 326" stroke-dashoffset="-164" transform="rotate(-90 44 44)"/>
+            <!-- sync/other 9% -->
+            <circle cx="44" cy="44" r="34" fill="none" stroke="rgba(255,107,53,.6)" stroke-width="12"
+              stroke-dasharray="19 337" stroke-dashoffset="-194" transform="rotate(-90 44 44)"/>
+          </svg>
+          <div class="donut-legend">
+            <div class="dl-item"><div class="dl-dot" style="background:rgba(0,200,255,.85)"></div><div class="dl-name">Streaming</div><div class="dl-pct" style="color:var(--cyan)">67%</div></div>
+            <div class="dl-item"><div class="dl-dot" style="background:rgba(0,229,160,.8)"></div><div class="dl-name">Physical</div><div class="dl-pct" style="color:var(--green)">14%</div></div>
+            <div class="dl-item"><div class="dl-dot" style="background:rgba(240,192,64,.85)"></div><div class="dl-name">Downloads</div><div class="dl-pct" style="color:var(--gold)">10%</div></div>
+            <div class="dl-item"><div class="dl-dot" style="background:rgba(255,107,53,.8)"></div><div class="dl-name">Sync / Other</div><div class="dl-pct" style="color:var(--hot)">9%</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</div><!-- /slides -->
+
+<!-- ══════════ WEB PLAYER MODAL ══════════ -->
+<div id="player-modal">
+  <div id="player-panel">
+    <button class="player-close" onclick="closePlayer()"><span></span><span></span></button>
+    <div class="player-eye">// 3HRILL — Web Player</div>
+    <div class="player-title">NOW LISTEN</div>
+    <div class="player-sub" id="playerSub">Select your streaming service to begin</div>
+
+    <div class="player-svc-select" id="playerSvcRow"></div>
+
+    <div class="player-embed-area" id="playerEmbed">
+      <div class="player-embed-icon">🎧</div>
+      <div class="player-embed-msg" id="playerEmbedMsg">Pick a service above — then sign in to stream</div>
+      <a id="playerLaunchBtn" class="player-embed-btn" target="_blank" rel="noopener" style="display:none">
+        Open Web Player ↗
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ RADIO MODAL ══════════ -->
+<div id="radio-modal">
+  <div id="radio-panel">
+    <div class="radio-head">
+      <div class="radio-head-left">
+        <div class="radio-eye">// Live Broadcast</div>
+        <h3>ONLINE RADIO</h3>
+      </div>
+      <button class="radio-close" onclick="closeRadio()"><span></span><span></span></button>
+    </div>
+
+    <div class="radio-now">
+      <div class="radio-playing-dot" id="radioPlayDot" style="background:var(--ghost);animation:none"></div>
+      <span class="radio-np-label">Now Playing —</span>
+      <span id="radioNowText" style="color:var(--ghost)">Select a station</span>
+    </div>
+
+    <div class="radio-list" id="radioList"></div>
+  </div>
+</div>
+
+<script>
+/* ════════════════════════════════════════════
+   DATA — STREAMING SERVICES
+════════════════════════════════════════════ */
+const SERVICES = [
+  {id:'spotify',    name:'Spotify',      icon:'🟢', type:'Streaming',  cls:'svc-spotify',  web:'https://open.spotify.com',         signup:'https://www.spotify.com/signup'},
+  {id:'apple',      name:'Apple Music',  icon:'🍎', type:'Streaming',  cls:'svc-apple',    web:'https://music.apple.com',          signup:'https://music.apple.com/subscribe'},
+  {id:'tidal',      name:'TIDAL',        icon:'🌊', type:'HiFi',       cls:'svc-tidal',    web:'https://listen.tidal.com',         signup:'https://tidal.com/subscribe'},
+  {id:'amazon',     name:'Amazon Music', icon:'📦', type:'Streaming',  cls:'svc-amazon',   web:'https://music.amazon.com',         signup:'https://music.amazon.com'},
+  {id:'youtube',    name:'YouTube Music',icon:'▶️', type:'Streaming',  cls:'svc-youtube',  web:'https://music.youtube.com',        signup:'https://music.youtube.com'},
+  {id:'deezer',     name:'Deezer',       icon:'🎵', type:'Streaming',  cls:'svc-deezer',   web:'https://www.deezer.com/en/channels/explore', signup:'https://www.deezer.com/en/register'},
+  {id:'soundcloud', name:'SoundCloud',   icon:'☁️', type:'Community',  cls:'svc-soundcloud',web:'https://soundcloud.com',         signup:'https://soundcloud.com/signup'},
+  {id:'boomplay',   name:'Boomplay',     icon:'💫', type:'Africa',     cls:'svc-boomplay', web:'https://www.boomplay.com',         signup:'https://www.boomplay.com/register'},
+  {id:'audiomack',  name:'Audiomack',    icon:'🎤', type:'Hip-Hop',    cls:'svc-audiomack',web:'https://audiomack.com',            signup:'https://audiomack.com/signup'},
+  {id:'pandora',    name:'Pandora',      icon:'📻', type:'Radio+',     cls:'svc-pandora',  web:'https://www.pandora.com',          signup:'https://www.pandora.com/account/register'},
+  {id:'qobuz',      name:'Qobuz',        icon:'🔷', type:'HiRes',      cls:'svc-qobuz',    web:'https://play.qobuz.com',           signup:'https://www.qobuz.com/us-en/account/create'},
+  {id:'napster',    name:'Napster',      icon:'🟣', type:'Streaming',  cls:'svc-napster',  web:'https://napster.com',              signup:'https://us.napster.com/register'},
+  {id:'idagio',     name:'IDAGIO',       icon:'🎻', type:'Classical',  cls:'svc-idagio',   web:'https://app.idagio.com',           signup:'https://app.idagio.com/register'},
+  {id:'kkbox',      name:'KKBOX',        icon:'🟦', type:'Asia',       cls:'svc-kkbox',    web:'https://www.kkbox.com',            signup:'https://www.kkbox.com'},
+  {id:'jiosaavn',   name:'JioSaavn',     icon:'🇮🇳', type:'India',      cls:'svc-jiosaavn', web:'https://www.jiosaavn.com',         signup:'https://www.jiosaavn.com'},
+  {id:'anghami',    name:'Anghami',      icon:'🌙', type:'MENA',       cls:'svc-anghami',  web:'https://play.anghami.com',         signup:'https://play.anghami.com'},
+];
+
+/* ════════════════════════════════════════════
+   DATA — STORES
+════════════════════════════════════════════ */
+const STORES = [
+  {icon:'🍎', name:'iTunes / Apple Music', desc:'Buy singles & albums digitally — permanent download', tags:['Digital'], link:'https://music.apple.com', col:'rgba(252,60,60,.08)'},
+  {icon:'📦', name:'Amazon Music Store',   desc:'MP3 downloads and CD/vinyl physical orders',          tags:['Digital','Physical'], link:'https://www.amazon.com/music', col:'rgba(255,153,0,.07)'},
+  {icon:'▶️', name:'YouTube Music',        desc:'Purchase & rent music videos and albums',             tags:['Digital'], link:'https://music.youtube.com', col:'rgba(255,0,0,.07)'},
+  {icon:'🎵', name:'Bandcamp',             desc:'Buy directly from artists — digital + merch + vinyl', tags:['Digital','Physical'], link:'https://bandcamp.com', col:'rgba(0,200,200,.06)'},
+  {icon:'🛒', name:'Beatport',             desc:'Electronic music downloads for DJs — lossless audio', tags:['Digital'], link:'https://www.beatport.com', col:'rgba(0,120,255,.07)'},
+  {icon:'💿', name:'Discogs',              desc:'Vinyl records, CDs, cassettes — marketplace & new',   tags:['Physical'], link:'https://www.discogs.com', col:'rgba(200,150,50,.06)'},
+  {icon:'🟢', name:'Spotify Canvas Store', desc:'Buy merchandise & bundles tied to releases',          tags:['Merch'], link:'https://merch.spotify.com', col:'rgba(30,215,96,.06)'},
+  {icon:'🏪', name:'Rough Trade',          desc:'Independent record store — curated physical releases', tags:['Physical'], link:'https://www.roughtrade.com', col:'rgba(200,100,200,.06)'},
+  {icon:'🎙️', name:'Qobuz Store',          desc:'High-resolution FLAC & WAV digital downloads',       tags:['Digital','HiRes'], link:'https://www.qobuz.com', col:'rgba(0,120,200,.07)'},
+  {icon:'🇿🇦', name:'Takealot Music',       desc:'South Africa\'s leading online music store',          tags:['Physical','Digital'], link:'https://www.takealot.com', col:'rgba(0,180,120,.06)'},
+];
+
+/* ════════════════════════════════════════════
+   DATA — RADIO STATIONS
+════════════════════════════════════════════ */
+const STATIONS = [
+  {flag:'🇬🇧', name:'BBC Radio 1',         freq:'Online',     genre:'Pop / Mainstream', stream:'https://stream.live.vc.bbcmedia.co.uk/bbc_radio_one'},
+  {flag:'🇬🇧', name:'BBC Radio 1Xtra',      freq:'Online',     genre:'Urban / R&B',      stream:'https://stream.live.vc.bbcmedia.co.uk/bbc_1xtra'},
+  {flag:'🇺🇸', name:'NPR Music',            freq:'Online',     genre:'Indie / Alt',      stream:'https://wwno.streamguys1.com/wwno64.mp3'},
+  {flag:'🇺🇸', name:'KEXP Seattle',         freq:'90.3 FM',    genre:'Indie / World',    stream:'https://kexp-mp3-128.streamguys1.com/kexp128.mp3'},
+  {flag:'🇳🇬', name:'Beat FM Lagos',        freq:'99.9 FM',    genre:'Afrobeats',        stream:'https://s7.radio.co/s5b9d01bff/listen'},
+  {flag:'🇬🇭', name:'Joy FM Accra',         freq:'99.7 FM',    genre:'Highlife / Afro',  stream:'https://stream.myjoyonline.com:8443/joyfm'},
+  {flag:'🇿🇦', name:'Metro FM South Africa',freq:'Online',     genre:'Afrobeats / Pop',  stream:'https://21233.live.streamtheworld.com/METROFM_SC'},
+  {flag:'🇯🇲', name:'Irie FM Jamaica',      freq:'107.5 FM',   genre:'Reggae / Dancehall',stream:'https://14313.live.streamtheworld.com/IRIEFM_SC'},
+  {flag:'🇩🇪', name:'1LIVE Cologne',        freq:'Online',     genre:'Electronic / Pop', stream:'https://wdr-1live-live.icecastssl.wdr.de/wdr/1live/live/mp3/128/stream.mp3'},
+  {flag:'🌍', name:'Radio Naba',            freq:'Online',     genre:'World / Roots',    stream:'https://ice1.somafm.com/groovesalad-256-mp3'},
+  {flag:'🌐', name:'SomaFM Groove Salad',   freq:'Online',     genre:'Electronic / Chill',stream:'https://ice1.somafm.com/groovesalad-256-mp3'},
+  {flag:'🌐', name:'SomaFM Drone Zone',     freq:'Online',     genre:'Ambient',          stream:'https://ice1.somafm.com/dronezone-256-mp3'},
+];
+
+/* ════════════════════════════════════════════
+   DATA — CHART VALUES
+════════════════════════════════════════════ */
+const SINGLES_DATA = [
+  {label:'Hip-Hop/R&B', pct:85, cls:''},
+  {label:'Pop',         pct:72, cls:'gold'},
+  {label:'Afrobeats',   pct:61, cls:'green'},
+  {label:'Electronic',  pct:53, cls:''},
+  {label:'Rock/Alt',    pct:38, cls:'hot'},
+  {label:'Latin',       pct:58, cls:'gold'},
+  {label:'Jazz/Soul',   pct:22, cls:''},
+];
+const ALBUMS_DATA = [
+  {label:'Streaming',   pct:67, cls:''},
+  {label:'CD',          pct:12, cls:'gold'},
+  {label:'Vinyl',       pct:10, cls:'green'},
+  {label:'Download',    pct:10, cls:''},
+  {label:'Cassette',    pct:1,  cls:'hot'},
+];
+
+/* ════════════════════════════════════════════
+   BUILD SERVICE COLLEGE
+════════════════════════════════════════════ */
+let selectedSvc = null;
+
+function buildCollege() {
+  const col = document.getElementById('serviceCollege');
+  SERVICES.forEach(s => {
+    const card = document.createElement('div');
+    card.className = `svc-card ${s.cls}`;
+    card.id = 'svc-' + s.id;
+    card.innerHTML = `
+      <div class="svc-check">✓</div>
+      <div class="svc-logo-wrap">${s.icon}</div>
+      <div>
+        <div class="svc-name">${s.name}</div>
+        <div class="svc-type">${s.type}</div>
+      </div>`;
+    card.addEventListener('click', () => selectService(s));
+    col.appendChild(card);
+  });
+}
+
+function selectService(s) {
+  document.querySelectorAll('.svc-card').forEach(c => c.classList.remove('selected'));
+  document.getElementById('svc-' + s.id).classList.add('selected');
+  selectedSvc = s;
+  /* pre-fill player */
+  buildPlayerRow();
+}
+
+/* ════════════════════════════════════════════
+   BUILD STORES
+════════════════════════════════════════════ */
+function buildStores() {
+  const list = document.getElementById('storeList');
+  document.getElementById('buyDate').textContent = new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}).toUpperCase();
+  STORES.forEach(s => {
+    const el = document.createElement('div');
+    el.className = 'store-card';
+    el.style.background = `linear-gradient(140deg,${s.col},rgba(4,10,22,.97))`;
+    el.innerHTML = `
+      <div class="store-icon" style="background:${s.col};border-radius:8px">${s.icon}</div>
+      <div class="store-info">
+        <div class="store-name">${s.name}</div>
+        <div class="store-desc">${s.desc}</div>
+        <div class="store-tags">${s.tags.map(t=>`<span class="stag ${t==='Digital'?'dig':t==='Physical'?'phy':''}">${t}</span>`).join('')}</div>
+      </div>
+      <div class="store-arrow">›</div>`;
+    el.addEventListener('click', () => window.open(s.link, '_blank'));
+    list.appendChild(el);
+  });
+}
+
+/* ════════════════════════════════════════════
+   BUILD CHARTS
+════════════════════════════════════════════ */
+function buildCharts() {
+  function makeBar(container, data) {
+    const chart = document.getElementById(container);
+    data.forEach(d => {
+      const row = document.createElement('div');
+      row.className = 'bar-row';
+      row.innerHTML = `
+        <div class="bar-label">${d.label}</div>
+        <div class="bar-track"><div class="bar-fill ${d.cls}" style="width:0%" data-w="${d.pct}%"></div></div>
+        <div class="bar-val">${d.pct}%</div>`;
+      chart.appendChild(row);
+    });
+  }
+  makeBar('singlesChart', SINGLES_DATA);
+  makeBar('albumsChart',  ALBUMS_DATA);
+
+  /* animate bars when slide 3 is visible */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        document.querySelectorAll('.bar-fill').forEach(b => {
+          b.style.width = b.dataset.w;
+        });
+        obs.disconnect();
+      }
+    });
+  }, {threshold:.3});
+  obs.observe(document.getElementById('slide-buy'));
+}
+
+/* ════════════════════════════════════════════
+   BUILD RADIO LIST
+════════════════════════════════════════════ */
+let currentAudio = null;
+let playingStation = null;
+
+function buildRadio() {
+  const list = document.getElementById('radioList');
+
+  const groups = {};
+  STATIONS.forEach(s => {
+    const key = s.genre.split(' / ')[0];
+    if (!groups[key]) groups[key] = [];
+    groups[key].push(s);
+  });
+
+  Object.entries(groups).forEach(([genre, stations]) => {
+    const label = document.createElement('div');
+    label.className = 'radio-section-label';
+    label.textContent = '// ' + genre;
+    list.appendChild(label);
+
+    stations.forEach(s => {
+      const item = document.createElement('div');
+      item.className = 'radio-item';
+      item.innerHTML = `
+        <div class="radio-flag">${s.flag}</div>
+        <div class="radio-info">
+          <div class="radio-name">${s.name}</div>
+          <div class="radio-freq">${s.freq} · ${s.genre}</div>
+        </div>
+        <div class="radio-genre-tag">${s.genre.split(' / ')[0]}</div>
+        <div class="radio-play-btn">▶</div>`;
+      item.addEventListener('click', () => playStation(s, item));
+      list.appendChild(item);
+    });
+  });
+}
+
+function playStation(s, el) {
+  /* stop current */
+  if (currentAudio) { currentAudio.pause(); currentAudio = null; }
+  document.querySelectorAll('.radio-item').forEach(i => {
+    i.classList.remove('playing');
+    i.querySelector('.radio-play-btn').textContent = '▶';
+  });
+
+  if (playingStation === s.name) {
+    playingStation = null;
+    document.getElementById('radioNowText').textContent = 'Select a station';
+    document.getElementById('radioNowText').style.color = 'var(--ghost)';
+    const dot = document.getElementById('radioPlayDot');
+    dot.style.background = 'var(--ghost)'; dot.style.animation = 'none';
+    return;
+  }
+
+  try {
+    currentAudio = new Audio(s.stream);
+    currentAudio.volume = 0.7;
+    currentAudio.play().catch(() => {});
+  } catch(e){}
+
+  el.classList.add('playing');
+  el.querySelector('.radio-play-btn').textContent = '■';
+  playingStation = s.name;
+
+  document.getElementById('radioNowText').textContent = s.name + ' — ' + s.genre;
+  document.getElementById('radioNowText').style.color = 'var(--white)';
+  const dot = document.getElementById('radioPlayDot');
+  dot.style.background = 'var(--gold)'; dot.style.animation = 'pulse 1.5s ease infinite';
+}
+
+/* ════════════════════════════════════════════
+   PLAYER MODAL
+════════════════════════════════════════════ */
+function buildPlayerRow() {
+  const row = document.getElementById('playerSvcRow');
+  row.innerHTML = '';
+  SERVICES.slice(0,8).forEach(s => {
+    const btn = document.createElement('button');
+    btn.className = 'psvc' + (selectedSvc && selectedSvc.id === s.id ? ' active' : '');
+    btn.textContent = s.name;
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.psvc').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      showPlayerEmbed(s);
+    });
+    row.appendChild(btn);
+  });
+  if (selectedSvc) showPlayerEmbed(selectedSvc);
+}
+
+function showPlayerEmbed(s) {
+  document.getElementById('playerSub').textContent = 'Streaming via ' + s.name;
+  const area = document.getElementById('playerEmbed');
+  const msg  = document.getElementById('playerEmbedMsg');
+  const btn  = document.getElementById('playerLaunchBtn');
+  msg.textContent = `Tap below to open ${s.name} Web Player — sign in with your account to stream.`;
+  btn.textContent = `Open ${s.name} Web Player ↗`;
+  btn.href = s.web;
+  btn.style.display = 'inline-flex';
+  area.querySelector('.player-embed-icon').textContent = s.icon;
+}
+
+function openPlayer() {
+  buildPlayerRow();
+  document.getElementById('player-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closePlayer() {
+  document.getElementById('player-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('player-modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('player-modal')) closePlayer();
+});
+
+/* ════════════════════════════════════════════
+   RADIO MODAL
+════════════════════════════════════════════ */
+function openRadio() {
+  document.getElementById('radio-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeRadio() {
+  document.getElementById('radio-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('radio-modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('radio-modal')) closeRadio();
+});
+
+/* ════════════════════════════════════════════
+   SIGN UP
+════════════════════════════════════════════ */
+function openSignup() {
+  const s = selectedSvc || SERVICES[0];
+  window.open(s.signup, '_blank');
+}
+
+/* ════════════════════════════════════════════
+   SLIDE NAV
+════════════════════════════════════════════ */
+function goSlide(idx) {
+  const els = document.querySelectorAll('.slide');
+  if (els[idx]) els[idx].scrollIntoView({behavior:'smooth'});
+  updateNav(idx);
+}
+function updateNav(idx) {
+  document.querySelectorAll('.nav-links a').forEach((a,i) => {
+    if (a.textContent === 'Library Pass') a.classList.toggle('active', true);
+  });
+}
+document.getElementById('slides').addEventListener('scroll', function() {
+  const idx = Math.round(this.scrollTop / (this.clientHeight / 1));
+});
+
+/* ESC closes modals */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closePlayer(); closeRadio(); }
+});
+
+/* ════════════════════════════════════════════
+   CLOCK
+════════════════════════════════════════════ */
+function tick() {
+  const d = new Date();
+  document.getElementById('navClock').innerHTML =
+    '3HRILL MUSIC<br>' + d.toUTCString().slice(17,22) + ' UTC';
+}
+tick(); setInterval(tick, 1000);
+
+/* ════════════════════════════════════════════
+   INIT
+════════════════════════════════════════════ */
+buildCollege();
+buildStores();
+buildCharts();
+buildRadio();
+</script>
+</body>
+</html>
